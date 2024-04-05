@@ -5,6 +5,4 @@ class SplashScreenController extends GetxController {
   void onInit() {
     super.onInit();
   }
-
-
 }
