@@ -148,6 +148,37 @@ class LoginPageView extends StatelessWidget {
                   ),
                 ),
               ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 70),
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Masuk",
+                          style: GoogleFonts.nunito(
+                            textStyle: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                                color: Colors.white),
+                          ),
+                        ),
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color(0xff5BA48F)),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ))),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
