@@ -4,7 +4,6 @@ import 'package:angkringan_omaci_ta/app/pages/index.dart';
 part 'app_routes.dart';
 
 class AppPages {
-
   AppPages._();
 
   static const INITIAL = Routes.SPLASH_SCREEN;
@@ -14,7 +13,7 @@ class AppPages {
       name: Routes.SPLASH_SCREEN,
       page: () => SplashScreenPage(),
       binding: SplashScreenBinding(),
-      transition: Transition.noTransition,
+      transition: Transition.fade,
     ),
   ];
 }
