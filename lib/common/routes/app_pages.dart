@@ -13,7 +13,7 @@ class AppPages {
       name: Routes.SPLASH_SCREEN,
       page: () => SplashScreenPage(),
       binding: SplashScreenBinding(),
-      transition: Transition.noTransition,
+      transition: Transition.fade,
     ),
   ];
 }
