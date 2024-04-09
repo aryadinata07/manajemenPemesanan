@@ -9,7 +9,17 @@ class AppPages {
   static const INITIAL = Routes.SPLASH_SCREEN;
 
   static final routes = [
+
+    // TESTING ROUTES
     GetPage(
+      name: Routes.TESTING,
+      page: () => SplashScreenPage(),
+      binding: SplashScreenBinding(),
+
+
+
+    // OFFICIAL ROUTES
+    ),GetPage(
       name: Routes.SPLASH_SCREEN,
       page: () => SplashScreenPage(),
       binding: SplashScreenBinding(),
