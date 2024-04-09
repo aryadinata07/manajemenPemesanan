@@ -9,6 +9,7 @@ class SplashScreenPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //DONE
     return Scaffold(
       body: BackgroundWidget(
         child: Center(
