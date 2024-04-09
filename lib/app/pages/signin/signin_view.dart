@@ -1,15 +1,14 @@
-// login_page_view.dart
-
+import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:angkringan_omaci_ta/app/pages/signin/signin_controller.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
-import 'package:angkringan_omaci_ta/app/pages/login_page/login_page_controller.dart';
 
-class LoginPageView extends StatelessWidget {
-  final LoginPageController controller = Get.put(LoginPageController());
+class SignInPage extends StatelessWidget {
+  final SignInController controller = Get.put(SignInController());
 
-  LoginPageView({Key? key}) : super(key: key);
+  SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,7 @@ class LoginPageView extends StatelessWidget {
                   textStyle: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: Colors.white),
+                      color: white),
                 ),
               ),
               const SizedBox(
@@ -45,10 +44,10 @@ class LoginPageView extends StatelessWidget {
               Container(
                 height: 60,
                 decoration: BoxDecoration(
-                  color: Color(0xff2E2E2E),
+                  color: background,
                   borderRadius: BorderRadius.circular(8.0),
                   border: Border.all(
-                    color: Color(0xff8DD5C0),
+                    color: primaryAccent,
                     width: 1,
                   ),
                 ),
@@ -57,40 +56,35 @@ class LoginPageView extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.center,
                     child: Obx(() => DropdownButton<String>(
-                          dropdownColor: Color(
-                              0xff2E2E2E), // Mengatur warna latar belakang dropdown popup menjadi hitam
-                          hint: const Text(
-                            'Pilih role anda',
-                            style: TextStyle(color: Colors.white, fontSize: 16),
+                      dropdownColor: background,
+                      value: controller.selectedRole.value.isNotEmpty
+                          ? controller.selectedRole.value
+                          : null,
+                      onChanged: (String? newValue) {
+                        if (newValue != null) {
+                          controller.setSelectedRole(newValue);
+                        }
+                      },
+                      underline: const SizedBox(),
+                      style: const TextStyle(
+                          color: white, fontSize: 16),
+                      isExpanded: true,
+                      items: <String>['Kasir', 'Owner']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(
+                            value,
+                            style: const TextStyle(color: white),
                           ),
-                          value: controller.selectedRole.value.isNotEmpty
-                              ? controller.selectedRole.value
-                              : null,
-                          onChanged: (String? newValue) {
-                            if (newValue != null) {
-                              controller.setSelectedRole(newValue);
-                            }
-                          },
-                          underline: SizedBox(),
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 16),
-                          isExpanded: true,
-                          items: <String>['Kasir', 'Owner']
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(
-                                value,
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            );
-                          }).toList(),
-                        )),
+                        );
+                      }).toList(),
+                    )),
                   ),
                 ),
               ),
               const SizedBox(
-                height: 27,
+                height: 30,
               ),
               Text(
                 "Password",
@@ -98,40 +92,39 @@ class LoginPageView extends StatelessWidget {
                   textStyle: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: Colors.white),
+                      color: white),
                 ),
               ),
               const SizedBox(
                 height: 8,
               ),
               Obx(
-                () => SizedBox(
+                    () => SizedBox(
                   height: 60,
                   child: TextField(
                     obscureText: controller.isObscure.value,
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: white,
                       fontSize: 16,
                       fontWeight: FontWeight.normal,
                     ),
                     decoration: InputDecoration(
-                      hintText: "Password",
                       hintStyle: const TextStyle(
-                        color: Colors.white,
+                        color: white,
                         fontSize: 16,
                         fontWeight: FontWeight.normal,
                       ),
                       filled: true,
-                      fillColor: const Color(0xff2E2E2E),
+                      fillColor: background,
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
-                          color: Color(0xff8DD5C0),
+                          color: primaryAccent,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
-                          color: Color(0xff8DD5C0),
+                          color: primaryAccent,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
@@ -139,7 +132,7 @@ class LoginPageView extends StatelessWidget {
                         icon: controller.isObscure.value
                             ? const Icon(Icons.visibility)
                             : const Icon(Icons.visibility_off),
-                        color: Colors.white,
+                        color: const Color(0xFF6E6E6E),
                         onPressed: () {
                           controller.toggleObscure();
                         },
@@ -158,22 +151,22 @@ class LoginPageView extends StatelessWidget {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {},
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                primaryAccent),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ))),
                         child: Text(
                           "Masuk",
                           style: GoogleFonts.nunito(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
-                                color: Colors.white),
+                                color: white),
                           ),
                         ),
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Color(0xff5BA48F)),
-                            shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ))),
                       ),
                     ),
                   ),

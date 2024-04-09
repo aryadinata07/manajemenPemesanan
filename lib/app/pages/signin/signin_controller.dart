@@ -1,10 +1,8 @@
 import 'package:get/get.dart';
 
-class LoginPageController extends GetxController {
+class SignInController extends GetxController {
   var isObscure = true.obs;
   var selectedRole = ''.obs;
-
-  // Properti untuk menyimpan daftar item dropdown
 
   @override
   void onInit() {
