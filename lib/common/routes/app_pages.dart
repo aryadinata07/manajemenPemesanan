@@ -1,3 +1,5 @@
+import 'package:angkringan_omaci_ta/app/pages/RoleKasir/tambahpesanan/tambahpesanan_binding.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleKasir/tambahpesanan/tambahpesanan_view.dart';
 import 'package:get/get.dart';
 import 'package:angkringan_omaci_ta/app/pages/index.dart';
 
@@ -9,17 +11,15 @@ class AppPages {
   static const INITIAL = Routes.SPLASH_SCREEN;
 
   static final routes = [
-
     // TESTING ROUTES
     GetPage(
       name: Routes.TESTING,
-      page: () => SplashScreenPage(),
-      binding: SplashScreenBinding(),
+      page: () => TambahPesananView(),
+      binding: TambahPesananBinding(),
 
-
-
-    // OFFICIAL ROUTES
-    ),GetPage(
+      // OFFICIAL ROUTES
+    ),
+    GetPage(
       name: Routes.SPLASH_SCREEN,
       page: () => SplashScreenPage(),
       binding: SplashScreenBinding(),

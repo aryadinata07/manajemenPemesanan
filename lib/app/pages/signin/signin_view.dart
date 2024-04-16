@@ -33,9 +33,7 @@ class SignInPage extends StatelessWidget {
                 "Role",
                 style: GoogleFonts.montserrat(
                   textStyle: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: white),
+                      fontSize: 16, fontWeight: FontWeight.w500, color: white),
                 ),
               ),
               const SizedBox(
@@ -56,30 +54,29 @@ class SignInPage extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.center,
                     child: Obx(() => DropdownButton<String>(
-                      dropdownColor: background,
-                      value: controller.selectedRole.value.isNotEmpty
-                          ? controller.selectedRole.value
-                          : null,
-                      onChanged: (String? newValue) {
-                        if (newValue != null) {
-                          controller.setSelectedRole(newValue);
-                        }
-                      },
-                      underline: const SizedBox(),
-                      style: const TextStyle(
-                          color: white, fontSize: 16),
-                      isExpanded: true,
-                      items: <String>['Kasir', 'Owner']
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(
-                            value,
-                            style: const TextStyle(color: white),
-                          ),
-                        );
-                      }).toList(),
-                    )),
+                          dropdownColor: background,
+                          value: controller.selectedRole.value.isNotEmpty
+                              ? controller.selectedRole.value
+                              : null,
+                          onChanged: (String? newValue) {
+                            if (newValue != null) {
+                              controller.setSelectedRole(newValue);
+                            }
+                          },
+                          underline: const SizedBox(),
+                          style: const TextStyle(color: white, fontSize: 16),
+                          isExpanded: true,
+                          items: <String>['Kasir', 'Owner']
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(
+                                value,
+                                style: const TextStyle(color: white),
+                              ),
+                            );
+                          }).toList(),
+                        )),
                   ),
                 ),
               ),
@@ -90,16 +87,14 @@ class SignInPage extends StatelessWidget {
                 "Password",
                 style: GoogleFonts.montserrat(
                   textStyle: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: white),
+                      fontSize: 16, fontWeight: FontWeight.w500, color: white),
                 ),
               ),
               const SizedBox(
                 height: 8,
               ),
               Obx(
-                    () => SizedBox(
+                () => SizedBox(
                   height: 60,
                   child: TextField(
                     obscureText: controller.isObscure.value,
@@ -152,12 +147,12 @@ class SignInPage extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                primaryAccent),
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(primaryAccent),
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ))),
+                              borderRadius: BorderRadius.circular(8),
+                            ))),
                         child: Text(
                           "Masuk",
                           style: GoogleFonts.nunito(
