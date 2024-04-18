@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 class LoginPageBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<SignInPage>(
-          () => SignInPage(),
+    Get.lazyPut<SignInView>(
+          () => SignInView(),
     );
   }
 }

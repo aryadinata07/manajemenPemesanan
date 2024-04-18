@@ -1,17 +1,15 @@
-// TambahPesananView.dart
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import 'package:angkringan_omaci_ta/app/global_components/menu_item.dart';
 import 'package:angkringan_omaci_ta/app/global_components/appBar.dart';
-import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
-
-import 'tambahpesanan_controller.dart'; // Import controller
+import 'package:angkringan_omaci_ta/common/helper/themes.dart';
+import 'tambahpesanan_controller.dart';
+import 'package:angkringan_omaci_ta/app/global_components/menu_item.dart';
 
 class TambahPesananView extends StatelessWidget {
-  const TambahPesananView({Key? key}) : super(key: key);
+  const TambahPesananView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,49 +22,49 @@ class TambahPesananView extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: ListView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        appBar(
+                        const appBar(
                           title: "Tambah Pesanan",
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 22),
+                          padding: const EdgeInsets.only(top: 20),
                           child: Row(
                             children: [
                               Expanded(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 65, 58, 58),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: const Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Icon(
-                                          Icons.search,
-                                          color: Colors.grey,
-                                        ),
+                                child: SizedBox(
+                                  height: 60,
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Cari menu',
+                                      hintStyle: const TextStyle(
+                                        color: grey,
                                       ),
-                                      Expanded(
-                                        child: TextField(
-                                          style: TextStyle(color: Colors.white),
-                                          decoration: InputDecoration(
-                                            hintText: 'Cari menu restaurant',
-                                            hintStyle:
-                                                TextStyle(color: Colors.grey),
-                                            border: InputBorder.none,
-                                          ),
-                                        ),
+                                      filled: true,
+                                      fillColor: textFieldBackground,
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        borderSide: BorderSide.none,
                                       ),
-                                    ],
+                                      prefixIcon: const Icon(
+                                        Icons.search,
+                                        color: grey,
+                                      ),
+                                    ),
+                                    style: const TextStyle(
+                                      color: grey,  // Set the color of the entered value to grey
+                                    ),
                                   ),
-                                ),
+                                )
+
                               ),
                               const SizedBox(width: 10.0),
                               Container(
+                                height: 60,
+                                width: 60,
                                 decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 24, 194, 160),
+                                  color: primaryAccent,
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: IconButton(
@@ -80,37 +78,40 @@ class TambahPesananView extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 20.0),
-                        Column(
-                          children: controller.foods.map((food) {
-                            return MenuItem(
-                              foodName: food['name']!,
-                              foodCategory: food['category']!,
-                              foodPrice: food['price']!,
-                            );
-                          }).toList(),
+                        const SizedBox(height: 20),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: controller.foods.length,
+                            itemBuilder: (context, index) {
+                              final food = controller.foods[index];
+                              return MenuItem(
+                                foodName: food['name']!,
+                                foodCategory: food['category']!,
+                                foodPrice: food['price']!,
+                              );
+                            },
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: SizedBox(
+                    height: 50,
+                    width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF5BA48F),
+                        backgroundColor: primaryAccent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      onPressed: () {
-                        // Tambahkan logika untuk tombol di sini
-                      },
-                      child: Text(
+                      onPressed: () {},
+                      child: const Text(
                         'Lanjut',
-                        style: GoogleFonts.nunito(
+                        style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: white,

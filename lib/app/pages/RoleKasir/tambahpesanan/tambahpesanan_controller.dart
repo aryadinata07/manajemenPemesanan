@@ -1,4 +1,3 @@
-// TambahPesananController.dart
 import 'package:get/get.dart';
 
 class TambahPesananController extends GetxController {
@@ -9,7 +8,7 @@ class TambahPesananController extends GetxController {
       'price': 'Rp. 50.000',
     },
     {
-      'name': 'Mie Goreng Seafood',
+      'name': 'Mie Goreng Seafoodwdwdwdwdwdwdwdwd',
       'category': 'Makanan',
       'price': 'Rp. 45.000',
     },
