@@ -3,8 +3,8 @@ import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SplashScreenPage extends StatelessWidget {
-  SplashScreenPage({super.key});
+class SplashScreenView extends StatelessWidget {
+  SplashScreenView({super.key});
   final SplashScreenController controller = Get.put(SplashScreenController());
 
   @override

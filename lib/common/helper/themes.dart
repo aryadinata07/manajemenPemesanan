@@ -9,3 +9,4 @@ const Color textFieldBackground = Color(0xFF2E2E2E);
 const Color background = Color(0xFF242424);
 const Color red = Color(0xFFD92D20);
 const Color green = Color(0xFF20A535);
+const Color grey = Color(0xFF9E9E9E);

@@ -5,10 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:angkringan_omaci_ta/app/pages/signin/signin_controller.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInView extends StatelessWidget {
   final SignInController controller = Get.put(SignInController());
 
-  SignInPage({super.key});
+  SignInView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +55,7 @@ class SignInPage extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Obx(() => DropdownButton<String>(
                           dropdownColor: background,
+                          borderRadius: BorderRadius.circular(9.0),
                           value: controller.selectedRole.value.isNotEmpty
                               ? controller.selectedRole.value
                               : null,
@@ -97,6 +98,7 @@ class SignInPage extends StatelessWidget {
                 () => SizedBox(
                   height: 60,
                   child: TextField(
+                    controller: controller.passwordController,
                     obscureText: controller.isObscure.value,
                     style: const TextStyle(
                       color: white,
@@ -138,14 +140,19 @@ class SignInPage extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 70),
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: SizedBox(
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          print('Selected Role: ${controller.selectedRole.value}');
+                          print('Password: ${controller.passwordController.text}');
+
+                          controller.checkCredentials();
+                        },
                         style: ButtonStyle(
                             backgroundColor:
                                 MaterialStateProperty.all<Color>(primaryAccent),
