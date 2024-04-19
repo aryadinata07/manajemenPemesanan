@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Angkringan Omaci',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         appBarTheme: const AppBarTheme(
@@ -25,4 +26,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
