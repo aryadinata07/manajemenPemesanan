@@ -1,3 +1,4 @@
+import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -25,22 +26,30 @@ class SignInController extends GetxController {
     String role = selectedRole.value;
     String enteredPassword = passwordController.text;
 
-    // Define the expected passwords for each role
-    String expectedPassword;
-    if (role == 'Owner') {
-      expectedPassword = ownerPassword;
-    } else if (role == 'Kasir') {
-      expectedPassword = kasirPassword;
-    } else {
-      print('Please select a role.');
-      return;
-    }
 
-    if (enteredPassword == expectedPassword) {
-      print('Login successful for role: $role');
-    } else {
-      print('Invalid password for role: $role');
+    if (role.isEmpty) {
+      print('Please select a role.');
+    } else if (enteredPassword.isEmpty) {
+      print('Please fill in the password.');
+    }
+    else {
+      if (role == 'Owner') {
+        if (enteredPassword == ownerPassword) {
+          print('Login successful for role: $role');
+          Get.offNamed(Routes.MENU_RESTORAN);
+        } else {
+          print('Invalid password for role: $role');
+        }
+      } else if (role == 'Kasir') {
+        if (enteredPassword == kasirPassword) {
+          print('Login successful for role: $role');
+          Get.offNamed(Routes.PESANAN);
+        } else {
+          print('Invalid password for role: $role');
+        }
+      }
     }
   }
+
 
 }
