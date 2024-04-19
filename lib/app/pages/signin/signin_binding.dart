@@ -1,11 +1,11 @@
-import 'package:angkringan_omaci_ta/app/pages/signin/signin_view.dart';
+import 'package:angkringan_omaci_ta/app/pages/signin/signin_controller.dart';
 import 'package:get/get.dart';
 
-class LoginPageBinding extends Bindings {
+class SignInBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<SignInView>(
-          () => SignInView(),
+    Get.lazyPut<SignInController>(
+          () => SignInController(),
     );
   }
 }

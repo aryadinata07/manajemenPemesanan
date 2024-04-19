@@ -1,14 +1,12 @@
+import 'package:angkringan_omaci_ta/app/pages/signin/signin_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:angkringan_omaci_ta/app/pages/signin/signin_controller.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 
-class SignInView extends StatelessWidget {
-  final SignInController controller = Get.put(SignInController());
-
-  SignInView({super.key});
+class SignInView extends GetView<SignInController>{
+  const SignInView({super.key});
 
   @override
   Widget build(BuildContext context) {
