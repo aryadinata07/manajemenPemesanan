@@ -8,6 +8,7 @@ class SignInController extends GetxController {
   var ownerPassword = 'owner';
   var kasirPassword = 'kasir';
   TextEditingController passwordController = TextEditingController();
+  var isPasswordIncorrect = false.obs;
 
   @override
   void onInit() {
@@ -26,19 +27,18 @@ class SignInController extends GetxController {
     String role = selectedRole.value;
     String enteredPassword = passwordController.text;
 
-
     if (role.isEmpty) {
       print('Please select a role.');
     } else if (enteredPassword.isEmpty) {
       print('Please fill in the password.');
-    }
-    else {
+    } else {
       if (role == 'Owner') {
         if (enteredPassword == ownerPassword) {
           print('Login successful for role: $role');
           Get.offNamed(Routes.MENU_RESTORAN);
         } else {
           print('Invalid password for role: $role');
+          isPasswordIncorrect.value = true;
         }
       } else if (role == 'Kasir') {
         if (enteredPassword == kasirPassword) {
@@ -46,10 +46,9 @@ class SignInController extends GetxController {
           Get.offNamed(Routes.PESANAN);
         } else {
           print('Invalid password for role: $role');
+          isPasswordIncorrect.value = true;
         }
       }
     }
   }
-
-
 }
