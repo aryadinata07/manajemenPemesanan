@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 
-class SignInView extends GetView<SignInController>{
+class SignInView extends GetView<SignInController> {
   const SignInView({super.key});
 
   @override
@@ -93,47 +93,71 @@ class SignInView extends GetView<SignInController>{
                 height: 8,
               ),
               Obx(
-                () => SizedBox(
-                  height: 60,
-                  child: TextField(
-                    controller: controller.passwordController,
-                    obscureText: controller.isObscure.value,
-                    style: const TextStyle(
-                      color: white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                    ),
-                    decoration: InputDecoration(
-                      hintStyle: const TextStyle(
-                        color: white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
-                      ),
-                      filled: true,
-                      fillColor: background,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: primaryAccent,
+                () => Column(
+                  children: [
+                    Visibility(
+                      visible: controller.isPasswordIncorrect.value,
+                      child: const Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Password salah',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 12,
+                            ),
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: primaryAccent,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      suffixIcon: IconButton(
-                        icon: controller.isObscure.value
-                            ? const Icon(Icons.visibility)
-                            : const Icon(Icons.visibility_off),
-                        color: const Color(0xFF6E6E6E),
-                        onPressed: () {
-                          controller.toggleObscure();
-                        },
                       ),
                     ),
-                  ),
+                    SizedBox(
+                      height: 60,
+                      child: TextField(
+                        controller: controller.passwordController,
+                        obscureText: controller.isObscure.value,
+                        style: const TextStyle(
+                          color: white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal,
+                        ),
+                        decoration: InputDecoration(
+                          hintStyle: const TextStyle(
+                            color: white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          filled: true,
+                          fillColor: background,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: controller.isPasswordIncorrect.value
+                                  ? Colors.red
+                                  : primaryAccent,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: controller.isPasswordIncorrect.value
+                                  ? Colors.red
+                                  : primaryAccent,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: controller.isObscure.value
+                                ? const Icon(Icons.visibility)
+                                : const Icon(Icons.visibility_off),
+                            color: const Color(0xFF6E6E6E),
+                            onPressed: () {
+                              controller.toggleObscure();
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
@@ -146,8 +170,10 @@ class SignInView extends GetView<SignInController>{
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          print('Selected Role: ${controller.selectedRole.value}');
-                          print('Password: ${controller.passwordController.text}');
+                          print(
+                              'Selected Role: ${controller.selectedRole.value}');
+                          print(
+                              'Password: ${controller.passwordController.text}');
 
                           controller.checkCredentials();
                         },
