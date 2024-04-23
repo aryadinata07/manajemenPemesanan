@@ -95,24 +95,6 @@ class SignInView extends GetView<SignInController> {
               Obx(
                 () => Column(
                   children: [
-                    Visibility(
-                      visible: controller.isPasswordIncorrect.value,
-                      child: const Padding(
-                        padding: EdgeInsets.only(
-                          bottom: 5,
-                        ),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'Password salah',
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
                     SizedBox(
                       height: 60,
                       child: TextField(
