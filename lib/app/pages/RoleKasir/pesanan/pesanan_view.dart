@@ -3,6 +3,7 @@ import 'package:angkringan_omaci_ta/app/pages/index.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'pesanan_controller.dart';
 import 'package:flutter/material.dart';
@@ -25,12 +26,40 @@ class PesananView extends StatelessWidget {
         child: const Icon(Icons.add, color: Colors.white, size: 35),
       ),
       drawer: Drawer(
-        child: ListView(
-          children: const [
-            ListTile(
-              title: Text("Pesanan")
-            )
-          ],
+        child: BackgroundWidget(
+          child: ListView(
+            children: [
+              GestureDetector(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: primaryAccent,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: ListTile(
+                    title: Row(
+                      children: [
+                        const Icon(
+                          Icons.receipt_long_rounded,
+                          color: Colors.white,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          "Pesanan",
+                          style: GoogleFonts.nunito(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       body: BackgroundWidget(

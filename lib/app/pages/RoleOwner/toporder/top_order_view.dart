@@ -1,13 +1,14 @@
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleOwner/toporder/top_order_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'menurestoran_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class MenuRestoranView extends StatelessWidget {
-  const MenuRestoranView({super.key});
+class TopOrderView extends StatelessWidget {
+  const TopOrderView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +28,10 @@ class MenuRestoranView extends StatelessWidget {
           child: ListView(
             children: [
               GestureDetector(
-                // onTap:  () => Get.toNamed(Routes.MENU_RESTORAN),
+                onTap:  () => Get.toNamed(Routes.MENU_RESTORAN),
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   decoration: BoxDecoration(
-                    color: primaryAccent,
                     borderRadius: BorderRadius.circular(16),
                   ),
 
@@ -88,10 +88,10 @@ class MenuRestoranView extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap:  () => Get.toNamed(Routes.TOP_ORDER),
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   decoration: BoxDecoration(
+                    color: primaryAccent,
                     borderRadius: BorderRadius.circular(16),
                   ),
 
@@ -152,7 +152,7 @@ class MenuRestoranView extends StatelessWidget {
         ),
       ),
       body: BackgroundWidget(
-        child: GetBuilder<MenuRestoranController>(
+        child: GetBuilder<TopOrderController>(
           builder: (controller) {
             return SafeArea(
               child: Column(
@@ -164,50 +164,50 @@ class MenuRestoranView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Builder(
-                                        builder: (BuildContext context) {
-                                          return IconButton(
-                                            icon: const Icon(Icons.menu, color: Colors.white),
-                                            onPressed: () {
-                                              Scaffold.of(context).openDrawer();
-                                            },
-                                            iconSize: 25,
-                                          );
+                                  Builder(
+                                    builder: (BuildContext context) {
+                                      return IconButton(
+                                        icon: const Icon(Icons.menu, color: Colors.white),
+                                        onPressed: () {
+                                          Scaffold.of(context).openDrawer();
                                         },
-                                      ),
-                                      const SizedBox(width: 10,),
-                                      Expanded(
-                                        child: Text(
-                                          "Menu Restoran",
-                                          style: GoogleFonts.nunito(
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                          textAlign: TextAlign.start,
-                                        ),
-                                      ),
-                                      IconButton(
-                                      icon: const Icon(Icons.logout_rounded, color: Colors.white),
-                                      onPressed: () {
-                                        Get.offNamed(Routes.SIGN_IN);
-                                      },
-                                      iconSize: 25,
-                                      )
-                                    ],
+                                        iconSize: 25,
+                                      );
+                                    },
                                   ),
-                                  const SizedBox(
-                                    height: 10,
+                                  const SizedBox(width: 10,),
+                                  Expanded(
+                                    child: Text(
+                                      "Top Order",
+                                      style: GoogleFonts.nunito(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w800,
+                                      ),
+                                      textAlign: TextAlign.start,
+                                    ),
                                   ),
-                                  const Divider(
-                                    thickness: 1,
+                                  IconButton(
+                                    icon: const Icon(Icons.logout_rounded, color: Colors.white),
+                                    onPressed: () {
+                                      Get.offNamed(Routes.SIGN_IN);
+                                    },
+                                    iconSize: 25,
                                   )
                                 ],
                               ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              const Divider(
+                                thickness: 1,
+                              )
+                            ],
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
                             child: Row(
@@ -271,5 +271,3 @@ class MenuRestoranView extends StatelessWidget {
     );
   }
 }
-
-
