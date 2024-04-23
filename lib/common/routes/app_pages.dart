@@ -32,14 +32,35 @@ class AppPages {
       page: () =>  const SignInView(),
       binding: SignInBinding(),
     ),
+
+    // ROLE OWNER
+    GetPage(
+      name: Routes.MENU_RESTORAN,
+      page: () =>  const MenuRestoranView(),
+      binding: MenuRestoranBinding(),
+    ),
+    GetPage(
+      name: Routes.REKAPAN_PEMESANAN,
+      page: () =>  const RekapanView(),
+      binding: RekapanBinding(),
+    ),
+    GetPage(
+      name: Routes.TOP_ORDER,
+      page: () =>  const TopOrderView(),
+      binding: TopOrderBinding(),
+    ),
+    GetPage(
+      name: Routes.DAFTAR_HUTANG,
+      page: () =>  const DaftarHutangView(),
+      binding: DaftarHutangBinding(),
+    ),
+
+
+    // ROLE KASIR
     GetPage(
       name: Routes.PESANAN,
       page: () =>  const PesananView(),
       binding: PesananBinding(),
-    ), GetPage(
-      name: Routes.MENU_RESTORAN,
-      page: () =>  const MenuRestoranView(),
-      binding: MenuRestoranBinding(),
     ),
     GetPage(
       name: Routes.TAMBAH_PESANAN,
