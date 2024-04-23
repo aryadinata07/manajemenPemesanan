@@ -39,6 +39,7 @@ class SignInController extends GetxController {
           Get.offNamed(Routes.MENU_RESTORAN);
         } else {
           print('Invalid password for role: $role');
+
           Get.snackbar(
             'Password Salah',
             'Invalid password for role: $role',
@@ -53,6 +54,7 @@ class SignInController extends GetxController {
           Get.offNamed(Routes.PESANAN);
         } else {
           print('Invalid password for role: $role');
+
           Get.snackbar(
             'Password Salah',
             'Invalid password for role: $role',
