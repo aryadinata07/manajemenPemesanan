@@ -1,19 +1,25 @@
+import 'package:angkringan_omaci_ta/app/global_components/sidebar/sidebar_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInController extends GetxController {
+  late SharedPreferences prefs;
+
   var isObscure = true.obs;
   var selectedRole = ''.obs;
   var ownerPassword = 'owner';
   var kasirPassword = 'kasir';
   TextEditingController passwordController = TextEditingController();
   var isPasswordIncorrect = false.obs;
+  var prefsInitialized = false.obs;
 
   @override
   void onInit() {
     super.onInit();
+    checkPrefsInitialization();
   }
 
   void setSelectedRole(String role) {
@@ -24,31 +30,47 @@ class SignInController extends GetxController {
     isObscure.value = !isObscure.value;
   }
 
-  void checkCredentials() {
+  Future<void> checkPrefsInitialization() async {
+    if (!prefsInitialized.value) {
+      prefs = await SharedPreferences.getInstance();
+      prefsInitialized.value = true; // Mark prefs as initialized
+    }
+  }
+
+
+  void checkCredentials() async {
+    await checkPrefsInitialization(); // Ensure prefs is initialized
+
     String role = selectedRole.value;
     String enteredPassword = passwordController.text;
 
     if (role.isEmpty) {
-      print('Please select a role.');
+      print('Tolong pilih role.');
     } else if (enteredPassword.isEmpty) {
-      print('Please fill in the password.');
+      print('Tolong isi password terlebih dahulu.');
       Get.snackbar(
         'Password Kosong',
-        'Please fill in the password.',
+        'Tolong isi password terlebih dahulu.',
         backgroundColor: red,
         colorText: white,
       );
     } else {
       if (role == 'Owner') {
         if (enteredPassword == ownerPassword) {
-          print('Login successful for role: $role');
-          Get.offNamed(Routes.MENU_RESTORAN);
+          print('Sign in berhasil untuk role: $role');
+          Get.snackbar(
+            'Sign in berhasil untuk role: $role',
+            'Selamat datang.',
+            backgroundColor: green,
+            colorText: white,
+          );
+          Get.offAllNamed(Routes.MENU_RESTORAN);
+          await prefs.setString('role', role);
         } else {
           print('Invalid password for role: $role');
-
           Get.snackbar(
             'Password Salah',
-            'Invalid password for role: $role',
+            'Password salah untuk role: $role',
             backgroundColor: red,
             colorText: white,
           );
@@ -56,14 +78,20 @@ class SignInController extends GetxController {
         }
       } else if (role == 'Kasir') {
         if (enteredPassword == kasirPassword) {
-          print('Login successful for role: $role');
-          Get.offNamed(Routes.PESANAN);
+          print('Sign in berhasil untuk role: $role');
+          Get.snackbar(
+            'Sign in berhasil untuk role: $role',
+            'Selamat datang.',
+            backgroundColor: green,
+            colorText: white,
+          );
+          Get.offAllNamed(Routes.PESANAN);
+          await prefs.setString('role', role);
         } else {
           print('Invalid password for role: $role');
-
           Get.snackbar(
             'Password Salah',
-            'Invalid password for role: $role',
+            'Password salah untuk role: $role',
             backgroundColor: red,
             colorText: white,
           );

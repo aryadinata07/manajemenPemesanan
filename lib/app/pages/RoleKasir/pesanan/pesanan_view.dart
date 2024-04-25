@@ -1,10 +1,8 @@
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
+import 'package:angkringan_omaci_ta/app/global_components/popout_signout/popout_signout_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/index.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
-import 'package:angkringan_omaci_ta/app/global_components/popUp_logOut.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'pesanan_controller.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +106,7 @@ class PesananView extends StatelessWidget {
                                       onPressed: () {
                                         showDialog(
                                           context: context,
-                                          builder: (context) => PopUpLogout());
+                                          builder: (context) => PopUpSignOutView());
                                       },
                                       iconSize: 25,
                                       )

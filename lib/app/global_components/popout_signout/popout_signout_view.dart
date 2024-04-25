@@ -1,11 +1,12 @@
+import 'package:angkringan_omaci_ta/app/global_components/popout_signout/popup_signout_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 
-class PopUpLogout extends StatelessWidget {
-  const PopUpLogout({Key? key}) : super(key: key);
+class PopUpSignOutView extends StatelessWidget {
+  PopUpSignOutView({super.key});
+  final PopUpSignOutController controller = Get.put(PopUpSignOutController());
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +71,7 @@ class PopUpLogout extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Get.offNamed(Routes.SIGN_IN);
+                  controller.logout();
                 },
                 child: Text(
                   'Keluar',
@@ -87,7 +88,7 @@ class PopUpLogout extends StatelessWidget {
               height: 12,
             ),
             SizedBox(
-              width: double.infinity, // Membuat tombol memenuhi lebar container
+              width: double.infinity,
               height: 44.0,
               child: TextButton(
                 style: ButtonStyle(
