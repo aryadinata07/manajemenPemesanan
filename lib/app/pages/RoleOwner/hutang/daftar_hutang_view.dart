@@ -2,6 +2,7 @@ import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/hutang/daftar_hutang_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
+import 'package:angkringan_omaci_ta/app/global_components/popUp_logOut.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -194,7 +195,9 @@ class DaftarHutangView extends StatelessWidget {
                                   IconButton(
                                     icon: const Icon(Icons.logout_rounded, color: Colors.white),
                                     onPressed: () {
-                                      Get.offNamed(Routes.SIGN_IN);
+                                      showDialog(
+                                          context: context,
+                                          builder: (context) => PopUpLogout());
                                     },
                                     iconSize: 25,
                                   )

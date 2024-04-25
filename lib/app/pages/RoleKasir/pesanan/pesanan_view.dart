@@ -2,6 +2,7 @@ import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/pages/index.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
+import 'package:angkringan_omaci_ta/app/global_components/popUp_logOut.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -105,7 +106,9 @@ class PesananView extends StatelessWidget {
                                       IconButton(
                                       icon: const Icon(Icons.logout_rounded, color: Colors.white),
                                       onPressed: () {
-                                        Get.offNamed(Routes.SIGN_IN);
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) => PopUpLogout());
                                       },
                                       iconSize: 25,
                                       )
