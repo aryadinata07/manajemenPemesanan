@@ -16,8 +16,6 @@ class PopUpSignOutView extends StatelessWidget {
       ),
       backgroundColor: Colors.transparent,
       child: Container(
-        height: 292,
-        width: 345,
         decoration: BoxDecoration(
           color: textFieldBackground,
           borderRadius: BorderRadius.circular(16.0),
@@ -34,22 +32,22 @@ class PopUpSignOutView extends StatelessWidget {
                 color: Color(0xffFEE4E2),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.logout_rounded, color: Color(0xffD92D20)),
+              child: const Icon(Icons.logout_rounded,size: 25, color: Color(0xffD92D20)),
             ),
             const SizedBox(
               height: 16,
             ),
             Text(
               'Keluar',
-              style: GoogleFonts.inter(
+              style: GoogleFonts.nunito(
                 textStyle: const TextStyle(
                     fontSize: 18, fontWeight: FontWeight.w600, color: white),
               ),
             ),
             const SizedBox(height: 4.0),
             Text(
-              'Apakah Anda yakin ingin keluar?\naksi ini tidak dapat di kembalikan',
-              style: GoogleFonts.inter(
+              'Apakah Anda yakin ingin keluar?\nAksi ini tidak dapat di kembalikan',
+              style: GoogleFonts.nunito(
                   textStyle: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.normal,
@@ -75,11 +73,11 @@ class PopUpSignOutView extends StatelessWidget {
                 },
                 child: Text(
                   'Keluar',
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.nunito(
                     textStyle: const TextStyle(
                         color: white,
                         fontSize: 16,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w700),
                   ),
                 ),
               ),
@@ -105,11 +103,11 @@ class PopUpSignOutView extends StatelessWidget {
                 },
                 child: Text(
                   'Batal',
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.nunito(
                     textStyle: const TextStyle(
                         color: white,
                         fontSize: 16,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w700),
                   ),
                 ),
               ),

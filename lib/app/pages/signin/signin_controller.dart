@@ -33,13 +33,13 @@ class SignInController extends GetxController {
   Future<void> checkPrefsInitialization() async {
     if (!prefsInitialized.value) {
       prefs = await SharedPreferences.getInstance();
-      prefsInitialized.value = true; // Mark prefs as initialized
+      prefsInitialized.value = true;
     }
   }
 
 
   void checkCredentials() async {
-    await checkPrefsInitialization(); // Ensure prefs is initialized
+    await checkPrefsInitialization();
 
     String role = selectedRole.value;
     String enteredPassword = passwordController.text;
@@ -59,8 +59,8 @@ class SignInController extends GetxController {
         if (enteredPassword == ownerPassword) {
           print('Sign in berhasil untuk role: $role');
           Get.snackbar(
+            'Selamat datang',
             'Sign in berhasil untuk role: $role',
-            'Selamat datang.',
             backgroundColor: green,
             colorText: white,
           );
@@ -80,8 +80,8 @@ class SignInController extends GetxController {
         if (enteredPassword == kasirPassword) {
           print('Sign in berhasil untuk role: $role');
           Get.snackbar(
+            'Selamat datang',
             'Sign in berhasil untuk role: $role',
-            'Selamat datang.',
             backgroundColor: green,
             colorText: white,
           );
