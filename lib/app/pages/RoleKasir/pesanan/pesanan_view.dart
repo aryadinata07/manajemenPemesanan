@@ -1,3 +1,4 @@
+import 'package:angkringan_omaci_ta/app/global_components/appbar_kasir.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/global_components/popout_signout/popout_signout_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/index.dart';
@@ -24,43 +25,6 @@ class PesananView extends StatelessWidget {
         },
         child: const Icon(Icons.add, color: Colors.white, size: 35),
       ),
-      drawer: Drawer(
-        child: BackgroundWidget(
-          child: ListView(
-            children: [
-              GestureDetector(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                  decoration: BoxDecoration(
-                    color: primaryAccent,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: ListTile(
-                    title: Row(
-                      children: [
-                        const Icon(
-                          Icons.receipt_long_rounded,
-                          color: Colors.white,
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          "Pesanan",
-                          style: GoogleFonts.nunito(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
-                      ],
-                    ),
-
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
       body: BackgroundWidget(
         child: GetBuilder<PesananController>(
           builder: (controller) {
@@ -73,53 +37,7 @@ class PesananView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Builder(
-                                        builder: (BuildContext context) {
-                                          return IconButton(
-                                            icon: const Icon(Icons.menu, color: Colors.white),
-                                            onPressed: () {
-                                              Scaffold.of(context).openDrawer();
-                                            },
-                                            iconSize: 25,
-                                          );
-                                        },
-                                      ),
-                                      const SizedBox(width: 10,),
-                                      Expanded(
-                                        child: Text(
-                                          "Pesanan",
-                                          style: GoogleFonts.nunito(
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                          textAlign: TextAlign.start,
-                                        ),
-                                      ),
-                                      IconButton(
-                                      icon: const Icon(Icons.logout_rounded, color: Colors.white),
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) => PopUpSignOutView());
-                                      },
-                                      iconSize: 25,
-                                      )
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Divider(
-                                    thickness: 1,
-                                  )
-                                ],
-                              ),
+                        CustomAppBarKasir(context: context, title: "Pesanan"),
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
                             child: SizedBox(

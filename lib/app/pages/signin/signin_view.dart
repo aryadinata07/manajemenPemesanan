@@ -131,8 +131,8 @@ class SignInView extends GetView<SignInController> {
                           ),
                           suffixIcon: IconButton(
                             icon: controller.isObscure.value
-                                ? const Icon(Icons.visibility)
-                                : const Icon(Icons.visibility_off),
+                                ? const Icon(Icons.visibility_off)
+                                : const Icon(Icons.visibility),
                             color: const Color(0xFF6E6E6E),
                             onPressed: () {
                               controller.toggleObscure();

@@ -15,11 +15,15 @@ class SplashScreenController extends GetxController {
     prefs = await SharedPreferences.getInstance();
 
     if (prefs.getString('role') == "Kasir") {
-      Get.offNamed(Routes.PESANAN);
+      Future.delayed(const Duration(seconds: 2), () {
+        Get.offNamed(Routes.PESANAN);
+      });
     } else if (prefs.getString('role') == "Owner") {
-      Get.offNamed(Routes.MENU_RESTORAN);
+      Future.delayed(const Duration(seconds: 2), () {
+        Get.offNamed(Routes.MENU_RESTORAN);
+      });
     } else {
-      Future.delayed(const Duration(seconds: 3), () {
+      Future.delayed(const Duration(seconds: 2), () {
         Get.offNamed(Routes.SIGN_IN);
       });
     }
