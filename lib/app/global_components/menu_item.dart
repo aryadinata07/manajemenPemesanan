@@ -26,19 +26,18 @@ class MenuItem extends StatelessWidget {
           color: textFieldBackground, // Ubah warna latar belakang di sini
         ),
         child: Padding(
-          padding:
-              const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-                Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4.0),
-                    color: Colors.grey,
-                  ),
+              Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4.0),
+                  color: Colors.grey,
                 ),
+              ),
               const SizedBox(width: 10),
               Expanded(
                 child: Column(
@@ -66,7 +65,7 @@ class MenuItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    // Add a Flexible around the foodPrice Text
+
                     Flexible(
                       child: Align(
                         alignment: Alignment.bottomLeft,
@@ -85,7 +84,7 @@ class MenuItem extends StatelessWidget {
               ),
               const SizedBox(width: 5),
               GestureDetector(
-                onTap: (){},
+                onTap: () {},
                 child: Container(
                   width: 50,
                   height: 100,

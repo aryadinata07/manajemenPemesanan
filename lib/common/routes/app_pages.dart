@@ -15,8 +15,8 @@ class AppPages {
     // TESTING ROUTES
     GetPage(
       name: Routes.TESTING,
-      page: () => const TambahPesananView(),
-      binding: TambahPesananBinding(),
+      page: () => const MenuRestoranView(),
+      binding: MenuRestoranBinding(),
     ),
 
 

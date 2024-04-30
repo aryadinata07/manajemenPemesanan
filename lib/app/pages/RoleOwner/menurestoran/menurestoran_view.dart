@@ -1,8 +1,11 @@
 import 'package:angkringan_omaci_ta/app/global_components/appbar_owner.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
+import 'package:angkringan_omaci_ta/app/global_components/menu_restoran.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleOwner/menurestoran/menurestoran_controller.dart';
 import 'package:angkringan_omaci_ta/app/global_components/sidebar/sidebar_view.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
-import 'menurestoran_controller.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,38 +29,40 @@ class MenuRestoranView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CustomAppBar(context: context, title: 'Menu Restoran',),
+                          CustomAppBar(
+                            context: context,
+                            title: 'Menu Restoran',
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
                             child: Row(
                               children: [
                                 Expanded(
                                     child: SizedBox(
-                                      height: 60,
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                          hintText: 'Cari Menu',
-                                          hintStyle: const TextStyle(
-                                            color: grey,
-                                          ),
-                                          filled: true,
-                                          fillColor: textFieldBackground,
-                                          border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(8.0),
-                                            borderSide: BorderSide.none,
-                                          ),
-                                          prefixIcon: const Icon(
-                                            Icons.search,
-                                            color: grey,
-                                          ),
-                                        ),
-                                        style: const TextStyle(
-                                          color: grey,  // Set the color of the entered value to grey
-                                        ),
+                                  height: 60,
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Cari Menu',
+                                      hintStyle: const TextStyle(
+                                        color: grey,
                                       ),
-                                    )
-
-                                ),
+                                      filled: true,
+                                      fillColor: textFieldBackground,
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      prefixIcon: const Icon(
+                                        Icons.search,
+                                        color: grey,
+                                      ),
+                                    ),
+                                    style: const TextStyle(
+                                      color: grey,
+                                    ),
+                                  ),
+                                )),
                                 const SizedBox(width: 10.0),
                                 Container(
                                   height: 60,
@@ -77,6 +82,23 @@ class MenuRestoranView extends StatelessWidget {
                               ],
                             ),
                           ),
+                          Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height -
+                                    200, // Sesuaikan tinggi ListView
+                                child: ListView.builder(
+                                  itemCount: controller.makanan.length,
+                                  itemBuilder: (context, index) {
+                                    final menu = controller.makanan[index];
+                                    return MenuRestoranWidget(
+                                      name: menu['name']!,
+                                      category: menu['category']!,
+                                      price: menu['price']!,
+                                    );
+                                  },
+                                ),
+                              ))
                         ],
                       ),
                     ),
@@ -103,5 +125,3 @@ class MenuRestoranView extends StatelessWidget {
     );
   }
 }
-
-

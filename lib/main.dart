@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      initialRoute: AppPages.INITIAL,
+      initialRoute: Routes.TESTING,
       getPages: AppPages.routes,
     );
   }
