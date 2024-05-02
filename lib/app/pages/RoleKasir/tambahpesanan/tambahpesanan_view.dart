@@ -54,32 +54,32 @@ class TambahPesananView extends StatelessWidget {
                             child: Row(
                               children: [
                                 Expanded(
-                                  child: SizedBox(
-                                    height: 60,
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        hintText: 'Cari Menu',
-                                        hintStyle: const TextStyle(
-                                          color: grey,
-                                        ),
-                                        filled: true,
-                                        fillColor: textFieldBackground,
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(8.0),
-                                          borderSide: BorderSide.none,
-                                        ),
-                                        prefixIcon: const Icon(
-                                          Icons.search,
-                                          color: grey,
-                                        ),
+                                    child: SizedBox(
+                                  height: 60,
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Cari Menu',
+                                      hintStyle: const TextStyle(
+                                        color: grey,
                                       ),
-                                      style: const TextStyle(
-                                        color: grey,  // Set the color of the entered value to grey
+                                      filled: true,
+                                      fillColor: textFieldBackground,
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      prefixIcon: const Icon(
+                                        Icons.search,
+                                        color: grey,
                                       ),
                                     ),
-                                  )
-
-                                ),
+                                    style: const TextStyle(
+                                      color:
+                                          grey, // Set the color of the entered value to grey
+                                    ),
+                                  ),
+                                )),
                                 const SizedBox(width: 10.0),
                                 Container(
                                   height: 60,

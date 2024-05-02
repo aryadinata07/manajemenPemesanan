@@ -8,7 +8,7 @@ class TambahPesananController extends GetxController {
       'price': 'Rp. 50.000',
     },
     {
-      'name': 'Mie Goreng Seafoodwdwdwdwdwdwdwdwd',
+      'name': 'Mie Goreng Seafod',
       'category': 'Makanan',
       'price': 'Rp. 45.000',
     },
