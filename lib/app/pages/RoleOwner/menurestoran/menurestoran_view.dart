@@ -21,86 +21,82 @@ class MenuRestoranView extends StatelessWidget {
         child: GetBuilder<MenuRestoranController>(
           builder: (controller) {
             return SafeArea(
-              child: Column(
+              child: ListView(
                 children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomAppBar(
-                            context: context,
-                            title: 'Menu Restoran',
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                    child: SizedBox(
-                                  height: 60,
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                      hintText: 'Cari Menu',
-                                      hintStyle: const TextStyle(
-                                        color: grey,
-                                      ),
-                                      filled: true,
-                                      fillColor: textFieldBackground,
-                                      border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        borderSide: BorderSide.none,
-                                      ),
-                                      prefixIcon: const Icon(
-                                        Icons.search,
-                                        color: grey,
-                                      ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomAppBar(
+                          context: context,
+                          title: 'Menu Restoran',
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                  child: SizedBox(
+                                height: 60,
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: 'Cari Menu',
+                                    hintStyle: const TextStyle(
+                                      color: grey,
                                     ),
-                                    style: const TextStyle(
+                                    filled: true,
+                                    fillColor: textFieldBackground,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    prefixIcon: const Icon(
+                                      Icons.search,
                                       color: grey,
                                     ),
                                   ),
-                                )),
-                                const SizedBox(width: 10.0),
-                                Container(
-                                  height: 60,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                    color: primaryAccent,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: IconButton(
-                                    icon: const Icon(
-                                      Icons.filter_list,
-                                      color: white,
-                                    ),
-                                    onPressed: () {},
+                                  style: const TextStyle(
+                                    color: grey,
                                   ),
                                 ),
-                              ],
-                            ),
+                              )),
+                              const SizedBox(width: 10.0),
+                              Container(
+                                height: 60,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  color: primaryAccent,
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.filter_list,
+                                    color: white,
+                                  ),
+                                  onPressed: () {},
+                                ),
+                              ),
+                            ],
                           ),
-                          Padding(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: SizedBox(
-                                height: MediaQuery.of(context).size.height -
-                                    200, // Sesuaikan tinggi ListView
-                                child: ListView.builder(
-                                  itemCount: controller.makanan.length,
-                                  itemBuilder: (context, index) {
-                                    final menu = controller.makanan[index];
-                                    return MenuRestoranWidget(
-                                      name: menu['name']!,
-                                      category: menu['category']!,
-                                      price: menu['price']!,
-                                    );
-                                  },
-                                ),
-                              ))
-                        ],
-                      ),
+                        ),
+                        Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: SizedBox(
+                              height: MediaQuery.of(context).size.height - 200,
+                              child: ListView.builder(
+                                itemCount: controller.makanan.length,
+                                itemBuilder: (context, index) {
+                                  final menu = controller.makanan[index];
+                                  return MenuRestoranWidget(
+                                    name: menu['name']!,
+                                    category: menu['category']!,
+                                    price: menu['price']!,
+                                  );
+                                },
+                              ),
+                            ))
+                      ],
                     ),
                   ),
                 ],
