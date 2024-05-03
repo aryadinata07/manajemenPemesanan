@@ -135,7 +135,7 @@ class TopOrderView extends StatelessWidget {
                         ],
                       ),
                     ),
-                ],
+                 ],
               ),
             );
           },
