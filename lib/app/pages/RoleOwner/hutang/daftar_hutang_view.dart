@@ -1,5 +1,6 @@
 import 'package:angkringan_omaci_ta/app/global_components/appbar_owner.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
+import 'package:angkringan_omaci_ta/app/global_components/hutan_menu.dart';
 import 'package:angkringan_omaci_ta/app/global_components/sidebar/sidebar_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/hutang/daftar_hutang_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
@@ -26,55 +27,62 @@ class DaftarHutangView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CustomAppBar(context: context, title: 'Daftar Hutang',),
+                          CustomAppBar(
+                            context: context,
+                            title: 'Daftar Hutang',
+                          ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 20),
+                            padding: const EdgeInsets.only(top: 23),
                             child: Row(
                               children: [
                                 Expanded(
                                     child: SizedBox(
-                                      height: 60,
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                          hintText: 'Cari Menu',
-                                          hintStyle: const TextStyle(
-                                            color: grey,
-                                          ),
-                                          filled: true,
-                                          fillColor: textFieldBackground,
-                                          border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(8.0),
-                                            borderSide: BorderSide.none,
-                                          ),
-                                          prefixIcon: const Icon(
-                                            Icons.search,
-                                            color: grey,
-                                          ),
-                                        ),
-                                        style: const TextStyle(
-                                          color: grey,  // Set the color of the entered value to grey
-                                        ),
-                                      ),
-                                    )
-
-                                ),
-                                const SizedBox(width: 10.0),
-                                Container(
                                   height: 60,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                    color: primaryAccent,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: IconButton(
-                                    icon: const Icon(
-                                      Icons.filter_list,
-                                      color: white,
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: 'Cari Pesanan',
+                                      hintStyle: const TextStyle(
+                                        color: grey,
+                                      ),
+                                      filled: true,
+                                      fillColor: textFieldBackground,
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      prefixIcon: const Icon(
+                                        Icons.search,
+                                        color: grey,
+                                      ),
                                     ),
-                                    onPressed: () {},
+                                    style: const TextStyle(
+                                      color:
+                                          grey, // Set the color of the entered value to grey
+                                    ),
                                   ),
-                                ),
+                                )),
                               ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: ListView.builder(
+                                itemCount: controller.hutang.length,
+                                itemBuilder: (context, index) {
+                                  final menu = controller.hutang[index];
+                                  return HutangCard(
+                                    nama: menu['namaPemesan']!,
+                                    item: menu['item']!,
+                                    kodePesanan: menu['kode']!,
+                                    totalPesanan: menu['total']!,
+                                    pembayaran: menu['pembayaran']!,
+                                    tempatMakan: menu['tempat']!,
+                                    jumlahPesnan: menu['jumlahPesanan']!,
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         ],

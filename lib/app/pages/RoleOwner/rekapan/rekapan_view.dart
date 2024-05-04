@@ -22,103 +22,95 @@ class RekapanView extends StatelessWidget {
         child: GetBuilder<RekapanController>(
           builder: (controller) {
             return SafeArea(
-              child: ListView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  CustomAppBar(
+                    context: context,
+                    title: 'Rekapan Pemesanan',
+                  ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomAppBar(
-                          context: context,
-                          title: 'Rekapan Pemesanan',
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 60,
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                      hintText: '01 Mar - 10 Mar 2024',
-                                      hintStyle: const TextStyle(
-                                        color: grey,
-                                      ),
-                                      filled: true,
-                                      fillColor: textFieldBackground,
-                                      border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        borderSide: BorderSide.none,
-                                      ),
-                                      prefixIcon: const Icon(
-                                        Icons.calendar_today,
-                                        color: grey,
-                                        size: 20,
-                                      ),
-                                      suffixIcon: IconButton(
-                                        icon: const Icon(
-                                            Icons.expand_more_outlined),
-                                        iconSize: 30,
-                                        color: white,
-                                        onPressed: () {},
-                                      )),
-                                  style: const TextStyle(
-                                    color: grey,
-                                  ),
-                                ),
+                        SizedBox(
+                          height: 60,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: '01 Mar - 10 Mar 2024',
+                              hintStyle: const TextStyle(
+                                color: grey,
                               ),
-                              const SizedBox(height: 10.0),
-                              SizedBox(
-                                height: 60,
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: 'Cari rekapan pesanan',
-                                    hintStyle: const TextStyle(
-                                      color: grey,
-                                    ),
-                                    filled: true,
-                                    fillColor: textFieldBackground,
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    prefixIcon: const Icon(
-                                      Icons.search,
-                                      color: grey,
-                                    ),
-                                  ),
-                                  style: const TextStyle(
-                                    color: grey,
-                                  ),
-                                ),
+                              filled: true,
+                              fillColor: textFieldBackground,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                                borderSide: BorderSide.none,
                               ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: SizedBox(
-                            height: MediaQuery.of(context).size.height - 200,
-                            child: ListView.builder(
-                              itemCount: controller.rekapan.length,
-                              itemBuilder: (context, index) {
-                                final menu = controller.rekapan[index];
-                                return RekapanCard(
-                                  nama: menu['name']!,
-                                  item: menu['item']!,
-                                  kodePesanan: menu['kode']!,
-                                  totalPesanan: menu['total']!,
-                                  pembayaran: menu['pembayaran']!,
-                                  tempatMakan: menu['tempat']!,
-                                  jumlahPesnan: menu['jumlahPesanan']!,
-                                );
-                              },
+                              prefixIcon: const Icon(
+                                Icons.calendar_today,
+                                color: grey,
+                                size: 20,
+                              ),
+                              suffixIcon: IconButton(
+                                icon: const Icon(Icons.expand_more_outlined),
+                                iconSize: 30,
+                                color: white,
+                                onPressed: () {},
+                              ),
+                            ),
+                            style: const TextStyle(
+                              color: grey,
                             ),
                           ),
-                        )
+                        ),
+                        const SizedBox(height: 10.0),
+                        SizedBox(
+                          height: 60,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Cari rekapan pesanan',
+                              hintStyle: const TextStyle(
+                                color: grey,
+                              ),
+                              filled: true,
+                              fillColor: textFieldBackground,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                                borderSide: BorderSide.none,
+                              ),
+                              prefixIcon: const Icon(
+                                Icons.search,
+                                color: grey,
+                              ),
+                            ),
+                            style: const TextStyle(
+                              color: grey,
+                            ),
+                          ),
+                        ),
                       ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: ListView.builder(
+                        itemCount: controller.rekapan.length,
+                        itemBuilder: (context, index) {
+                          final menu = controller.rekapan[index];
+                          return RekapanCard(
+                            nama: menu['namaPemesan']!,
+                            item: menu['item']!,
+                            kodePesanan: menu['kode']!,
+                            totalPesanan: menu['total']!,
+                            pembayaran: menu['pembayaran']!,
+                            tempatMakan: menu['tempat']!,
+                            jumlahPesnan: menu['jumlahPesanan']!,
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ],

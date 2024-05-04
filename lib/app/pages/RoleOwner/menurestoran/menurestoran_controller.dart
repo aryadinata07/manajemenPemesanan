@@ -37,6 +37,16 @@ class MenuRestoranController extends GetxController {
       'category': 'Makanan',
       'price': 'Rp. 30.000',
     },
+    {
+      'name': 'Soto Ayam',
+      'category': 'Makanan',
+      'price': 'Rp. 30.000',
+    },
+    {
+      'name': 'Soto Ayam',
+      'category': 'Makanan',
+      'price': 'Rp. 30.000',
+    },
   ];
 
   @override

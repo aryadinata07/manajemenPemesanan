@@ -2,7 +2,7 @@ import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class RekapanCard extends StatelessWidget {
+class HutangCard extends StatelessWidget {
   final String nama;
   final String kodePesanan;
   final String jumlahPesnan;
@@ -11,7 +11,7 @@ class RekapanCard extends StatelessWidget {
   final String tempatMakan;
   final String totalPesanan;
 
-  const RekapanCard({
+  const HutangCard({
     Key? key,
     required this.nama,
     required this.pembayaran,
