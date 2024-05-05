@@ -32,6 +32,7 @@ class MenuRestoranView extends StatelessWidget {
                           context: context,
                           title: 'Menu Restoran',
                         ),
+                        // search
                         Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: Row(
@@ -81,21 +82,22 @@ class MenuRestoranView extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: SizedBox(
-                              height: MediaQuery.of(context).size.height - 200,
-                              child: ListView.builder(
-                                itemCount: controller.makanan.length,
-                                itemBuilder: (context, index) {
-                                  final menu = controller.makanan[index];
-                                  return MenuRestoranWidget(
-                                    name: menu['name']!,
-                                    category: menu['category']!,
-                                    price: menu['price']!,
-                                  );
-                                },
-                              ),
-                            ))
+                          padding: const EdgeInsets.only(top: 10),
+                          child: SizedBox(
+                            height: MediaQuery.of(context).size.height - 200,
+                            child: ListView.builder(
+                              itemCount: controller.makanan.length,
+                              itemBuilder: (context, index) {
+                                final menu = controller.makanan[index];
+                                return MenuRestoranWidget(
+                                  name: menu['name']!,
+                                  category: menu['category']!,
+                                  price: menu['price']!,
+                                );
+                              },
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),

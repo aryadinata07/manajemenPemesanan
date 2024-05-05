@@ -31,42 +31,41 @@ class PesananView extends StatelessWidget {
             return SafeArea(
               child: Column(
                 children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         CustomAppBarKasir(context: context, title: "Pesanan"),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20),
-                            child: SizedBox(
-                              height: 60,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: 'Cari Pesanan',
-                                  hintStyle: const TextStyle(
-                                    color: grey,
-                                  ),
-                                  filled: true,
-                                  fillColor: textFieldBackground,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  prefixIcon: const Icon(
-                                    Icons.search,
-                                    color: grey,
-                                  ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: SizedBox(
+                            height: 60,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Cari Pesanan',
+                                hintStyle: const TextStyle(
+                                  color: grey,
                                 ),
-                                style: const TextStyle(
-                                  color: grey,  // Set the color of the entered value to grey
+                                filled: true,
+                                fillColor: textFieldBackground,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderSide: BorderSide.none,
                                 ),
+                                prefixIcon: const Icon(
+                                  Icons.search,
+                                  color: grey,
+                                ),
+                              ),
+                              style: const TextStyle(
+                                color:
+                                    grey, // Set the color of the entered value to grey
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

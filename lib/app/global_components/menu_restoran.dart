@@ -89,22 +89,40 @@ class MenuRestoranWidget extends StatelessWidget {
             Positioned(
               top: 0,
               right: 0,
-              child: GestureDetector(
-                onTap: () {
-                  print('Container diklik!');
-                },
-                child: Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[800],
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(46),
-                      topRight: Radius.circular(8),
-                    ),
+              child: Container(
+                width: 40,
+                height: 45,
+                decoration: BoxDecoration(
+                  color: Colors.grey[800],
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(46),
+                    topRight: Radius.circular(8),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 10, bottom: 5),
+                ),
+                child: PopupMenuButton<String>(
+                  itemBuilder: (BuildContext context) =>
+                      <PopupMenuEntry<String>>[
+                    const PopupMenuItem<String>(
+                      value: 'edit',
+                      child: Text('Edit Menu'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'delete',
+                      child: Text('Delete Menu'),
+                    ),
+                  ],
+                  onSelected: (String value) {
+                    switch (value) {
+                      case 'edit':
+                        print('Edit Menu');
+                        break;
+                      case 'delete':
+                        print('Delete Menu');
+                        break;
+                    }
+                  },
+                  icon: const Padding(
+                    padding: EdgeInsets.only(left: 5, bottom: 5),
                     child: Icon(
                       Icons.more_horiz,
                       color: Colors.white,
