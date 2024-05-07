@@ -13,7 +13,6 @@ class TopOrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: floatingButton(),
       drawer: CustomDrawer(),
       body: BackgroundWidget(
         child: GetBuilder<TopOrderController>(

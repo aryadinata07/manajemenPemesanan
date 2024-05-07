@@ -48,12 +48,14 @@ class SignInController extends GetxController {
       print('Tolong pilih role.');
     } else if (enteredPassword.isEmpty) {
       print('Tolong isi password terlebih dahulu.');
+
       Get.snackbar(
         'Password Kosong',
         'Tolong isi password terlebih dahulu.',
         backgroundColor: red,
         colorText: white,
       );
+
     } else {
       if (role == 'Owner') {
         if (enteredPassword == ownerPassword) {

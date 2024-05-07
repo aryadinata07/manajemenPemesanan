@@ -84,7 +84,7 @@ class MenuRestoranView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 10),
                           child: SizedBox(
-                            height: MediaQuery.of(context).size.height - 200,
+                            height: MediaQuery.of(context).size.height - 220,
                             child: ListView.builder(
                               itemCount: controller.makanan.length,
                               itemBuilder: (context, index) {

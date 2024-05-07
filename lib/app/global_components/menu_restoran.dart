@@ -104,31 +104,29 @@ class MenuRestoranWidget extends StatelessWidget {
                   itemBuilder: (BuildContext context) =>
                       <PopupMenuEntry<String>>[
                     const PopupMenuItem<String>(
-                      value: 'bayar',
-                      child: Text(
-                        'Bayar Pesanan',
-                        style: TextStyle(color: white),
+                      value: 'edit',
+                      child: Row(
+                        children: <Widget>[
+                          Icon(Icons.edit, color: Colors.white),
+                          SizedBox(width: 10),
+                          Text(
+                            'Edit Menu',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
                       ),
                     ),
                     const PopupMenuItem<String>(
-                      value: 'tambah',
-                      child: Text(
-                        'Tambah Pesanan',
-                        style: TextStyle(color: white),
-                      ),
-                    ),
-                    const PopupMenuItem<String>(
-                      value: 'selesai',
-                      child: Text(
-                        'Selesaikan Pesanan',
-                        style: TextStyle(color: white),
-                      ),
-                    ),
-                    const PopupMenuItem<String>(
-                      value: 'batal',
-                      child: Text(
-                        'Batalkan sanan',
-                        style: TextStyle(color: white),
+                      value: 'delete',
+                      child: Row(
+                        children: <Widget>[
+                          Icon(Icons.delete, color: Colors.white),
+                          SizedBox(width: 10),
+                          Text(
+                            'Delete Menu',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
                       ),
                     ),
                   ],

@@ -16,7 +16,6 @@ class RekapanView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: floatingButton(),
       drawer: CustomDrawer(),
       body: BackgroundWidget(
         child: GetBuilder<RekapanController>(
@@ -95,7 +94,7 @@ class RekapanView extends StatelessWidget {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
                       child: ListView.builder(
                         itemCount: controller.rekapan.length,
                         itemBuilder: (context, index) {
