@@ -1,6 +1,6 @@
 import 'package:angkringan_omaci_ta/app/global_components/appbar_owner.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
-import 'package:angkringan_omaci_ta/app/global_components/hutan_menu.dart';
+import 'package:angkringan_omaci_ta/app/global_components/hutang_menu.dart';
 import 'package:angkringan_omaci_ta/app/global_components/sidebar/sidebar_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/hutang/daftar_hutang_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';

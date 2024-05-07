@@ -60,7 +60,7 @@ class PesananView extends StatelessWidget {
                               ),
                               style: const TextStyle(
                                 color:
-                                    grey, // Set the color of the entered value to grey
+                                    grey, 
                               ),
                             ),
                           ),

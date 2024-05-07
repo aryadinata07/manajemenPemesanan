@@ -1,3 +1,5 @@
+import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_binding.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_view.dart';
 import 'package:get/get.dart';
 import 'package:angkringan_omaci_ta/app/pages/index.dart';
 
@@ -9,17 +11,12 @@ class AppPages {
   static const INITIAL = Routes.SPLASH_SCREEN;
 
   static final routes = [
-
-
-
     // TESTING ROUTES
     GetPage(
       name: Routes.TESTING,
-      page: () => const MenuRestoranView(),
-      binding: MenuRestoranBinding(),
+      page: () => const DetailPesananView(),
+      binding: DetailPesananBinding(),
     ),
-
-
 
     // OFFICIAL ROUTES
     GetPage(
@@ -29,37 +26,41 @@ class AppPages {
     ),
     GetPage(
       name: Routes.SIGN_IN,
-      page: () =>  const SignInView(),
+      page: () => const SignInView(),
       binding: SignInBinding(),
     ),
 
     // ROLE OWNER
     GetPage(
       name: Routes.MENU_RESTORAN,
-      page: () =>  const MenuRestoranView(),
+      page: () => const MenuRestoranView(),
       binding: MenuRestoranBinding(),
     ),
     GetPage(
       name: Routes.REKAPAN_PEMESANAN,
-      page: () =>  const RekapanView(),
+      page: () => const RekapanView(),
       binding: RekapanBinding(),
     ),
     GetPage(
       name: Routes.TOP_ORDER,
-      page: () =>  const TopOrderView(),
+      page: () => const TopOrderView(),
       binding: TopOrderBinding(),
     ),
     GetPage(
       name: Routes.DAFTAR_HUTANG,
-      page: () =>  const DaftarHutangView(),
+      page: () => const DaftarHutangView(),
       binding: DaftarHutangBinding(),
     ),
-
+    GetPage(
+      name: Routes.DETAIL_PESANAN,
+      page: () => const DetailPesananView(),
+      binding: DetailPesananBinding(),
+    ),
 
     // ROLE KASIR
     GetPage(
       name: Routes.PESANAN,
-      page: () =>  const PesananView(),
+      page: () => const PesananView(),
       binding: PesananBinding(),
     ),
     GetPage(
@@ -67,8 +68,5 @@ class AppPages {
       page: () => const TambahPesananView(),
       binding: TambahPesananBinding(),
     ),
-
-
-
   ];
 }
