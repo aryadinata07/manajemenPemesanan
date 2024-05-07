@@ -34,7 +34,7 @@ class DetailPesananView extends StatelessWidget {
                           goTo: Routes.MENU_RESTORAN,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 44),
+                          padding: const EdgeInsets.only(top: 22),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

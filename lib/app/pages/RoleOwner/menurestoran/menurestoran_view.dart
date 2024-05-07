@@ -4,6 +4,7 @@ import 'package:angkringan_omaci_ta/app/global_components/menu_restoran.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/menurestoran/menurestoran_controller.dart';
 import 'package:angkringan_omaci_ta/app/global_components/sidebar/sidebar_view.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
+import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
@@ -117,7 +118,7 @@ class MenuRestoranView extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
       ),
       onPressed: () {
-        // Get.toNamed(Routes.TAMBAH_PESANAN);
+        Get.offNamed(Routes.TAMBAH_MENU);
       },
       child: const Icon(Icons.add, color: Colors.white, size: 35),
     );

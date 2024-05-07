@@ -2,6 +2,8 @@ import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pes
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/hutangdetail/hutang_detail_binding.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/hutangdetail/hutang_detail_view.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleOwner/tambahmenu/tambah_menu_binding.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleOwner/tambahmenu/tambah_menu_view.dart';
 import 'package:get/get.dart';
 import 'package:angkringan_omaci_ta/app/pages/index.dart';
 
@@ -62,6 +64,11 @@ class AppPages {
       name: Routes.HUTANG_DETAIL,
       page: () => const HutangDetailView(),
       binding: HutangDetailBinding(),
+    ),
+    GetPage(
+      name: Routes.TAMBAH_MENU,
+      page: () => const TambahMenuView(),
+      binding: TambahMenuBinding(),
     ),
 
     // ROLE KASIR
