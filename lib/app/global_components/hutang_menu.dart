@@ -1,6 +1,8 @@
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
+import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class HutangCard extends StatelessWidget {
   final String nama;
@@ -79,12 +81,17 @@ class HutangCard extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 20),
                         child: Row(
                           children: [
-                            Text(
-                              "Lihat detail",
-                              style: GoogleFonts.poppins(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xffACACAC),
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed(Routes.HUTANG_DETAIL);
+                              },
+                              child: Text(
+                                "Lihat detail",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xffACACAC),
+                                ),
                               ),
                             ),
                             const SizedBox(
