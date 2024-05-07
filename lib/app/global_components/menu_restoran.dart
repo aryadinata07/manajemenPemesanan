@@ -100,15 +100,36 @@ class MenuRestoranWidget extends StatelessWidget {
                   ),
                 ),
                 child: PopupMenuButton<String>(
+                  color: textFieldBackground,
                   itemBuilder: (BuildContext context) =>
                       <PopupMenuEntry<String>>[
                     const PopupMenuItem<String>(
-                      value: 'edit',
-                      child: Text('Edit Menu'),
+                      value: 'bayar',
+                      child: Text(
+                        'Bayar Pesanan',
+                        style: TextStyle(color: white),
+                      ),
                     ),
                     const PopupMenuItem<String>(
-                      value: 'delete',
-                      child: Text('Delete Menu'),
+                      value: 'tambah',
+                      child: Text(
+                        'Tambah Pesanan',
+                        style: TextStyle(color: white),
+                      ),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'selesai',
+                      child: Text(
+                        'Selesaikan Pesanan',
+                        style: TextStyle(color: white),
+                      ),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'batal',
+                      child: Text(
+                        'Batalkan sanan',
+                        style: TextStyle(color: white),
+                      ),
                     ),
                   ],
                   onSelected: (String value) {
