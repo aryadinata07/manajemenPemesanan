@@ -15,6 +15,7 @@ abstract class Routes {
   static const REKAPAN_PEMESANAN = '/rekapanpemesanan';
   static const TOP_ORDER = '/toporder';
   static const DAFTAR_HUTANG = '/daftarhutang';
+    static const DETAIL_PESANAN = '/detailpesanan';
 
 
   // ROLE KASIR

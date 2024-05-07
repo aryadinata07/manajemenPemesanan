@@ -51,6 +51,11 @@ class AppPages {
       page: () => const DaftarHutangView(),
       binding: DaftarHutangBinding(),
     ),
+    GetPage(
+      name: Routes.DETAIL_PESANAN,
+      page: () => const DetailPesananView(),
+      binding: DetailPesananBinding(),
+    ),
 
     // ROLE KASIR
     GetPage(

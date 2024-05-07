@@ -1,5 +1,8 @@
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
+import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RekapanCard extends StatelessWidget {
@@ -79,12 +82,17 @@ class RekapanCard extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 20),
                         child: Row(
                           children: [
-                            Text(
-                              "Lihat detail",
-                              style: GoogleFonts.poppins(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xffACACAC),
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed(Routes.DETAIL_PESANAN);
+                              },
+                              child: Text(
+                                "Lihat detail",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xffACACAC),
+                                ),
                               ),
                             ),
                             const SizedBox(
