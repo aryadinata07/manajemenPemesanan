@@ -153,12 +153,12 @@ class RekapanCard extends StatelessWidget {
               child: Row(
                 children: [
                   pembayaran == 'Tunai'
-                      ? Icon(
+                      ? const Icon(
                           Icons.payment,
                           color: Color(0xffACACAC),
                           size: 12,
                         )
-                      : Icon(
+                      : const Icon(
                           Icons.qr_code,
                           color: Color(0xffACACAC),
                           size: 12,
