@@ -103,7 +103,6 @@ class RekapanView extends StatelessWidget {
                           return RekapanCard(
                             nama: menu['namaPemesan']!,
                             item: menu['item']!,
-                            kodePesanan: menu['kode']!,
                             totalPesanan: menu['total']!,
                             pembayaran: menu['pembayaran']!,
                             tempatMakan: menu['tempat']!,

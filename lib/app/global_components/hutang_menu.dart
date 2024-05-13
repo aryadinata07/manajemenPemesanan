@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 
 class HutangCard extends StatelessWidget {
   final String nama;
-  final String kodePesanan;
   final String jumlahPesnan;
   final String item;
   final String pembayaran;
@@ -20,7 +19,6 @@ class HutangCard extends StatelessWidget {
     required this.tempatMakan,
     required this.jumlahPesnan,
     required this.item,
-    required this.kodePesanan,
     required this.totalPesanan,
   }) : super(key: key);
 
@@ -101,49 +99,6 @@ class HutangCard extends StatelessWidget {
                               Icons.arrow_forward_ios_outlined,
                               color: Color(0xffACACAC),
                               size: 12,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Kode pesanan:",
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 8,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 4,
-                                ),
-                                Container(
-                                  width: 70,
-                                  height: 20,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(6),
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      kodePesanan,
-                                      style: GoogleFonts.nunito(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color(0xff383838),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
                             ),
                           ],
                         ),
