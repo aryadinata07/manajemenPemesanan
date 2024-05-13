@@ -18,6 +18,7 @@ abstract class Routes {
   static const DETAIL_PESANAN = '/detailpesanan';
   static const HUTANG_DETAIL = '/hutangdetail';
   static const TAMBAH_MENU = '/tambahmenu';
+  static const EDIT_MENU = '/editmenu';
 
   // ROLE KASIR
   static const PESANAN = '/pesanan';
