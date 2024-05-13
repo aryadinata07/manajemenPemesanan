@@ -94,7 +94,8 @@ class RekapanView extends StatelessWidget {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
                       child: ListView.builder(
                         itemCount: controller.rekapan.length,
                         itemBuilder: (context, index) {

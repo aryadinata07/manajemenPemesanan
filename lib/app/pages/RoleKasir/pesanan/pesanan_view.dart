@@ -59,8 +59,7 @@ class PesananView extends StatelessWidget {
                                 ),
                               ),
                               style: const TextStyle(
-                                color:
-                                    grey, 
+                                color: grey,
                               ),
                             ),
                           ),

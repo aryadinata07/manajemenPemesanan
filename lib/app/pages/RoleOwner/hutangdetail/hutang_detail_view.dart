@@ -3,6 +3,7 @@
 import 'package:angkringan_omaci_ta/app/global_components/appbar_owner_back.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_controller.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleOwner/hutangdetail/hutang_detail_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +15,11 @@ class HutangDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(DetailPesananController());
+    Get.put(HutangDetailController());
 
     return Scaffold(
       body: BackgroundWidget(
-        child: GetBuilder<DetailPesananController>(
+        child: GetBuilder<HutangDetailController>(
           builder: (controller) {
             return SafeArea(
               child: ListView(
