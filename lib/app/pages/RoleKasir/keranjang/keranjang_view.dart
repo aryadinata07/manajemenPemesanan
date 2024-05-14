@@ -1,15 +1,15 @@
 import 'package:angkringan_omaci_ta/app/global_components/add_remove_button.dart';
+import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:angkringan_omaci_ta/app/global_components/appbar_back.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/keranjang/keranjang_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
-import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class KeranjangView extends StatelessWidget {
-  const KeranjangView({super.key});
+  const KeranjangView({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class KeranjangView extends StatelessWidget {
                                   height: 49,
                                   child: TextField(
                                     decoration: InputDecoration(
-                                      hintText: 'Detail Pesanan',
+                                      hintText: 'Nama pelangan',
                                       hintStyle: const TextStyle(
                                           color: grey, fontSize: 14),
                                       filled: true,
@@ -390,11 +390,37 @@ class KeranjangView extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: SizedBox(
+                        height: 50,
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryAccent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                          onPressed: () {
+                            // Implement your button functionality here
+                          },
+                          child: const Text(
+                            'Lanjut',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: white,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
