@@ -1,3 +1,5 @@
+import 'package:angkringan_omaci_ta/app/global_components/popUp_batalkan.dart';
+import 'package:angkringan_omaci_ta/app/global_components/popUp_selesai.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -59,10 +61,8 @@ class PesananCard extends StatelessWidget {
                             value: 'selesai',
                             child: Row(
                               children: <Widget>[
-                                Icon(Icons.edit, color: Colors.white),
-                                SizedBox(width: 10),
                                 Text(
-                                  'Selesaikan Pemesanan',
+                                  'Selesaikan',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ],
@@ -72,10 +72,8 @@ class PesananCard extends StatelessWidget {
                             value: 'batal',
                             child: Row(
                               children: <Widget>[
-                                Icon(Icons.delete, color: Colors.white),
-                                SizedBox(width: 10),
                                 Text(
-                                  'Batalkan Pesanan',
+                                  'Batalkan',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ],
@@ -85,10 +83,16 @@ class PesananCard extends StatelessWidget {
                         onSelected: (String value) {
                           switch (value) {
                             case 'selesai':
-                            print('Selesai Pesanan');
+                              showDialog(
+                                context: context,
+                                builder: (context) => PopUpSelesai      (),
+                              );
                               break;
                             case 'batal':
-                              print('Batalkan Pesanan');
+                              showDialog(
+                                context: context,
+                                builder: (context) => SelesaiPopUp(),
+                              );
                               break;
                           }
                         },

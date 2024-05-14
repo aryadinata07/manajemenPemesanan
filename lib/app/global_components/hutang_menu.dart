@@ -109,7 +109,6 @@ class HutangCard extends StatelessWidget {
               ),
             ),
             const Divider(),
-            // aa
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
