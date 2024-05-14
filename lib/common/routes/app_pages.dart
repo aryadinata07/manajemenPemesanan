@@ -1,3 +1,5 @@
+import 'package:angkringan_omaci_ta/app/pages/RoleKasir/keranjang/keranjang_binding.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleKasir/keranjang/keranjang_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_binding.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/editmenu/edit_menu_binding.dart';
@@ -88,6 +90,11 @@ class AppPages {
       name: Routes.TAMBAH_PESANAN,
       page: () => const TambahPesananView(),
       binding: TambahPesananBinding(),
+    ),
+    GetPage(
+      name: Routes.KERANJANG,
+      page: () => const KeranjangView(),
+      binding: KeranjangBinding(),
     ),
   ];
 }

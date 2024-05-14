@@ -1,3 +1,4 @@
+import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'tambahpesanan_controller.dart';
@@ -129,7 +130,9 @@ class TambahPesananView extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.offNamed(Routes.KERANJANG);
+                        },
                         child: const Text(
                           'Lanjut',
                           style: TextStyle(

@@ -23,4 +23,5 @@ abstract class Routes {
   // ROLE KASIR
   static const PESANAN = '/pesanan';
   static const TAMBAH_PESANAN = '/tambahpesanan';
+  static const KERANJANG = '/keranjang';
 }

@@ -1,6 +1,6 @@
 // pesanan_view.dart
 
-import 'package:angkringan_omaci_ta/app/global_components/appbar_owner_back.dart';
+import 'package:angkringan_omaci_ta/app/global_components/appbar_back.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_controller.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/hutangdetail/hutang_detail_controller.dart';
