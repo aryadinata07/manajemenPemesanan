@@ -1,3 +1,5 @@
+import 'package:angkringan_omaci_ta/app/pages/RoleKasir/detailpesanan/detail_binding.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleKasir/detailpesanan/detail_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/hutang/hutang_binding.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/hutang/hutang_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/keranjang/keranjang_binding.dart';
@@ -24,8 +26,8 @@ class AppPages {
     // TESTING ROUTES
     GetPage(
       name: Routes.TESTING,
-      page: () => const HutangView(),
-      binding: HutangBinding(),
+      page: () => const DetailView(),
+      binding: DetailBinding(),
     ),
 
     // OFFICIAL ROUTES
@@ -103,5 +105,10 @@ class AppPages {
       page: () => const HutangView(),
       binding: HutangBinding(),
     ),
+    GetPage(
+      name: Routes.DETAIL,
+      page: () => const DetailView(),
+      binding: DetailBinding(),
+    )
   ];
 }
