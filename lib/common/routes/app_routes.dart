@@ -24,4 +24,5 @@ abstract class Routes {
   static const PESANAN = '/pesanan';
   static const TAMBAH_PESANAN = '/tambahpesanan';
   static const KERANJANG = '/keranjang';
+  static const HUTANG = '/hutang';
 }

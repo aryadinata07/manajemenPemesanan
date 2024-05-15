@@ -2,19 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddButton extends StatefulWidget {
-  const AddButton({super.key});
+  final int initialValue;
+  final Function(int) onQuantityChanged;
+
+  const AddButton({
+    Key? key,
+    required this.initialValue,
+    required this.onQuantityChanged,
+  }) : super(key: key);
 
   @override
   _AddButtonState createState() => _AddButtonState();
 }
 
 class _AddButtonState extends State<AddButton> {
-  int itemValue = 1;
+  late int itemValue;
+
+  @override
+  void initState() {
+    super.initState();
+    itemValue = widget.initialValue;
+  }
 
   void _increment() {
     setState(() {
       itemValue++;
     });
+    widget.onQuantityChanged(itemValue);
   }
 
   void _decrement() {
@@ -23,6 +37,7 @@ class _AddButtonState extends State<AddButton> {
         itemValue--;
       }
     });
+    widget.onQuantityChanged(itemValue);
   }
 
   @override
