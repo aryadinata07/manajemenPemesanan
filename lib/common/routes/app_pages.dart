@@ -4,6 +4,8 @@ import 'package:angkringan_omaci_ta/app/pages/RoleKasir/hutang/hutang_binding.da
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/hutang/hutang_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/keranjang/keranjang_binding.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/keranjang/keranjang_view.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleKasir/nota/note_binding.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleKasir/nota/note_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_binding.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/editmenu/edit_menu_binding.dart';
@@ -109,6 +111,11 @@ class AppPages {
       name: Routes.DETAIL,
       page: () => const DetailView(),
       binding: DetailBinding(),
+    ),
+    GetPage(
+      name: Routes.NOTA,
+      page: () => const NotaView(),
+      binding: NotaBinding(),
     )
   ];
 }

@@ -1,11 +1,6 @@
 import 'package:get/get.dart';
 
-class KeranjangController extends GetxController {
-  var setCategory = ''.obs;
-  void setSelectedCategory(String role) {
-    setCategory.value = role;
-  }
-
+class NotaController extends GetxController {
   var pesanan = <Map<String, dynamic>>[
     {
       'namaMenu': 'Soto Ayam',

@@ -4,11 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 class AddButton extends StatefulWidget {
   final int initialValue;
   final Function(int) onQuantityChanged;
+  final VoidCallback onTotalUpdated;
 
   const AddButton({
     Key? key,
     required this.initialValue,
     required this.onQuantityChanged,
+    required this.onTotalUpdated,
   }) : super(key: key);
 
   @override
@@ -29,6 +31,7 @@ class _AddButtonState extends State<AddButton> {
       itemValue++;
     });
     widget.onQuantityChanged(itemValue);
+    widget.onTotalUpdated();
   }
 
   void _decrement() {
@@ -38,6 +41,7 @@ class _AddButtonState extends State<AddButton> {
       }
     });
     widget.onQuantityChanged(itemValue);
+    widget.onTotalUpdated();
   }
 
   @override

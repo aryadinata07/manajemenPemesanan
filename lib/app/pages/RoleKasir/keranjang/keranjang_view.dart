@@ -9,7 +9,7 @@ import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class KeranjangView extends StatelessWidget {
-  const KeranjangView({Key? key});
+  const KeranjangView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -333,6 +333,11 @@ class KeranjangView extends StatelessWidget {
                                                                         index,
                                                                         quantity);
                                                               },
+                                                              onTotalUpdated:
+                                                                  () {
+                                                                controller
+                                                                    .hitungTotalHarga();
+                                                              },
                                                             ),
                                                           ),
                                                         ],
@@ -353,22 +358,8 @@ class KeranjangView extends StatelessWidget {
                                               right: 10, left: 10, bottom: 10),
                                           child: Row(
                                             children: [
-                                              "Tunai" == 'Tunai'
-                                                  ? const Icon(
-                                                      Icons.payment,
-                                                      color: Color(0xffACACAC),
-                                                      size: 12,
-                                                    )
-                                                  : const Icon(
-                                                      Icons.qr_code,
-                                                      color: Color(0xffACACAC),
-                                                      size: 12,
-                                                    ),
-                                              const SizedBox(
-                                                width: 4,
-                                              ),
                                               Text(
-                                                "Tunai | Makan di tempat",
+                                                "Makan di tempat",
                                                 style: GoogleFonts.poppins(
                                                   fontSize: 10,
                                                   fontWeight: FontWeight.w400,
@@ -426,26 +417,32 @@ class KeranjangView extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: SizedBox(
-                      height: 50,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: primaryAccent,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 50,
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: primaryAccent,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                            onPressed: () {
+                              Get.toNamed(Routes.NOTA);
+                            },
+                            child: const Text(
+                              'Lanjut',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: white,
+                              ),
+                            ),
                           ),
                         ),
-                        onPressed: () {},
-                        child: const Text(
-                          'Lanjut',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: white,
-                          ),
-                        ),
-                      ),
+                      ],
                     ),
                   ),
                 ],

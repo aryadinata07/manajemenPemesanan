@@ -1,5 +1,5 @@
 import 'package:angkringan_omaci_ta/app/global_components/add_remove_button.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleKasir/hutang/hutang_controller.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleKasir/nota/nota_controller.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,17 +8,17 @@ import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HutangView extends StatelessWidget {
-  const HutangView({Key? key}) : super(key: key);
+class NotaView extends StatelessWidget {
+  const NotaView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HutangController());
+    final controller = Get.put(NotaController());
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: BackgroundWidget(
-        child: GetBuilder<HutangController>(
+        child: GetBuilder<NotaController>(
           builder: (controller) {
             return SafeArea(
               child: Column(
@@ -30,7 +30,7 @@ class HutangView extends StatelessWidget {
                       children: [
                         AppbarBack(
                           context: context,
-                          title: "Hutang",
+                          title: "Detail",
                           goTo: Routes.TAMBAH_PESANAN,
                         ),
                       ],
@@ -48,106 +48,6 @@ class HutangView extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    "Nama Pelanggan",
-                                    style: GoogleFonts.nunito(
-                                      textStyle: const TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600,
-                                        color: white,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 6,
-                                  ),
-                                  SizedBox(
-                                    height: 49,
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        hintText: 'Nama pelanggan',
-                                        hintStyle: const TextStyle(
-                                            color: grey, fontSize: 14),
-                                        filled: true,
-                                        fillColor: textFieldBackground,
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: BorderSide.none,
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0xFF8DD5C0),
-                                              width: 1.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0xFF8DD5C0),
-                                              width: 1.0),
-                                        ),
-                                      ),
-                                      style: const TextStyle(
-                                        color: grey,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    "Notes",
-                                    style: GoogleFonts.nunito(
-                                      textStyle: const TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600,
-                                        color: white,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 6,
-                                  ),
-                                  SizedBox(
-                                    height: 49,
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        hintText: 'Masukan notes',
-                                        hintStyle: const TextStyle(
-                                            color: grey, fontSize: 14),
-                                        filled: true,
-                                        fillColor: textFieldBackground,
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: BorderSide.none,
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0xFF8DD5C0),
-                                              width: 1.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0xFF8DD5C0),
-                                              width: 1.0),
-                                        ),
-                                      ),
-                                      style: const TextStyle(
-                                        color: grey,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
                                   Container(
                                     width: double.infinity,
                                     decoration: const BoxDecoration(
@@ -159,14 +59,19 @@ class HutangView extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 10, left: 10, bottom: 5),
                                           child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
                                               const Icon(
                                                 Icons.person_2_outlined,
                                                 color: white,
                                                 size: 15,
+                                              ),
+                                              const SizedBox(
+                                                width: 5,
                                               ),
                                               RichText(
                                                 text: TextSpan(children: [
@@ -199,10 +104,10 @@ class HutangView extends StatelessWidget {
                                               left: 10, right: 10),
                                           child: Column(
                                             children: List.generate(
-                                              controller.hutang.length,
+                                              controller.pesanan.length,
                                               (index) {
                                                 var item =
-                                                    controller.hutang[index];
+                                                    controller.pesanan[index];
                                                 return Column(
                                                   children: [
                                                     Padding(
@@ -286,9 +191,7 @@ class HutangView extends StatelessWidget {
                                                                         0xff696969),
                                                                     size: 18,
                                                                   ),
-                                                                  onTap: () {
-                                                                    // Handle remove item
-                                                                  },
+                                                                  onTap: () {},
                                                                 )
                                                               ],
                                                             ),
@@ -365,31 +268,143 @@ class HutangView extends StatelessWidget {
                                 ],
                               ),
                             ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 50, bottom: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Metode Pembayaran',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                      color: white,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 6,
+                                  ),
+                                  SizedBox(
+                                    height: 50,
+                                    width: double.infinity,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: primaryAccent,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        Get.toNamed(Routes.HUTANG);
+                                      },
+                                      child: const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.receipt_long,
+                                            color: white,
+                                            size: 20,
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            'Hutang',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600,
+                                              color: white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  SizedBox(
+                                    height: 50,
+                                    width: double.infinity,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: primaryAccent,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                      onPressed: () {},
+                                      child: const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.payments,
+                                            color: white,
+                                            size: 20,
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            'Tunai',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600,
+                                              color: white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  SizedBox(
+                                    height: 50,
+                                    width: double.infinity,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: primaryAccent,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                      onPressed: () {},
+                                      child: const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.qr_code_2,
+                                            color: white,
+                                            size: 20,
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            'QRIS',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600,
+                                              color: white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
                           ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: SizedBox(
-                      height: 50,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: primaryAccent,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: const Text(
-                          'Lanjut',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: white,
-                          ),
                         ),
                       ),
                     ),
