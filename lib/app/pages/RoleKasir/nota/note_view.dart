@@ -1,4 +1,5 @@
 import 'package:angkringan_omaci_ta/app/global_components/add_remove_button.dart';
+import 'package:angkringan_omaci_ta/app/global_components/popUp_pembayaran.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/nota/nota_controller.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -30,8 +31,8 @@ class NotaView extends StatelessWidget {
                       children: [
                         AppbarBack(
                           context: context,
-                          title: "Detail",
-                          goTo: Routes.TAMBAH_PESANAN,
+                          title: "NOTA",
+                          goTo: Routes.KERANJANG,
                         ),
                       ],
                     ),
@@ -297,7 +298,15 @@ class NotaView extends StatelessWidget {
                                         ),
                                       ),
                                       onPressed: () {
-                                        Get.toNamed(Routes.HUTANG);
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) => PopUpPembayaran(
+                                            paymentMethod: "hutang",
+                                            onFinish: () {
+                                              Get.offNamed(Routes.HUTANG);
+                                            },
+                                          ),
+                                        );
                                       },
                                       child: const Row(
                                         mainAxisAlignment:
@@ -337,7 +346,17 @@ class NotaView extends StatelessWidget {
                                               BorderRadius.circular(8.0),
                                         ),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) => PopUpPembayaran(
+                                            paymentMethod: "tunai",
+                                            onFinish: () {
+                                              Get.offNamed(Routes.PESANAN);
+                                            },
+                                          ),
+                                        );
+                                      },
                                       child: const Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -376,7 +395,17 @@ class NotaView extends StatelessWidget {
                                               BorderRadius.circular(8.0),
                                         ),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) => PopUpPembayaran(
+                                            paymentMethod: "Qris",
+                                            onFinish: () {
+                                              Get.offNamed(Routes.PESANAN);
+                                            },
+                                          ),
+                                        );
+                                      },
                                       child: const Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,

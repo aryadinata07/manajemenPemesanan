@@ -1,3 +1,4 @@
+import 'package:angkringan_omaci_ta/app/global_components/appbar_back.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,8 +48,10 @@ class TambahPesananView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Appbar(
+                          AppbarBack(
+                            context: context,
                             title: "Tambah Pesanan",
+                            goTo: Routes.PESANAN,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 20),

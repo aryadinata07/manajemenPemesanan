@@ -31,7 +31,7 @@ class HutangView extends StatelessWidget {
                         AppbarBack(
                           context: context,
                           title: "Hutang",
-                          goTo: Routes.TAMBAH_PESANAN,
+                          goTo: Routes.NOTA,
                         ),
                       ],
                     ),
@@ -382,7 +382,9 @@ class HutangView extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.offNamed(Routes.PESANAN);
+                        },
                         child: const Text(
                           'Lanjut',
                           style: TextStyle(

@@ -126,39 +126,41 @@ class KeranjangView extends StatelessWidget {
                                           horizontal: 15),
                                       child: Align(
                                         alignment: Alignment.center,
-                                        child: DropdownButton<String>(
-                                          dropdownColor: textFieldBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(9.0),
-                                          value: controller
-                                                  .setCategory.value.isNotEmpty
-                                              ? controller.setCategory.value
-                                              : 'Bungkus',
-                                          onChanged: (String? newValue) {
-                                            if (newValue != null) {
-                                              controller.setSelectedCategory(
-                                                  newValue);
-                                              controller.update();
-                                            }
-                                          },
-                                          underline: const SizedBox(),
-                                          style: const TextStyle(
-                                              color: white, fontSize: 14),
-                                          isExpanded: true,
-                                          items: <String>[
-                                            'Bungkus',
-                                            'Makan ditempat',
-                                          ].map<DropdownMenuItem<String>>(
-                                              (String value) {
-                                            return DropdownMenuItem<String>(
-                                              value: value,
-                                              child: Text(
-                                                value,
-                                                style: const TextStyle(
-                                                    color: grey),
-                                              ),
-                                            );
-                                          }).toList(),
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton<String>(
+                                            dropdownColor: textFieldBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(9.0),
+                                            value: controller.setCategory.value
+                                                    .isNotEmpty
+                                                ? controller.setCategory.value
+                                                : 'Bungkus',
+                                            onChanged: (String? newValue) {
+                                              if (newValue != null) {
+                                                controller.setSelectedCategory(
+                                                    newValue);
+                                                controller.update();
+                                              }
+                                            },
+                                            underline: const SizedBox(),
+                                            style: const TextStyle(
+                                                color: white, fontSize: 14),
+                                            isExpanded: true,
+                                            items: <String>[
+                                              'Bungkus',
+                                              'Makan ditempat',
+                                            ].map<DropdownMenuItem<String>>(
+                                                (String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(
+                                                  value,
+                                                  style: const TextStyle(
+                                                      color: grey),
+                                                ),
+                                              );
+                                            }).toList(),
+                                          ),
                                         ),
                                       ),
                                     ),
