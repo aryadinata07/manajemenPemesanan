@@ -1,10 +1,11 @@
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
+import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class HutangCard extends StatelessWidget {
   final String nama;
-  final String kodePesanan;
   final String jumlahPesnan;
   final String item;
   final String pembayaran;
@@ -18,7 +19,6 @@ class HutangCard extends StatelessWidget {
     required this.tempatMakan,
     required this.jumlahPesnan,
     required this.item,
-    required this.kodePesanan,
     required this.totalPesanan,
   }) : super(key: key);
 
@@ -79,12 +79,17 @@ class HutangCard extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 20),
                         child: Row(
                           children: [
-                            Text(
-                              "Lihat detail",
-                              style: GoogleFonts.poppins(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xffACACAC),
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed(Routes.HUTANG_DETAIL);
+                              },
+                              child: Text(
+                                "Lihat detail",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xffACACAC),
+                                ),
                               ),
                             ),
                             const SizedBox(
@@ -98,56 +103,12 @@ class HutangCard extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Kode pesanan:",
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 8,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 4,
-                                ),
-                                Container(
-                                  width: 70,
-                                  height: 20,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(6),
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      kodePesanan,
-                                      style: GoogleFonts.nunito(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color(0xff383838),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
                     ],
                   ),
                 ],
               ),
             ),
             const Divider(),
-            // aa
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(

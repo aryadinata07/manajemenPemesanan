@@ -1,6 +1,7 @@
 import 'package:angkringan_omaci_ta/app/global_components/appbar_kasir.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/global_components/popout_signout/popout_signout_view.dart';
+import 'package:angkringan_omaci_ta/app/global_components/pesanan_kasir.dart';
 import 'package:angkringan_omaci_ta/app/pages/index.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
@@ -59,13 +60,32 @@ class PesananView extends StatelessWidget {
                                 ),
                               ),
                               style: const TextStyle(
-                                color:
-                                    grey, 
+                                color: grey,
                               ),
                             ),
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      child: ListView.builder(
+                        itemCount: controller.pesanan.length,
+                        itemBuilder: (context, index) {
+                          final menu = controller.pesanan[index];
+                          return PesananCard(
+                            nama: menu['namaPemesan']!,
+                            item: menu['item']!,
+                            totalPesanan: menu['total']!,
+                            pembayaran: menu['pembayaran']!,
+                            tempatMakan: menu['tempat']!,
+                            jumlahPesnan: menu['jumlahPesanan']!,
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ],

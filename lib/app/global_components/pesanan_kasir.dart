@@ -1,3 +1,5 @@
+import 'package:angkringan_omaci_ta/app/global_components/popUp_batalkan.dart';
+import 'package:angkringan_omaci_ta/app/global_components/popUp_selesai.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class RekapanCard extends StatelessWidget {
+class PesananCard extends StatelessWidget {
   final String nama;
   final String jumlahPesnan;
   final String item;
@@ -13,7 +15,7 @@ class RekapanCard extends StatelessWidget {
   final String tempatMakan;
   final String totalPesanan;
 
-  const RekapanCard({
+  const PesananCard({
     Key? key,
     required this.nama,
     required this.pembayaran,
@@ -40,13 +42,66 @@ class RekapanCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    nama,
-                    style: GoogleFonts.nunito(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        nama,
+                        style: GoogleFonts.nunito(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Spacer(),
+                      PopupMenuButton<String>(
+                        color: textFieldBackground,
+                        itemBuilder: (BuildContext context) =>
+                            <PopupMenuEntry<String>>[
+                          const PopupMenuItem<String>(
+                            value: 'selesai',
+                            child: Row(
+                              children: <Widget>[
+                                Text(
+                                  'Selesaikan',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const PopupMenuItem<String>(
+                            value: 'batal',
+                            child: Row(
+                              children: <Widget>[
+                                Text(
+                                  'Batalkan',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                        onSelected: (String value) {
+                          switch (value) {
+                            case 'selesai':
+                              showDialog(
+                                context: context,
+                                builder: (context) => PopUpSelesai      (),
+                              );
+                              break;
+                            case 'batal':
+                              showDialog(
+                                context: context,
+                                builder: (context) => SelesaiPopUp(),
+                              );
+                              break;
+                          }
+                        },
+                        child: Icon(
+                          Icons.more_horiz,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 4,

@@ -74,7 +74,6 @@ class DaftarHutangView extends StatelessWidget {
                                   return HutangCard(
                                     nama: menu['namaPemesan']!,
                                     item: menu['item']!,
-                                    kodePesanan: menu['kode']!,
                                     totalPesanan: menu['total']!,
                                     pembayaran: menu['pembayaran']!,
                                     tempatMakan: menu['tempat']!,

@@ -15,10 +15,16 @@ abstract class Routes {
   static const REKAPAN_PEMESANAN = '/rekapanpemesanan';
   static const TOP_ORDER = '/toporder';
   static const DAFTAR_HUTANG = '/daftarhutang';
-    static const DETAIL_PESANAN = '/detailpesanan';
-
+  static const DETAIL_PESANAN = '/detailpesanan';
+  static const HUTANG_DETAIL = '/hutangdetail';
+  static const TAMBAH_MENU = '/tambahmenu';
+  static const EDIT_MENU = '/editmenu';
 
   // ROLE KASIR
   static const PESANAN = '/pesanan';
   static const TAMBAH_PESANAN = '/tambahpesanan';
+  static const KERANJANG = '/keranjang';
+  static const HUTANG = '/hutang';
+  static const DETAIL = '/detail';
+  static const NOTA = '/nota';
 }

@@ -1,7 +1,6 @@
-// pesanan_view.dart
-
 import 'package:angkringan_omaci_ta/app/global_components/appbar_back.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleKasir/detailpesanan/detail_controller.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
@@ -9,16 +8,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DetailPesananView extends StatelessWidget {
-  const DetailPesananView({super.key});
+class DetailView extends StatelessWidget {
+  const DetailView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(DetailPesananController()); // Inisialisasi controller
+    Get.put(DetailController()); // Inisialisasi controller
 
     return Scaffold(
       body: BackgroundWidget(
-        child: GetBuilder<DetailPesananController>(
+        child: GetBuilder<DetailController>(
           builder: (controller) {
             return SafeArea(
               child: Column(

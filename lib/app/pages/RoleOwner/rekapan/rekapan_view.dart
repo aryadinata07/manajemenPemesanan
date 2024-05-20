@@ -94,7 +94,8 @@ class RekapanView extends StatelessWidget {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
                       child: ListView.builder(
                         itemCount: controller.rekapan.length,
                         itemBuilder: (context, index) {
@@ -102,7 +103,6 @@ class RekapanView extends StatelessWidget {
                           return RekapanCard(
                             nama: menu['namaPemesan']!,
                             item: menu['item']!,
-                            kodePesanan: menu['kode']!,
                             totalPesanan: menu['total']!,
                             pembayaran: menu['pembayaran']!,
                             tempatMakan: menu['tempat']!,

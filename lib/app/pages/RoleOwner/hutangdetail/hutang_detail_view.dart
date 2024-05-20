@@ -3,25 +3,26 @@
 import 'package:angkringan_omaci_ta/app/global_components/appbar_back.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_controller.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleOwner/hutangdetail/hutang_detail_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DetailPesananView extends StatelessWidget {
-  const DetailPesananView({super.key});
+class HutangDetailView extends StatelessWidget {
+  const HutangDetailView({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(DetailPesananController()); // Inisialisasi controller
+    Get.put(HutangDetailController());
 
     return Scaffold(
       body: BackgroundWidget(
-        child: GetBuilder<DetailPesananController>(
+        child: GetBuilder<HutangDetailController>(
           builder: (controller) {
             return SafeArea(
-              child: Column(
+              child: ListView(
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -34,7 +35,7 @@ class DetailPesananView extends StatelessWidget {
                           goTo: Routes.MENU_RESTORAN,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 22),
+                          padding: const EdgeInsets.only(top: 23),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -56,6 +57,51 @@ class DetailPesananView extends StatelessWidget {
                                 child: TextField(
                                   decoration: InputDecoration(
                                     hintText: 'Detail Pesanan',
+                                    hintStyle: const TextStyle(
+                                        color: grey, fontSize: 14),
+                                    filled: true,
+                                    fillColor: textFieldBackground,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF8DD5C0), width: 1.0),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF8DD5C0), width: 1.0),
+                                    ),
+                                  ),
+                                  style: const TextStyle(
+                                    color: grey,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                "Nomor Pelanggan",
+                                style: GoogleFonts.nunito(
+                                  textStyle: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color: white,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 6,
+                              ),
+                              SizedBox(
+                                height: 49,
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: 'Nomor Pelanggan',
                                     hintStyle: const TextStyle(
                                         color: grey, fontSize: 14),
                                     filled: true,
