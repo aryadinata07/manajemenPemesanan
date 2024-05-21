@@ -1,11 +1,9 @@
 import 'package:angkringan_omaci_ta/app/global_components/appbar_kasir.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
-import 'package:angkringan_omaci_ta/app/global_components/popout_signout/popout_signout_view.dart';
 import 'package:angkringan_omaci_ta/app/global_components/pesanan_kasir.dart';
 import 'package:angkringan_omaci_ta/app/pages/index.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'pesanan_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -70,8 +68,8 @@ class PesananView extends StatelessWidget {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
+                      padding: const EdgeInsets.only(
+                          left: 20, right: 20, top: 10, bottom: 10),
                       child: ListView.builder(
                         itemCount: controller.pesanan.length,
                         itemBuilder: (context, index) {

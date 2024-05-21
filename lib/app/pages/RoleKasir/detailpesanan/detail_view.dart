@@ -1,3 +1,4 @@
+import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
 import 'package:angkringan_omaci_ta/app/global_components/appbar_back.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/detailpesanan/detail_controller.dart';
@@ -27,11 +28,7 @@ class DetailView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppbarBack(
-                          context: context,
-                          title: "Detail Pesanan",
-                          goTo: Routes.MENU_RESTORAN,
-                        ),
+                        const AppbarView(title: "Detail Pesanan"),
                         Padding(
                           padding: const EdgeInsets.only(top: 22),
                           child: Column(

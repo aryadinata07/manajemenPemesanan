@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Appbar extends StatelessWidget {
+class AppbarView extends StatelessWidget {
   final String title;
-  const Appbar({super.key, required this.title});
+  const AppbarView({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class Appbar extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white),
               onPressed: () {
-                Navigator.pop(context);
+               Get.back();
               },
               iconSize: 25,
             ),

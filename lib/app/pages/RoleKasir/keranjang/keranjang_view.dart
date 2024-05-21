@@ -1,15 +1,16 @@
 import 'package:angkringan_omaci_ta/app/global_components/add_remove_button.dart';
+import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:angkringan_omaci_ta/app/global_components/appbar_back.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/keranjang/keranjang_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class KeranjangView extends StatelessWidget {
-  const KeranjangView({Key? key}) : super(key: key);
+  const KeranjangView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +24,12 @@ class KeranjangView extends StatelessWidget {
             return SafeArea(
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppbarBack(
-                          context: context,
-                          title: "Keranjang",
-                          goTo: Routes.TAMBAH_PESANAN,
-                        ),
+                    AppbarView(title: "Keranjang")
                       ],
                     ),
                   ),
@@ -59,11 +56,14 @@ class KeranjangView extends StatelessWidget {
                                     ),
                                   ),
                                   const SizedBox(
-                                    height: 6,
+                                    height: 5,
                                   ),
                                   SizedBox(
-                                    height: 49,
                                     child: TextField(
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(controller.maxLength),
+                                      ],
+                                      onChanged: controller.updateText,
                                       decoration: InputDecoration(
                                         hintText: 'Nama pelanggan',
                                         hintStyle: const TextStyle(
@@ -79,24 +79,31 @@ class KeranjangView extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                           borderSide: const BorderSide(
-                                              color: Color(0xFF8DD5C0),
+                                              color: primaryAccent,
                                               width: 1.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                           borderSide: const BorderSide(
-                                              color: Color(0xFF8DD5C0),
+                                              color: primaryAccent,
                                               width: 1.0),
                                         ),
                                       ),
                                       style: const TextStyle(
-                                        color: grey,
+                                        color: white,
                                       ),
                                     ),
                                   ),
+                                  const SizedBox(height: 5,),
+                                  Obx(() => Text(
+                                    '${controller.currentText.value.length} / ${controller.maxLength}',
+                                    style: const TextStyle(
+                                      color: Colors.grey
+                                    ),)
+                                  ),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 10,
                                   ),
                                   Text(
                                     "Tipe Penyajian",
@@ -109,10 +116,10 @@ class KeranjangView extends StatelessWidget {
                                     ),
                                   ),
                                   const SizedBox(
-                                    height: 6,
+                                    height: 5,
                                   ),
                                   Container(
-                                    height: 50,
+                                    height: 60,
                                     decoration: BoxDecoration(
                                       color: textFieldBackground,
                                       borderRadius: BorderRadius.circular(8.0),
@@ -156,7 +163,7 @@ class KeranjangView extends StatelessWidget {
                                                 child: Text(
                                                   value,
                                                   style: const TextStyle(
-                                                      color: grey),
+                                                      color: white),
                                                 ),
                                               );
                                             }).toList(),
@@ -166,7 +173,7 @@ class KeranjangView extends StatelessWidget {
                                     ),
                                   ),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 10,
                                   ),
                                   Text(
                                     "Notes",
@@ -182,8 +189,9 @@ class KeranjangView extends StatelessWidget {
                                     height: 6,
                                   ),
                                   SizedBox(
-                                    height: 49,
                                     child: TextField(
+                                      keyboardType: TextInputType.multiline,
+                                      maxLines: null,
                                       decoration: InputDecoration(
                                         hintText: 'Masukan notes',
                                         hintStyle: const TextStyle(
@@ -199,19 +207,19 @@ class KeranjangView extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                           borderSide: const BorderSide(
-                                              color: Color(0xFF8DD5C0),
+                                              color: primaryAccent,
                                               width: 1.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                           borderSide: const BorderSide(
-                                              color: Color(0xFF8DD5C0),
+                                              color: primaryAccent,
                                               width: 1.0),
                                         ),
                                       ),
                                       style: const TextStyle(
-                                        color: grey,
+                                        color: white,
                                       ),
                                     ),
                                   ),
@@ -432,10 +440,10 @@ class KeranjangView extends StatelessWidget {
                               ),
                             ),
                             onPressed: () {
-                              Get.toNamed(Routes.NOTA);
+                              Get.offAllNamed(Routes.PESANAN);
                             },
                             child: const Text(
-                              'Lanjut',
+                              'Tambah Pesanan',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,

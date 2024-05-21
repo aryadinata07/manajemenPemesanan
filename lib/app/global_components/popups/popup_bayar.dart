@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PopUpPembayaran extends StatelessWidget {
+class PopUpBayar extends StatelessWidget {
   final String paymentMethod;
-  final VoidCallback onFinish; // Tambahkan parameter onFinish
+  final VoidCallback onFinish;
 
-  const PopUpPembayaran(
-      {Key? key, required this.paymentMethod, required this.onFinish})
-      : super(key: key);
+  const PopUpBayar(
+      {super.key, required this.paymentMethod, required this.onFinish});
 
   @override
   Widget build(BuildContext context) {
@@ -52,10 +51,10 @@ class PopUpPembayaran extends StatelessWidget {
               'Apakah pembayaran menggunakan $paymentMethod\nsudah selesai?',
               style: GoogleFonts.inter(
                   textStyle: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.normal,
-                color: white,
-              )),
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal,
+                    color: white,
+                  )),
             ),
             const SizedBox(height: 20.0),
             SizedBox(
@@ -64,7 +63,7 @@ class PopUpPembayaran extends StatelessWidget {
               child: TextButton(
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(const Color(0xff5BA48F)),
+                  MaterialStateProperty.all<Color>(const Color(0xff5BA48F)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
@@ -75,7 +74,7 @@ class PopUpPembayaran extends StatelessWidget {
                   onFinish();
                 },
                 child: Text(
-                  'Selesaikan',
+                  'Selesai',
                   style: GoogleFonts.inter(
                     textStyle: const TextStyle(
                         color: white,

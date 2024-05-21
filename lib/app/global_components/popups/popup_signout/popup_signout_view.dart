@@ -1,11 +1,12 @@
+import 'package:angkringan_omaci_ta/app/global_components/popups/popup_signout/popup_signout_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 
-class PopUpLogout extends StatelessWidget {
-  const PopUpLogout({Key? key}) : super(key: key);
+class PopUpSignOutView extends StatelessWidget {
+  PopUpSignOutView({super.key});
+  final PopUpSignOutController controller = Get.put(PopUpSignOutController());
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +16,6 @@ class PopUpLogout extends StatelessWidget {
       ),
       backgroundColor: Colors.transparent,
       child: Container(
-        height: 292,
-        width: 345,
         decoration: BoxDecoration(
           color: textFieldBackground,
           borderRadius: BorderRadius.circular(16.0),
@@ -33,22 +32,22 @@ class PopUpLogout extends StatelessWidget {
                 color: Color(0xffFEE4E2),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.logout_rounded, color: Color(0xffD92D20)),
+              child: const Icon(Icons.logout_rounded,size: 25, color: Color(0xffD92D20)),
             ),
             const SizedBox(
               height: 16,
             ),
             Text(
               'Keluar',
-              style: GoogleFonts.inter(
+              style: GoogleFonts.nunito(
                 textStyle: const TextStyle(
                     fontSize: 18, fontWeight: FontWeight.w600, color: white),
               ),
             ),
             const SizedBox(height: 4.0),
             Text(
-              'Apakah Anda yakin ingin keluar?\naksi ini tidak dapat di kembalikan',
-              style: GoogleFonts.inter(
+              'Apakah Anda yakin ingin keluar?\nAksi ini tidak dapat di kembalikan',
+              style: GoogleFonts.nunito(
                   textStyle: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.normal,
@@ -70,15 +69,15 @@ class PopUpLogout extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Get.offNamed(Routes.SIGN_IN);
+                  controller.logout();
                 },
                 child: Text(
                   'Keluar',
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.nunito(
                     textStyle: const TextStyle(
                         color: white,
                         fontSize: 16,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w700),
                   ),
                 ),
               ),
@@ -87,7 +86,7 @@ class PopUpLogout extends StatelessWidget {
               height: 12,
             ),
             SizedBox(
-              width: double.infinity, // Membuat tombol memenuhi lebar container
+              width: double.infinity,
               height: 44.0,
               child: TextButton(
                 style: ButtonStyle(
@@ -104,11 +103,11 @@ class PopUpLogout extends StatelessWidget {
                 },
                 child: Text(
                   'Batal',
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.nunito(
                     textStyle: const TextStyle(
                         color: white,
                         fontSize: 16,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w700),
                   ),
                 ),
               ),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SelesaiPopUp extends StatelessWidget {
-  const SelesaiPopUp({Key? key}) : super(key: key);
+class PopUpSelesai extends StatelessWidget {
+  const PopUpSelesai({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,6 @@ class SelesaiPopUp extends StatelessWidget {
       ),
       backgroundColor: Colors.transparent,
       child: Container(
-        height: 292,
         width: 345,
         decoration: BoxDecoration(
           color: textFieldBackground,
@@ -28,17 +27,17 @@ class SelesaiPopUp extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: const BoxDecoration(
-                color: Color(0xffFEE4E2),
+                color: Color(0xffFE2FEE8),
                 shape: BoxShape.circle,
               ),
-              child:
-                  const Icon(Icons.cancel_outlined, color: Color(0xffD92D20)),
+              child: const Icon(Icons.check_circle_outline,
+                  color: Color(0xff00DE31)),
             ),
             const SizedBox(
               height: 16,
             ),
             Text(
-              'Batalkan',
+              'Selesaikan Pesanan',
               style: GoogleFonts.inter(
                 textStyle: const TextStyle(
                     fontSize: 18, fontWeight: FontWeight.w600, color: white),
@@ -46,7 +45,7 @@ class SelesaiPopUp extends StatelessWidget {
             ),
             const SizedBox(height: 4.0),
             Text(
-              'Apakah Anda yakin untuk membatalkan\npesanan ini?',
+              'Apakah anda yakin untuk menyelesaikan\npesanan ini?',
               style: GoogleFonts.inter(
                   textStyle: const TextStyle(
                 fontSize: 14,
@@ -61,7 +60,7 @@ class SelesaiPopUp extends StatelessWidget {
               child: TextButton(
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(const Color(0xffD92D20)),
+                      MaterialStateProperty.all<Color>(const Color(0xff20A535)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
@@ -72,7 +71,7 @@ class SelesaiPopUp extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Text(
-                  'Ya,Batalkan',
+                  'Ya, Selesaikan',
                   style: GoogleFonts.inter(
                     textStyle: const TextStyle(
                         color: white,
@@ -86,7 +85,7 @@ class SelesaiPopUp extends StatelessWidget {
               height: 12,
             ),
             SizedBox(
-              width: double.infinity,
+              width: double.infinity, // Membuat tombol memenuhi lebar container
               height: 44.0,
               child: TextButton(
                 style: ButtonStyle(
@@ -102,7 +101,7 @@ class SelesaiPopUp extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Text(
-                  'Tidak,Kembali',
+                  'Tidak',
                   style: GoogleFonts.inter(
                     textStyle: const TextStyle(
                         color: white,

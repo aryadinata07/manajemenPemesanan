@@ -1,19 +1,3 @@
-import 'package:angkringan_omaci_ta/app/pages/RoleKasir/detailpesanan/detail_binding.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleKasir/detailpesanan/detail_view.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleKasir/hutang/hutang_binding.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleKasir/hutang/hutang_view.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleKasir/keranjang/keranjang_binding.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleKasir/keranjang/keranjang_view.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleKasir/nota/note_binding.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleKasir/nota/note_view.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_binding.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleOwner/detailpesanan/detail_pesanan_view.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleOwner/editmenu/edit_menu_binding.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleOwner/editmenu/edit_menu_view.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleOwner/hutangdetail/hutang_detail_binding.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleOwner/hutangdetail/hutang_detail_view.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleOwner/tambahmenu/tambah_menu_binding.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleOwner/tambahmenu/tambah_menu_view.dart';
 import 'package:get/get.dart';
 import 'package:angkringan_omaci_ta/app/pages/index.dart';
 
@@ -32,6 +16,8 @@ class AppPages {
       binding: DetailBinding(),
     ),
 
+
+
     // OFFICIAL ROUTES
     GetPage(
       name: Routes.SPLASH_SCREEN,
@@ -43,6 +29,8 @@ class AppPages {
       page: () => const SignInView(),
       binding: SignInBinding(),
     ),
+
+
 
     // ROLE OWNER
     GetPage(
@@ -85,6 +73,8 @@ class AppPages {
       page: () => const EditMenuView(),
       binding: EditMenuBinding(),
     ),
+
+
 
     // ROLE KASIR
     GetPage(

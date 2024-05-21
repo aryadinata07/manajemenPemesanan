@@ -1,5 +1,5 @@
-import 'package:angkringan_omaci_ta/app/global_components/popUp_batalkan.dart';
-import 'package:angkringan_omaci_ta/app/global_components/popUp_selesai.dart';
+import 'package:angkringan_omaci_ta/app/global_components/popups/popup_batal.dart';
+import 'package:angkringan_omaci_ta/app/global_components/popups/popup_selesai.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -52,17 +52,39 @@ class PesananCard extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       PopupMenuButton<String>(
                         color: textFieldBackground,
                         itemBuilder: (BuildContext context) =>
                             <PopupMenuEntry<String>>[
+                              const PopupMenuItem<String>(
+                                value: 'edit',
+                                child: Row(
+                                  children: <Widget>[
+                                    Text(
+                                      'Edit Pesanan',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const PopupMenuItem<String>(
+                                value: 'bayar',
+                                child: Row(
+                                  children: <Widget>[
+                                    Text(
+                                      'Bayar Pesanan',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                              ),
                           const PopupMenuItem<String>(
                             value: 'selesai',
                             child: Row(
                               children: <Widget>[
                                 Text(
-                                  'Selesaikan',
+                                  'Selesaikan Pesanan',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ],
@@ -73,7 +95,7 @@ class PesananCard extends StatelessWidget {
                             child: Row(
                               children: <Widget>[
                                 Text(
-                                  'Batalkan',
+                                  'Batalkan Pesanan',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ],
@@ -82,21 +104,27 @@ class PesananCard extends StatelessWidget {
                         ],
                         onSelected: (String value) {
                           switch (value) {
+                            case 'edit':
+                              Get.toNamed(Routes.TAMBAH_PESANAN);
+                              break;
+                            case 'bayar':
+                              Get.toNamed(Routes.NOTA);
+                              break;
                             case 'selesai':
                               showDialog(
                                 context: context,
-                                builder: (context) => PopUpSelesai      (),
+                                builder: (context) => const PopUpSelesai(),
                               );
                               break;
                             case 'batal':
                               showDialog(
                                 context: context,
-                                builder: (context) => SelesaiPopUp(),
+                                builder: (context) => const PopUpBatal(),
                               );
                               break;
                           }
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.more_horiz,
                           color: Colors.white,
                         ),
@@ -137,7 +165,7 @@ class PesananCard extends StatelessWidget {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Get.toNamed(Routes.DETAIL_PESANAN);
+                                Get.toNamed(Routes.DETAIL);
                               },
                               child: Text(
                                 "Lihat detail",

@@ -2,8 +2,18 @@ import 'package:get/get.dart';
 
 class KeranjangController extends GetxController {
   var setCategory = ''.obs;
+  final int maxLength = 35;
+  var currentText = ''.obs;
+
+
   void setSelectedCategory(String role) {
     setCategory.value = role;
+  }
+
+  void updateText(String text) {
+    if (text.length <= maxLength) {
+      currentText.value = text;
+    }
   }
 
   var pesanan = <Map<String, dynamic>>[
@@ -11,6 +21,11 @@ class KeranjangController extends GetxController {
       'namaMenu': 'Soto Ayam',
       'harga': '30000',
       'item': 1,
+    },
+    {
+      'namaMenu': 'Soto Kerbau',
+      'harga': '60000',
+      'item': 2,
     },
     {
       'namaMenu': 'Soto Kerbau',

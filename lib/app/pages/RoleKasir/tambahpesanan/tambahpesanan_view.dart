@@ -1,41 +1,21 @@
+import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
 import 'package:angkringan_omaci_ta/app/global_components/appbar_back.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'tambahpesanan_controller.dart';
-import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/app/global_components/menu_item.dart';
 
 class TambahPesananView extends StatelessWidget {
   const TambahPesananView({super.key});
-  // final TambahPesananController controller = Get.put(TambahPesananController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   leading: IconButton(
-      //     icon: Icon(Icons.arrow_back_rounded),
-      //     color: white,
-      //     iconSize: 25,
-      //     onPressed: () {
-      //       // Add your notifications functionality here
-      //       print('Notifications button clicked');
-      //     },
-      //   ),
-      //   title: Text(
-      //     "Tambah Pesanan",
-      //     style: GoogleFonts.nunito(
-      //       color: Colors.white,
-      //       fontSize: 20,
-      //       fontWeight: FontWeight.w800,
-      //     ),
-      //     textAlign: TextAlign.center,
-      //   ),
-      //   backgroundColor: primaryAccent,
-      // ),
+
       body: BackgroundWidget(
         child: GetBuilder<TambahPesananController>(
           builder: (controller) {
@@ -48,11 +28,7 @@ class TambahPesananView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AppbarBack(
-                            context: context,
-                            title: "Tambah Pesanan",
-                            goTo: Routes.PESANAN,
-                          ),
+                          const AppbarView(title: "Tambah Pesanan"),
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
                             child: Row(
@@ -134,7 +110,7 @@ class TambahPesananView extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          Get.offNamed(Routes.KERANJANG);
+                          Get.toNamed(Routes.KERANJANG);
                         },
                         child: const Text(
                           'Lanjut',

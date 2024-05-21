@@ -1,4 +1,4 @@
-import 'package:angkringan_omaci_ta/app/global_components/popout_signout/popout_signout_view.dart';
+import 'package:angkringan_omaci_ta/app/global_components/popups/popup_signout/popup_signout_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

@@ -1,4 +1,5 @@
 import 'package:angkringan_omaci_ta/app/global_components/add_remove_button.dart';
+import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/hutang/hutang_controller.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -23,16 +24,12 @@ class HutangView extends StatelessWidget {
             return SafeArea(
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppbarBack(
-                          context: context,
-                          title: "Hutang",
-                          goTo: Routes.NOTA,
-                        ),
+                        AppbarView(title: "Hutang"),
                       ],
                     ),
                   ),

@@ -7,7 +7,7 @@ class PesananController extends GetxController {
       'item': '3',
       'total': 'Rp 48.000',
       'pembayaran': "Tunai",
-      'tempat': "makan di tempat",
+      'tempat': "Makan di tempat",
       'jumlahPesanan': '5',
     },
     {
@@ -15,7 +15,7 @@ class PesananController extends GetxController {
       'item': '2',
       'total': 'Rp 35.000',
       'pembayaran': "QRIS",
-      'tempat': "bawa pulang",
+      'tempat': "Bungkus",
       'jumlahPesanan': '2',
     },
     {
@@ -23,7 +23,7 @@ class PesananController extends GetxController {
       'item': '1',
       'total': 'Rp 28.000',
       'pembayaran': "Tunai",
-      'tempat': "antar",
+      'tempat': "Bungkus",
       'jumlahPesanan': '1',
     },
     {
@@ -31,7 +31,7 @@ class PesananController extends GetxController {
       'item': '4',
       'total': 'Rp 60.000',
       'pembayaran': "QRIS",
-      'tempat': "makan di tempat",
+      'tempat': "Makan di tempat",
       'jumlahPesanan': '3',
     },
     {
@@ -39,7 +39,7 @@ class PesananController extends GetxController {
       'item': '1',
       'total': 'Rp 50.000',
       'pembayaran': "Tunai",
-      'tempat': "bawa pulang",
+      'tempat': "Bungkus",
       'jumlahPesanan': '1',
     },
     {
@@ -47,7 +47,7 @@ class PesananController extends GetxController {
       'item': '2',
       'total': 'Rp 30.000',
       'pembayaran': "QRIS",
-      'tempat': "makan di tempat",
+      'tempat': "Makan di tempat",
       'jumlahPesanan': '2',
     },
     {
@@ -55,7 +55,7 @@ class PesananController extends GetxController {
       'item': '3',
       'total': 'Rp 42.000',
       'pembayaran': "Tunai",
-      'tempat': "antar",
+      'tempat': "Bungkus",
       'jumlahPesanan': '2',
     },
     {
@@ -63,7 +63,7 @@ class PesananController extends GetxController {
       'item': '2',
       'total': 'Rp 25.000',
       'pembayaran': "QRIS",
-      'tempat': "bawa pulang",
+      'tempat': "Bungkus",
       'jumlahPesanan': '2',
     },
     {
@@ -71,7 +71,7 @@ class PesananController extends GetxController {
       'item': '5',
       'total': 'Rp 70.000',
       'pembayaran': "Tunai",
-      'tempat': "makan di tempat",
+      'tempat': "Makan di tempat",
       'jumlahPesanan': '4',
     },
     {
@@ -79,7 +79,7 @@ class PesananController extends GetxController {
       'item': '3',
       'total': 'Rp 45.000',
       'pembayaran': "QRIS",
-      'tempat': "bawa pulang",
+      'tempat': "Bungkus",
       'jumlahPesanan': '3',
     },
     {
@@ -87,7 +87,7 @@ class PesananController extends GetxController {
       'item': '2',
       'total': 'Rp 32.000',
       'pembayaran': "Tunai",
-      'tempat': "antar",
+      'tempat': "Bungkus",
       'jumlahPesanan': '2',
     },
     {
@@ -95,7 +95,7 @@ class PesananController extends GetxController {
       'item': '1',
       'total': 'Rp 15.000',
       'pembayaran': "QRIS",
-      'tempat': "makan di tempat",
+      'tempat': "Makan di tempat",
       'jumlahPesanan': '1',
     },
     {
@@ -103,7 +103,7 @@ class PesananController extends GetxController {
       'item': '4',
       'total': 'Rp 55.000',
       'pembayaran': "Tunai",
-      'tempat': "bawa pulang",
+      'tempat': "Bungkus",
       'jumlahPesanan': '3',
     },
     {
@@ -119,7 +119,7 @@ class PesananController extends GetxController {
       'item': '3',
       'total': 'Rp 40.000',
       'pembayaran': "Tunai",
-      'tempat': "antar",
+      'tempat': "bungkus",
       'jumlahPesanan': '2',
     },
     {
@@ -127,7 +127,7 @@ class PesananController extends GetxController {
       'item': '2',
       'total': 'Rp 25.000',
       'pembayaran': "QRIS",
-      'tempat': "bawa pulang",
+      'tempat': "Bungkus",
       'jumlahPesanan': '2',
     },
     {
@@ -135,7 +135,7 @@ class PesananController extends GetxController {
       'item': '1',
       'total': 'Rp 18.000',
       'pembayaran': "Tunai",
-      'tempat': "makan di tempat",
+      'tempat': "Makan di tempat",
       'jumlahPesanan': '1',
     },
     {
@@ -143,7 +143,7 @@ class PesananController extends GetxController {
       'item': '4',
       'total': 'Rp 60.000',
       'pembayaran': "QRIS",
-      'tempat': "bawa pulang",
+      'tempat': "Bungkus",
       'jumlahPesanan': '3',
     },
     {
@@ -151,7 +151,7 @@ class PesananController extends GetxController {
       'item': '3',
       'total': 'Rp 45.000',
       'pembayaran': "Tunai",
-      'tempat': "makan di tempat",
+      'tempat': "Makan di tempat",
       'jumlahPesanan': '3',
     },
     {
@@ -159,7 +159,7 @@ class PesananController extends GetxController {
       'item': '2',
       'total': 'Rp 28.000',
       'pembayaran': "QRIS",
-      'tempat': "antar",
+      'tempat': "Bungkus",
       'jumlahPesanan': '2',
     },
     {
@@ -167,7 +167,7 @@ class PesananController extends GetxController {
       'item': '1',
       'total': 'Rp 15.000',
       'pembayaran': "Tunai",
-      'tempat': "bawa pulang",
+      'tempat': "Bungkus",
       'jumlahPesanan': '1',
     }
   ];

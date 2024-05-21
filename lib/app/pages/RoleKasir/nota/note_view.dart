@@ -1,10 +1,10 @@
 import 'package:angkringan_omaci_ta/app/global_components/add_remove_button.dart';
-import 'package:angkringan_omaci_ta/app/global_components/popUp_pembayaran.dart';
+import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
+import 'package:angkringan_omaci_ta/app/global_components/popups/popup_bayar.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/nota/nota_controller.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:angkringan_omaci_ta/app/global_components/appbar_back.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,16 +24,12 @@ class NotaView extends StatelessWidget {
             return SafeArea(
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppbarBack(
-                          context: context,
-                          title: "NOTA",
-                          goTo: Routes.KERANJANG,
-                        ),
+                        AppbarView(title: "Nota")
                       ],
                     ),
                   ),
@@ -298,15 +294,16 @@ class NotaView extends StatelessWidget {
                                         ),
                                       ),
                                       onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) => PopUpPembayaran(
-                                            paymentMethod: "hutang",
-                                            onFinish: () {
-                                              Get.offNamed(Routes.HUTANG);
-                                            },
-                                          ),
-                                        );
+                                        Get.toNamed(Routes.HUTANG);
+                                        // showDialog(
+                                        //   context: context,
+                                        //   builder: (context) => PopUpBayar(
+                                        //     paymentMethod: "hutang",
+                                        //     onFinish: () {
+                                        //       Get.offNamed(Routes.HUTANG);
+                                        //     },
+                                        //   ),
+                                        // );
                                       },
                                       child: const Row(
                                         mainAxisAlignment:
@@ -349,10 +346,10 @@ class NotaView extends StatelessWidget {
                                       onPressed: () {
                                         showDialog(
                                           context: context,
-                                          builder: (context) => PopUpPembayaran(
-                                            paymentMethod: "tunai",
+                                          builder: (context) => PopUpBayar(
+                                            paymentMethod: "Tunai",
                                             onFinish: () {
-                                              Get.offNamed(Routes.PESANAN);
+                                              Get.offAllNamed(Routes.PESANAN);
                                             },
                                           ),
                                         );
@@ -398,10 +395,10 @@ class NotaView extends StatelessWidget {
                                       onPressed: () {
                                         showDialog(
                                           context: context,
-                                          builder: (context) => PopUpPembayaran(
+                                          builder: (context) => PopUpBayar(
                                             paymentMethod: "Qris",
                                             onFinish: () {
-                                              Get.offNamed(Routes.PESANAN);
+                                              Get.offAllNamed(Routes.PESANAN);
                                             },
                                           ),
                                         );
