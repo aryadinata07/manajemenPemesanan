@@ -1,5 +1,6 @@
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/editmenu/edit_menu_controller.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/tambahmenu/tambah_menu_controller.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
@@ -84,9 +85,9 @@ class EditMenuView extends StatelessWidget {
                                           color: white, fontSize: 16),
                                       isExpanded: true,
                                       items: <String>[
-                                        'Jajan',
+                                        'Makanan',
                                         'Minuman',
-                                        'Makanan'
+                                        'Jajanan'
                                       ].map<DropdownMenuItem<String>>(
                                           (String value) {
                                         return DropdownMenuItem<String>(
@@ -117,35 +118,44 @@ class EditMenuView extends StatelessWidget {
                               const SizedBox(
                                 height: 6,
                               ),
-                              SizedBox(
-                                height: 50,
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: 'Nama Menu',
-                                    hintStyle: const TextStyle(
-                                        color: grey, fontSize: 14),
-                                    filled: true,
-                                    fillColor: textFieldBackground,
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: const BorderSide(
-                                          color: Color(0xFF8DD5C0), width: 1.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: const BorderSide(
-                                          color: Color(0xFF8DD5C0), width: 1.0),
-                                    ),
+                              TextField(
+                                inputFormatters: [
+                                  LengthLimitingTextInputFormatter(
+                                      controller.maxLength),
+                                ],
+                                onChanged: controller.updateText,
+                                decoration: InputDecoration(
+                                  hintText: 'Nama pelanggan',
+                                  hintStyle: const TextStyle(
+                                      color: grey, fontSize: 14),
+                                  filled: true,
+                                  fillColor: textFieldBackground,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderSide: BorderSide.none,
                                   ),
-                                  style: const TextStyle(
-                                    color: grey,
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderSide: const BorderSide(
+                                        color: primaryAccent, width: 1.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderSide: const BorderSide(
+                                        color: primaryAccent, width: 1.0),
                                   ),
                                 ),
+                                style: const TextStyle(
+                                  color: white,
+                                ),
                               ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Obx(() => Text(
+                                    '${controller.currentText.value.length} / ${controller.maxLength}',
+                                    style: const TextStyle(color: Colors.grey),
+                                  )),
                               const SizedBox(
                                 height: 20,
                               ),
@@ -205,34 +215,37 @@ class EditMenuView extends StatelessWidget {
                               const SizedBox(
                                 height: 6,
                               ),
-                              SizedBox(
-                                height: 50,
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: 'Harga',
-                                    hintStyle: const TextStyle(
-                                        color: grey, fontSize: 14),
-                                    filled: true,
-                                    fillColor: textFieldBackground,
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: const BorderSide(
-                                          color: Color(0xFF8DD5C0), width: 1.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: const BorderSide(
-                                          color: Color(0xFF8DD5C0), width: 1.0),
-                                    ),
+                              TextField(
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.digitsOnly,
+                                ],
+                                decoration: InputDecoration(
+                                  hintText: 'Harga',
+                                  hintStyle: const TextStyle(
+                                      color: grey, fontSize: 14),
+                                  filled: true,
+                                  fillColor: textFieldBackground,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderSide: BorderSide.none,
                                   ),
-                                  style: const TextStyle(
-                                    color: grey,
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderSide: const BorderSide(
+                                        color: primaryAccent, width: 1.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderSide: const BorderSide(
+                                        color: primaryAccent, width: 1.0),
                                   ),
                                 ),
+                                style: const TextStyle(
+                                  color: white,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 5,
                               ),
                             ],
                           ),

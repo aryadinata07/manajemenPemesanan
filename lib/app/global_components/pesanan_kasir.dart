@@ -2,6 +2,7 @@ import 'package:angkringan_omaci_ta/app/global_components/popups/popup_batal.dar
 import 'package:angkringan_omaci_ta/app/global_components/popups/popup_selesai.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -39,217 +40,214 @@ class PesananCard extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
           ),
-          child: Column(
+          child: Stack(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          nama,
-                          style: GoogleFonts.nunito(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const Spacer(),
-                        PopupMenuButton<String>(
-                          color: textFieldBackground,
-                          itemBuilder: (BuildContext context) =>
-                              <PopupMenuEntry<String>>[
-                            const PopupMenuItem<String>(
-                              value: 'edit',
-                              child: Row(
-                                children: <Widget>[
-                                  Text(
-                                    'Edit Pesanan',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const PopupMenuItem<String>(
-                              value: 'bayar',
-                              child: Row(
-                                children: <Widget>[
-                                  Text(
-                                    'Bayar Pesanan',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const PopupMenuItem<String>(
-                              value: 'selesai',
-                              child: Row(
-                                children: <Widget>[
-                                  Text(
-                                    'Selesaikan Pesanan',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const PopupMenuItem<String>(
-                              value: 'batal',
-                              child: Row(
-                                children: <Widget>[
-                                  Text(
-                                    'Batalkan Pesanan',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                          onSelected: (String value) {
-                            switch (value) {
-                              case 'edit':
-                                Get.toNamed(Routes.TAMBAH_PESANAN);
-                                break;
-                              case 'bayar':
-                                Get.toNamed(Routes.NOTA);
-                                break;
-                              case 'selesai':
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => const PopUpSelesai(),
-                                );
-                                break;
-                              case 'batal':
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => const PopUpBatal(),
-                                );
-                                break;
-                            }
-                          },
-                          child: const Icon(
-                            Icons.more_horiz,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    RichText(
-                      text: TextSpan(children: [
-                        TextSpan(
-                          text: 'Item ',
-                          style: GoogleFonts.nunito(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xff696969),
-                          ),
-                        ),
-                        TextSpan(
-                          text: item,
-                          style: GoogleFonts.nunito(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
-                          ),
-                        )
-                      ]),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  Get.toNamed(Routes.DETAIL);
-                                },
-                                child: Text(
-                                  "Lihat detail",
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xffACACAC),
+                        Row(
+                          children: [
+                            Container(
+                              width: 300,
+                              child: Text(
+                                nama,
+                                style: GoogleFonts.nunito(
+                                  textStyle: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color: white,
                                   ),
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 4,
-                              ),
-                              const Icon(
-                                Icons.arrow_forward_ios_outlined,
-                                color: Color(0xffACACAC),
-                                size: 12,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              const Divider(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  children: [
-                    pembayaran == 'Tunai'
-                        ? const Icon(
-                            Icons.payment,
-                            color: Color(0xffACACAC),
-                            size: 12,
-                          )
-                        : const Icon(
-                            Icons.qr_code,
-                            color: Color(0xffACACAC),
-                            size: 12,
-                          ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Text(
-                      // metode pmbayaran | tempatMakan
-                      "$pembayaran | $tempatMakan",
-                      style: GoogleFonts.poppins(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: RichText(
-                          text: TextSpan(children: [
-                            TextSpan(
-                              text: 'Total pesanan: ',
-                              style: GoogleFonts.nunito(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white,
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
+                            const Spacer(),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        RichText(
+                          text: TextSpan(children: [
                             TextSpan(
-                              text: totalPesanan,
+                              text: 'Item ',
                               style: GoogleFonts.nunito(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: Color(0xffD17763),
+                                color: const Color(0xff696969),
+                              ),
+                            ),
+                            TextSpan(
+                              text: item,
+                              style: GoogleFonts.nunito(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
                               ),
                             )
                           ]),
                         ),
+                      ],
+                    ),
+                  ),
+                  Spacer(),
+                  const Divider(),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Row(
+                      children: [
+                        Text(
+                          "$tempatMakan",
+                          style: GoogleFonts.poppins(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: RichText(
+                              text: TextSpan(children: [
+                                TextSpan(
+                                  text: 'Total pesanan: ',
+                                  style: GoogleFonts.nunito(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: totalPesanan,
+                                  style: GoogleFonts.nunito(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xffD17763),
+                                  ),
+                                )
+                              ]),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Positioned(
+                top: 0,
+                right: 0,
+                child: Container(
+                  width: 40,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[800],
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(46),
+                      topRight: Radius.circular(8),
+                    ),
+                  ),
+                  child: PopupMenuButton<String>(
+                    color: textFieldBackground,
+                    itemBuilder: (BuildContext context) =>
+                        <PopupMenuEntry<String>>[
+                      const PopupMenuItem<String>(
+                        value: 'edit',
+                        child: Row(
+                          children: <Widget>[
+                            Icon(Icons.edit, color: Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Edit Pesanan',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
                       ),
-                    )
-                  ],
+                      const PopupMenuItem<String>(
+                        value: 'bayar',
+                        child: Row(
+                          children: <Widget>[
+                            Icon(Icons.payments_outlined, color: Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Bayar Pesanan',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const PopupMenuItem<String>(
+                        value: 'selesai',
+                        child: Row(
+                          children: <Widget>[
+                            Icon(Icons.check, color: Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Selesaikan Pesanan',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const PopupMenuItem<String>(
+                        value: 'batal',
+                        child: Row(
+                          children: <Widget>[
+                            Icon(Icons.close, color: Colors.white),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Batalkan Pesanan',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                    onSelected: (String value) {
+                      switch (value) {
+                        case 'edit':
+                          Get.toNamed(Routes.TAMBAH_PESANAN);
+                          break;
+                        case 'bayar':
+                          Get.toNamed(Routes.NOTA);
+                          break;
+                        case 'selesai':
+                          showDialog(
+                            context: context,
+                            builder: (context) => const PopUpSelesai(),
+                          );
+                          break;
+                        case 'batal':
+                          showDialog(
+                            context: context,
+                            builder: (context) => const PopUpBatal(),
+                          );
+                          break;
+                      }
+                    },
+                    child: const Padding(
+                      padding: const EdgeInsets.only(left: 5, bottom: 5),
+                      child: const Icon(
+                        Icons.more_horiz,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],

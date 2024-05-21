@@ -1,3 +1,4 @@
+import 'package:angkringan_omaci_ta/app/global_components/popups/popup_hapus.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -49,14 +50,19 @@ class MenuRestoranWidget extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        name,
-                        style: GoogleFonts.nunito(
-                          textStyle: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: white,
+                      Container(
+                        width: 170,
+                        child: Text(
+                          name,
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: white,
+                            ),
                           ),
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       Text(
@@ -138,7 +144,10 @@ class MenuRestoranWidget extends StatelessWidget {
                         );
                         break;
                       case 'delete':
-                        print('Delete Menu');
+                        showDialog(
+                          context: context,
+                          builder: (context) => const PopUpHapus(),
+                        );
                         break;
                     }
                   },

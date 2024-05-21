@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 class MenuRestoranController extends GetxController {
   var makanan = [
     {
-      'name': 'Nasi Goreng Beef',
+      'name':
+          'Nasi Goreng Beef aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
       'category': 'Makanan',
       'price': 'Rp. 50.000',
     },

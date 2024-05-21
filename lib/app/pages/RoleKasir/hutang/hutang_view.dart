@@ -45,106 +45,6 @@ class HutangView extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    "Nama Pelanggan",
-                                    style: GoogleFonts.nunito(
-                                      textStyle: const TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600,
-                                        color: white,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 6,
-                                  ),
-                                  SizedBox(
-                                    height: 49,
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        hintText: 'Nama pelanggan',
-                                        hintStyle: const TextStyle(
-                                            color: grey, fontSize: 14),
-                                        filled: true,
-                                        fillColor: textFieldBackground,
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: BorderSide.none,
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0xFF8DD5C0),
-                                              width: 1.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0xFF8DD5C0),
-                                              width: 1.0),
-                                        ),
-                                      ),
-                                      style: const TextStyle(
-                                        color: grey,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    "Notes",
-                                    style: GoogleFonts.nunito(
-                                      textStyle: const TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600,
-                                        color: white,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 6,
-                                  ),
-                                  SizedBox(
-                                    height: 49,
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        hintText: 'Masukan notes',
-                                        hintStyle: const TextStyle(
-                                            color: grey, fontSize: 14),
-                                        filled: true,
-                                        fillColor: textFieldBackground,
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: BorderSide.none,
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0xFF8DD5C0),
-                                              width: 1.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: const BorderSide(
-                                              color: Color(0xFF8DD5C0),
-                                              width: 1.0),
-                                        ),
-                                      ),
-                                      style: const TextStyle(
-                                        color: grey,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
                                   Container(
                                     width: double.infinity,
                                     decoration: const BoxDecoration(
@@ -313,22 +213,8 @@ class HutangView extends StatelessWidget {
                                               right: 10, left: 10, bottom: 10),
                                           child: Row(
                                             children: [
-                                              "Tunai" == 'Tunai'
-                                                  ? const Icon(
-                                                      Icons.payment,
-                                                      color: Color(0xffACACAC),
-                                                      size: 12,
-                                                    )
-                                                  : const Icon(
-                                                      Icons.qr_code,
-                                                      color: Color(0xffACACAC),
-                                                      size: 12,
-                                                    ),
-                                              const SizedBox(
-                                                width: 4,
-                                              ),
                                               Text(
-                                                "Tunai | Makan di tempat",
+                                                "Makan di tempat",
                                                 style: GoogleFonts.poppins(
                                                   fontSize: 10,
                                                   fontWeight: FontWeight.w400,
@@ -377,6 +263,45 @@ class HutangView extends StatelessWidget {
                                     ),
                                   ),
                                 ],
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Notes",
+                              style: GoogleFonts.nunito(
+                                textStyle: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: white,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            TextField(
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                              readOnly: true,
+                              decoration: InputDecoration(
+                                fillColor: textFieldBackground,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderSide: BorderSide.none,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderSide: const BorderSide(
+                                      color: Color(0xFF8DD5C0), width: 1.0),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderSide: const BorderSide(
+                                      color: Color(0xFF8DD5C0), width: 1.0),
+                                ),
+                              ),
+                              style: const TextStyle(
+                                color: grey,
                               ),
                             ),
                           ],

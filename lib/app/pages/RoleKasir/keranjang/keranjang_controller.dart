@@ -2,9 +2,8 @@ import 'package:get/get.dart';
 
 class KeranjangController extends GetxController {
   var setCategory = ''.obs;
-  final int maxLength = 35;
+  final int maxLength = 40;
   var currentText = ''.obs;
-
 
   void setSelectedCategory(String role) {
     setCategory.value = role;

@@ -58,41 +58,39 @@ class KeranjangView extends StatelessWidget {
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                  SizedBox(
-                                    child: TextField(
-                                      inputFormatters: [
-                                        LengthLimitingTextInputFormatter(controller.maxLength),
-                                      ],
-                                      onChanged: controller.updateText,
-                                      decoration: InputDecoration(
-                                        hintText: 'Nama pelanggan',
-                                        hintStyle: const TextStyle(
-                                            color: grey, fontSize: 14),
-                                        filled: true,
-                                        fillColor: textFieldBackground,
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: BorderSide.none,
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: const BorderSide(
-                                              color: primaryAccent,
-                                              width: 1.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: const BorderSide(
-                                              color: primaryAccent,
-                                              width: 1.0),
-                                        ),
+                                  TextField(
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(controller.maxLength),
+                                    ],
+                                    onChanged: controller.updateText,
+                                    decoration: InputDecoration(
+                                      hintText: 'Nama pelanggan',
+                                      hintStyle: const TextStyle(
+                                          color: grey, fontSize: 14),
+                                      filled: true,
+                                      fillColor: textFieldBackground,
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        borderSide: BorderSide.none,
                                       ),
-                                      style: const TextStyle(
-                                        color: white,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        borderSide: const BorderSide(
+                                            color: primaryAccent,
+                                            width: 1.0),
                                       ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        borderSide: const BorderSide(
+                                            color: primaryAccent,
+                                            width: 1.0),
+                                      ),
+                                    ),
+                                    style: const TextStyle(
+                                      color: white,
                                     ),
                                   ),
                                   const SizedBox(height: 5,),

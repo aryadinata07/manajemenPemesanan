@@ -11,7 +11,8 @@ class PesananController extends GetxController {
       'jumlahPesanan': '5',
     },
     {
-      'namaPemesan': 'Dewi Susanti',
+      'namaPemesan':
+          'Dewi Susanti aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
       'item': '2',
       'total': 'Rp 35.000',
       'pembayaran': "QRIS",
