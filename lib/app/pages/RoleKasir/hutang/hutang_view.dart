@@ -275,40 +275,24 @@ class HutangView extends StatelessWidget {
                                                                   ],
                                                                 ),
                                                                 const Spacer(),
-                                                                GestureDetector(
-                                                                  child:
-                                                                      const Icon(
-                                                                    Icons.close,
-                                                                    color: Color(
-                                                                        0xff696969),
-                                                                    size: 18,
+                                                                Text(
+                                                                  "x ${item['item']}",
+                                                                  style:
+                                                                      GoogleFonts
+                                                                          .nunito(
+                                                                    textStyle:
+                                                                        const TextStyle(
+                                                                      fontSize:
+                                                                          16,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w700,
+                                                                      color:
+                                                                          white,
+                                                                    ),
                                                                   ),
-                                                                  onTap: () {
-                                                                    // Handle remove item
-                                                                  },
-                                                                )
+                                                                ),
                                                               ],
-                                                            ),
-                                                            Positioned(
-                                                              bottom: 0,
-                                                              right: 0,
-                                                              child: AddButton(
-                                                                initialValue:
-                                                                    item['item']
-                                                                        as int,
-                                                                onQuantityChanged:
-                                                                    (quantity) {
-                                                                  controller
-                                                                      .updateItemQuantity(
-                                                                          index,
-                                                                          quantity);
-                                                                },
-                                                                onTotalUpdated:
-                                                                    () {
-                                                                  controller
-                                                                      .hitungTotalHarga();
-                                                                },
-                                                              ),
                                                             ),
                                                           ],
                                                         ),
@@ -327,33 +311,66 @@ class HutangView extends StatelessWidget {
                                         Padding(
                                           padding: const EdgeInsets.only(
                                               right: 10, left: 10, bottom: 10),
-                                          child: Align(
-                                            alignment: Alignment.bottomRight,
-                                            child: RichText(
-                                              text: TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: 'Total pesanan: ',
-                                                    style: GoogleFonts.nunito(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.white,
+                                          child: Row(
+                                            children: [
+                                              "Tunai" == 'Tunai'
+                                                  ? const Icon(
+                                                      Icons.payment,
+                                                      color: Color(0xffACACAC),
+                                                      size: 12,
+                                                    )
+                                                  : const Icon(
+                                                      Icons.qr_code,
+                                                      color: Color(0xffACACAC),
+                                                      size: 12,
                                                     ),
-                                                  ),
-                                                  TextSpan(
-                                                    text:
-                                                        "Rp ${controller.formatCurrency(controller.totalHarga.value)}",
-                                                    style: GoogleFonts.nunito(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      color: Color(0xffD17763),
-                                                    ),
-                                                  ),
-                                                ],
+                                              const SizedBox(
+                                                width: 4,
                                               ),
-                                            ),
+                                              Text(
+                                                "Tunai | Makan di tempat",
+                                                style: GoogleFonts.poppins(
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Align(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  child: Obx(() {
+                                                    return RichText(
+                                                      text: TextSpan(children: [
+                                                        TextSpan(
+                                                          text:
+                                                              'Total pesanan: ',
+                                                          style: GoogleFonts
+                                                              .nunito(
+                                                            fontSize: 10,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                        TextSpan(
+                                                          text:
+                                                              "Rp ${controller.formatCurrency(controller.totalHarga.value)}",
+                                                          style: GoogleFonts
+                                                              .nunito(
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            color: Color(
+                                                                0xffD17763),
+                                                          ),
+                                                        )
+                                                      ]),
+                                                    );
+                                                  }),
+                                                ),
+                                              )
+                                            ],
                                           ),
                                         ),
                                       ],
