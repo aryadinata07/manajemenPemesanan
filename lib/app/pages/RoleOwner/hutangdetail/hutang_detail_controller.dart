@@ -17,26 +17,6 @@ class HutangDetailController extends GetxController {
       'jumlah': '3',
       'harga': 'Rp. 100.000',
     },
-    {
-      'namaMenu': 'Soto Kerbau',
-      'jumlah': '3',
-      'harga': 'Rp. 100.000',
-    },
-    {
-      'namaMenu': 'Soto Kerbau',
-      'jumlah': '3',
-      'harga': 'Rp. 100.000',
-    },
-    {
-      'namaMenu': 'Soto Kerbau',
-      'jumlah': '3',
-      'harga': 'Rp. 100.000',
-    },
-    {
-      'namaMenu': 'Soto Kerbau',
-      'jumlah': '3',
-      'harga': 'Rp. 100.000',
-    },
   ];
 
   @override

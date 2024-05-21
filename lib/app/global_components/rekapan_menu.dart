@@ -25,148 +25,132 @@ class RekapanCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 180,
-      child: Card(
-        color: background,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    nama,
-                    style: GoogleFonts.nunito(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  RichText(
-                    text: TextSpan(children: [
-                      TextSpan(
-                        text: 'Item ',
-                        style: GoogleFonts.nunito(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xff696969),
-                        ),
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(Routes.DETAIL);
+      },
+      child: Container(
+        width: double.infinity,
+        height: 180,
+        child: Card(
+          color: background,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      nama,
+                      style: GoogleFonts.nunito(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
                       ),
-                      TextSpan(
-                        text: item,
-                        style: GoogleFonts.nunito(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    RichText(
+                      text: TextSpan(children: [
+                        TextSpan(
+                          text: 'Item ',
+                          style: GoogleFonts.nunito(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xff696969),
+                          ),
                         ),
-                      )
-                    ]),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Row(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Get.toNamed(Routes.DETAIL_PESANAN);
-                              },
-                              child: Text(
-                                "Lihat detail",
-                                style: GoogleFonts.poppins(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xffACACAC),
-                                ),
+                        TextSpan(
+                          text: item,
+                          style: GoogleFonts.nunito(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
+                        )
+                      ]),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Row(
+                            children: [],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Spacer(),
+              const Divider(),
+              // aa
+              Padding(
+                padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                child: Row(
+                  children: [
+                    pembayaran == 'Tunai'
+                        ? const Icon(
+                            Icons.payment,
+                            color: Color(0xffACACAC),
+                            size: 12,
+                          )
+                        : const Icon(
+                            Icons.qr_code,
+                            color: Color(0xffACACAC),
+                            size: 12,
+                          ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      // metode pmbayaran | tempatMakan
+                      "$pembayaran | $tempatMakan",
+                      style: GoogleFonts.poppins(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: RichText(
+                          text: TextSpan(children: [
+                            TextSpan(
+                              text: 'Total pesanan: ',
+                              style: GoogleFonts.nunito(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
                               ),
                             ),
-                            const SizedBox(
-                              width: 4,
-                            ),
-                            const Icon(
-                              Icons.arrow_forward_ios_outlined,
-                              color: Color(0xffACACAC),
-                              size: 12,
-                            ),
-                          ],
+                            TextSpan(
+                              text: totalPesanan,
+                              style: GoogleFonts.nunito(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xffD17763),
+                              ),
+                            )
+                          ]),
                         ),
                       ),
-                    ],
-                  ),
-                ],
+                    )
+                  ],
+                ),
               ),
-            ),
-            const Divider(),
-            // aa
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                children: [
-                  pembayaran == 'Tunai'
-                      ? const Icon(
-                          Icons.payment,
-                          color: Color(0xffACACAC),
-                          size: 12,
-                        )
-                      : const Icon(
-                          Icons.qr_code,
-                          color: Color(0xffACACAC),
-                          size: 12,
-                        ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    // metode pmbayaran | tempatMakan
-                    "$pembayaran | $tempatMakan",
-                    style: GoogleFonts.poppins(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                            text: 'Total pesanan: ',
-                            style: GoogleFonts.nunito(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white,
-                            ),
-                          ),
-                          TextSpan(
-                            text: totalPesanan,
-                            style: GoogleFonts.nunito(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xffD17763),
-                            ),
-                          )
-                        ]),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

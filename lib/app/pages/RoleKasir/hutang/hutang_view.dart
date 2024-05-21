@@ -3,6 +3,7 @@ import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/hutang/hutang_controller.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:angkringan_omaci_ta/app/global_components/appbar_back.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
@@ -54,7 +55,60 @@ class HutangView extends StatelessWidget {
                                       ),
                                     ),
                                     child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
+                                        Text(
+                                          "Nomor Telepon",
+                                          style: GoogleFonts.nunito(
+                                            textStyle: const TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600,
+                                              color: white,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 6,
+                                        ),
+                                        TextField(
+                                          inputFormatters: [
+                                            FilteringTextInputFormatter
+                                                .digitsOnly,
+                                          ],
+                                          decoration: InputDecoration(
+                                            hintText: 'Nomor Telepon',
+                                            hintStyle: const TextStyle(
+                                                color: grey, fontSize: 14),
+                                            filled: true,
+                                            fillColor: textFieldBackground,
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              borderSide: BorderSide.none,
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              borderSide: const BorderSide(
+                                                  color: primaryAccent,
+                                                  width: 1.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              borderSide: const BorderSide(
+                                                  color: primaryAccent,
+                                                  width: 1.0),
+                                            ),
+                                          ),
+                                          style: const TextStyle(
+                                            color: white,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
                                         Padding(
                                           padding: EdgeInsets.only(
                                               top: 10, left: 10, bottom: 5),
