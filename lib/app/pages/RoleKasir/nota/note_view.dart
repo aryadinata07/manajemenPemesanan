@@ -287,6 +287,7 @@ class NotaView extends StatelessWidget {
                               maxLines: null,
                               readOnly: true,
                               decoration: InputDecoration(
+                                filled: true,
                                 fillColor: textFieldBackground,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(8.0),
