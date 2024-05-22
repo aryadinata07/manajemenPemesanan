@@ -104,7 +104,7 @@ class TopOrderView extends StatelessWidget {
                                 ),
                               ),
                               style: const TextStyle(
-                                color: grey,
+                                color: white,
                               ),
                             ),
                           ),

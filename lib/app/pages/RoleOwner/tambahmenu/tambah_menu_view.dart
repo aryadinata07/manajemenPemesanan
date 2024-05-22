@@ -1,3 +1,4 @@
+import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/tambahmenu/tambah_menu_controller.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -27,11 +28,7 @@ class TambahMenuView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppbarBack(
-                          context: context,
-                          title: "Detail Pesanan",
-                          goTo: Routes.MENU_RESTORAN,
-                        ),
+                        const AppbarView(title: "Tambah Menu"),
                         Padding(
                           padding: const EdgeInsets.only(top: 22),
                           child: Column(
@@ -84,16 +81,16 @@ class TambahMenuView extends StatelessWidget {
                                           color: white, fontSize: 16),
                                       isExpanded: true,
                                       items: <String>[
-                                        'Jajan',
+                                        'Makanan',
                                         'Minuman',
-                                        'Makanan'
+                                        'Jajanan'
                                       ].map<DropdownMenuItem<String>>(
                                           (String value) {
                                         return DropdownMenuItem<String>(
                                           value: value,
                                           child: Text(
                                             value,
-                                            style: const TextStyle(color: grey),
+                                            style: const TextStyle(color: white),
                                           ),
                                         );
                                       }).toList(),
@@ -120,8 +117,12 @@ class TambahMenuView extends StatelessWidget {
                               SizedBox(
                                 height: 50,
                                 child: TextField(
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(
+                                        controller.maxLength),
+                                  ],
                                   decoration: InputDecoration(
-                                    hintText: 'Nama Menu',
+                                    hintText: 'Contoh: Nasi Goreng',
                                     hintStyle: const TextStyle(
                                         color: grey, fontSize: 14),
                                     filled: true,
@@ -147,12 +148,19 @@ class TambahMenuView extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(
+                                height: 5,
+                              ),
+                              Obx(() => Text(
+                                '${controller.currentText.value.length} / ${controller.maxLength}',
+                                style: const TextStyle(color: Colors.grey),
+                              )),
+                              const SizedBox(
                                 height: 20,
                               ),
                               RichText(
                                 text: TextSpan(children: [
                                   TextSpan(
-                                    text: 'Foto Resep ',
+                                    text: 'Foto Menu ',
                                     style: GoogleFonts.nunito(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
@@ -193,7 +201,7 @@ class TambahMenuView extends StatelessWidget {
                                 height: 20,
                               ),
                               Text(
-                                "Harga",
+                                "Harga Menu",
                                 style: GoogleFonts.nunito(
                                   textStyle: const TextStyle(
                                     fontSize: 14,
@@ -210,7 +218,7 @@ class TambahMenuView extends StatelessWidget {
                                   FilteringTextInputFormatter.digitsOnly,
                                 ],
                                 decoration: InputDecoration(
-                                  hintText: 'Harga',
+                                  hintText: 'Contoh: 10000',
                                   hintStyle: const TextStyle(
                                       color: grey, fontSize: 14),
                                   filled: true,

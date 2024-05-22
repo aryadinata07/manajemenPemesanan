@@ -1,3 +1,4 @@
+import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/editmenu/edit_menu_controller.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/tambahmenu/tambah_menu_controller.dart';
 import 'package:flutter/services.dart';
@@ -28,11 +29,7 @@ class EditMenuView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppbarBack(
-                          context: context,
-                          title: "Edit Menu",
-                          goTo: Routes.MENU_RESTORAN,
-                        ),
+                        const AppbarView(title: "Edit Menu"),
                         Padding(
                           padding: const EdgeInsets.only(top: 22),
                           child: Column(
@@ -94,7 +91,7 @@ class EditMenuView extends StatelessWidget {
                                           value: value,
                                           child: Text(
                                             value,
-                                            style: const TextStyle(color: grey),
+                                            style: const TextStyle(color: white),
                                           ),
                                         );
                                       }).toList(),
@@ -125,7 +122,6 @@ class EditMenuView extends StatelessWidget {
                                 ],
                                 onChanged: controller.updateText,
                                 decoration: InputDecoration(
-                                  hintText: 'Nama pelanggan',
                                   hintStyle: const TextStyle(
                                       color: grey, fontSize: 14),
                                   filled: true,
@@ -162,7 +158,7 @@ class EditMenuView extends StatelessWidget {
                               RichText(
                                 text: TextSpan(children: [
                                   TextSpan(
-                                    text: 'Foto Resep ',
+                                    text: 'Foto Menu ',
                                     style: GoogleFonts.nunito(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
@@ -203,7 +199,7 @@ class EditMenuView extends StatelessWidget {
                                 height: 20,
                               ),
                               Text(
-                                "Harga",
+                                "Harga Menu",
                                 style: GoogleFonts.nunito(
                                   textStyle: const TextStyle(
                                     fontSize: 14,
@@ -220,7 +216,6 @@ class EditMenuView extends StatelessWidget {
                                   FilteringTextInputFormatter.digitsOnly,
                                 ],
                                 decoration: InputDecoration(
-                                  hintText: 'Harga',
                                   hintStyle: const TextStyle(
                                       color: grey, fontSize: 14),
                                   filled: true,

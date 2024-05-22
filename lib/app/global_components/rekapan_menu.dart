@@ -27,9 +27,9 @@ class RekapanCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.DETAIL);
+        Get.toNamed(Routes.DETAIL_PESANAN);
       },
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         height: 180,
         child: Card(
@@ -78,24 +78,21 @@ class RekapanCard extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    Row(
+                    const Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Row(
-                            children: [],
-                          ),
+                          padding: EdgeInsets.only(top: 20),
                         ),
                       ],
                     ),
                   ],
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               const Divider(),
               // aa
               Padding(
-                padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
                 child: Row(
                   children: [
                     pembayaran == 'Tunai'
@@ -139,7 +136,7 @@ class RekapanCard extends StatelessWidget {
                               style: GoogleFonts.nunito(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: Color(0xffD17763),
+                                color: const Color(0xffD17763),
                               ),
                             )
                           ]),

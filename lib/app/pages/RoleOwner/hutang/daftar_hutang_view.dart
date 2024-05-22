@@ -57,7 +57,7 @@ class DaftarHutangView extends StatelessWidget {
                                     ),
                                     style: const TextStyle(
                                       color:
-                                          grey, // Set the color of the entered value to grey
+                                          white, // Set the color of the entered value to grey
                                     ),
                                   ),
                                 )),

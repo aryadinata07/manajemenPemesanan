@@ -332,12 +332,14 @@ class HutangView extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 5),
+                            const SizedBox(height: 5),
                             TextField(
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               readOnly: true,
                               decoration: InputDecoration(
+                                hintText: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+                                filled: true,
                                 fillColor: textFieldBackground,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(8.0),

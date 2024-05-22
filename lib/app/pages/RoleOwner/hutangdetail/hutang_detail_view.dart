@@ -30,7 +30,7 @@ class HutangDetailView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppbarView(title: "Detail Hutang"),
+                        const AppbarView(title: "Detail Hutang"),
                         Padding(
                           padding: const EdgeInsets.only(top: 23, bottom: 10),
                           child: Column(
@@ -52,9 +52,9 @@ class HutangDetailView extends StatelessWidget {
                               TextField(
                                 readOnly: true,
                                 decoration: InputDecoration(
-                                  hintText: 'Nomor Telepon',
+                                  hintText: '082372964723',
                                   hintStyle: const TextStyle(
-                                      color: grey, fontSize: 14),
+                                      color: white, fontSize: 14),
                                   filled: true,
                                   fillColor: textFieldBackground,
                                   border: OutlineInputBorder(
@@ -91,7 +91,7 @@ class HutangDetailView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                           top: 10, left: 10, bottom: 5),
                                       child: Row(
                                         children: [
@@ -316,30 +316,34 @@ class HutangDetailView extends StatelessWidget {
                         const SizedBox(
                           height: 5,
                         ),
-                        TextField(
-                          keyboardType: TextInputType.multiline,
-                          maxLines: null,
-                          readOnly: true,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: textFieldBackground,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                              borderSide: BorderSide.none,
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: TextField(
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            readOnly: true,
+                            decoration: InputDecoration(
+                              hintText: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+                              filled: true,
+                              fillColor: textFieldBackground,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                                borderSide: BorderSide.none,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                                borderSide: const BorderSide(
+                                    color: Color(0xFF8DD5C0), width: 1.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                                borderSide: const BorderSide(
+                                    color: Color(0xFF8DD5C0), width: 1.0),
+                              ),
                             ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                              borderSide: const BorderSide(
-                                  color: Color(0xFF8DD5C0), width: 1.0),
+                            style: const TextStyle(
+                              color: grey,
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                              borderSide: const BorderSide(
-                                  color: Color(0xFF8DD5C0), width: 1.0),
-                            ),
-                          ),
-                          style: const TextStyle(
-                            color: grey,
                           ),
                         ),
                       ],

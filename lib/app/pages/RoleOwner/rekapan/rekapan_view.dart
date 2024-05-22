@@ -4,11 +4,8 @@ import 'package:angkringan_omaci_ta/app/global_components/rekapan_menu.dart';
 import 'package:angkringan_omaci_ta/app/global_components/sidebar/sidebar_view.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/rekapan/rekapan_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class RekapanView extends StatelessWidget {
   const RekapanView({super.key});
@@ -24,15 +21,16 @@ class RekapanView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomAppBar(
-                    context: context,
-                    title: 'Rekapan Pemesanan',
-                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
                     child: Column(
                       children: [
+                        CustomAppBar(
+                          context: context,
+                          title: 'Rekapan Pemesanan',
+                        ),
+                        const SizedBox(height: 20,),
                         SizedBox(
                           height: 60,
                           child: TextField(
@@ -69,7 +67,7 @@ class RekapanView extends StatelessWidget {
                           height: 60,
                           child: TextField(
                             decoration: InputDecoration(
-                              hintText: 'Cari rekapan pesanan',
+                              hintText: 'Cari pesanan',
                               hintStyle: const TextStyle(
                                 color: grey,
                               ),
@@ -85,7 +83,7 @@ class RekapanView extends StatelessWidget {
                               ),
                             ),
                             style: const TextStyle(
-                              color: grey,
+                              color: white,
                             ),
                           ),
                         ),

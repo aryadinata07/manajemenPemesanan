@@ -45,10 +45,10 @@ class DetailView extends StatelessWidget {
                                   ),
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.only(
+                                        padding: const EdgeInsets.only(
                                             top: 10, left: 10, bottom: 5),
                                         child: Row(
                                           children: [
@@ -80,7 +80,7 @@ class DetailView extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                                      Divider(),
+                                      const Divider(),
                                       Column(
                                         children: [
                                           Padding(
@@ -98,21 +98,21 @@ class DetailView extends StatelessWidget {
                                                       child: Container(
                                                         child: Row(
                                                           crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                           children: [
                                                             Container(
                                                               height: 92,
                                                               width: 92,
                                                               decoration:
-                                                                  const BoxDecoration(
+                                                              const BoxDecoration(
                                                                 color: white,
                                                                 borderRadius:
-                                                                    BorderRadius
-                                                                        .all(
+                                                                BorderRadius
+                                                                    .all(
                                                                   Radius
                                                                       .circular(
-                                                                          8),
+                                                                      8),
                                                                 ),
                                                               ),
                                                             ),
@@ -121,24 +121,24 @@ class DetailView extends StatelessWidget {
                                                             ),
                                                             Column(
                                                               crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
+                                                              CrossAxisAlignment
+                                                                  .start,
                                                               children: [
                                                                 Text(
                                                                   item[
-                                                                      'namaMenu']!,
+                                                                  'namaMenu']!,
                                                                   style:
-                                                                      GoogleFonts
-                                                                          .nunito(
+                                                                  GoogleFonts
+                                                                      .nunito(
                                                                     textStyle:
-                                                                        const TextStyle(
+                                                                    const TextStyle(
                                                                       fontSize:
-                                                                          16,
+                                                                      16,
                                                                       fontWeight:
-                                                                          FontWeight
-                                                                              .w700,
+                                                                      FontWeight
+                                                                          .w700,
                                                                       color:
-                                                                          white,
+                                                                      white,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -147,17 +147,17 @@ class DetailView extends StatelessWidget {
                                                                 ),
                                                                 Text(
                                                                   item[
-                                                                      'harga']!,
+                                                                  'harga']!,
                                                                   style:
-                                                                      GoogleFonts
-                                                                          .nunito(
+                                                                  GoogleFonts
+                                                                      .nunito(
                                                                     textStyle:
-                                                                        const TextStyle(
+                                                                    const TextStyle(
                                                                       fontSize:
-                                                                          16,
+                                                                      16,
                                                                       fontWeight:
-                                                                          FontWeight
-                                                                              .w700,
+                                                                      FontWeight
+                                                                          .w700,
                                                                       color: Color(
                                                                           0xffD17763),
                                                                     ),
@@ -171,11 +171,11 @@ class DetailView extends StatelessWidget {
                                                               style: GoogleFonts
                                                                   .nunito(
                                                                 textStyle:
-                                                                    const TextStyle(
+                                                                const TextStyle(
                                                                   fontSize: 16,
                                                                   fontWeight:
-                                                                      FontWeight
-                                                                          .w700,
+                                                                  FontWeight
+                                                                      .w700,
                                                                   color: white,
                                                                 ),
                                                               ),
@@ -211,17 +211,17 @@ class DetailView extends StatelessWidget {
                                                 Expanded(
                                                   child: Align(
                                                     alignment:
-                                                        Alignment.centerRight,
+                                                    Alignment.centerRight,
                                                     child: RichText(
                                                       text: TextSpan(children: [
                                                         TextSpan(
                                                           text:
-                                                              'Total pesanan: ',
+                                                          'Total pesanan: ',
                                                           style: GoogleFonts
                                                               .nunito(
                                                             fontSize: 10,
                                                             fontWeight:
-                                                                FontWeight.w400,
+                                                            FontWeight.w400,
                                                             color: Colors.white,
                                                           ),
                                                         ),
@@ -231,8 +231,8 @@ class DetailView extends StatelessWidget {
                                                               .nunito(
                                                             fontSize: 16,
                                                             fontWeight:
-                                                                FontWeight.w700,
-                                                            color: Color(
+                                                            FontWeight.w700,
+                                                            color: const Color(
                                                                 0xffD17763),
                                                           ),
                                                         )
@@ -245,49 +245,58 @@ class DetailView extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                      Text(
-                                        "Notes",
-                                        style: GoogleFonts.nunito(
-                                          textStyle: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600,
-                                            color: white,
-                                          ),
-                                        ),
-                                      ),
-                                      TextField(
-                                        keyboardType: TextInputType.multiline,
-                                        maxLines: null,
-                                        readOnly: true,
-                                        decoration: InputDecoration(
-                                          fillColor: textFieldBackground,
-                                          border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            borderSide: BorderSide.none,
-                                          ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            borderSide: const BorderSide(
-                                                color: Color(0xFF8DD5C0),
-                                                width: 1.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            borderSide: const BorderSide(
-                                                color: Color(0xFF8DD5C0),
-                                                width: 1.0),
-                                          ),
-                                        ),
-                                        style: const TextStyle(
-                                          color: grey,
-                                        ),
-                                      ),
+
                                     ],
                                   ),
-                                )
+
+                                ),
+                                const SizedBox(height: 20,),
+                                Text(
+                                  "Notes",
+                                  style: GoogleFonts.nunito(
+                                    textStyle: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: white,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 5,),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  child: TextField(
+                                    keyboardType: TextInputType.multiline,
+                                    maxLines: null,
+                                    readOnly: true,
+                                    decoration: InputDecoration(
+                                      hintText: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+                                      filled: true,
+                                      fillColor: textFieldBackground,
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                        BorderRadius.circular(8.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius:
+                                        BorderRadius.circular(8.0),
+                                        borderSide: const BorderSide(
+                                            color: Color(0xFF8DD5C0),
+                                            width: 1.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius:
+                                        BorderRadius.circular(8.0),
+                                        borderSide: const BorderSide(
+                                            color: Color(0xFF8DD5C0),
+                                            width: 1.0),
+                                      ),
+                                    ),
+                                    style: const TextStyle(
+                                      color: grey,
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
