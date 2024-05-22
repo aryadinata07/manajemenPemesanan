@@ -32,7 +32,7 @@ class HutangDetailView extends StatelessWidget {
                       children: [
                         AppbarView(title: "Detail Hutang"),
                         Padding(
-                          padding: const EdgeInsets.only(top: 23),
+                          padding: const EdgeInsets.only(top: 23, bottom: 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -313,11 +313,15 @@ class HutangDetailView extends StatelessWidget {
                             ),
                           ),
                         ),
+                        const SizedBox(
+                          height: 5,
+                        ),
                         TextField(
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
                           readOnly: true,
                           decoration: InputDecoration(
+                            filled: true,
                             fillColor: textFieldBackground,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8.0),
