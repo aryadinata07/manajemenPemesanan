@@ -1,5 +1,3 @@
-// pesanan_view.dart
-
 import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
 import 'package:angkringan_omaci_ta/app/global_components/appbar_back.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
@@ -23,14 +21,16 @@ class HutangDetailView extends StatelessWidget {
         child: GetBuilder<HutangDetailController>(
           builder: (controller) {
             return SafeArea(
-              child: ListView(
+              child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: AppbarView(title: "Detail Hutang"),
+                  ),
+                  Expanded(
+                    child: ListView(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       children: [
-                        const AppbarView(title: "Detail Hutang"),
                         Padding(
                           padding: const EdgeInsets.only(top: 23, bottom: 10),
                           child: Column(
@@ -123,7 +123,7 @@ class HutangDetailView extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                    Divider(),
+                                    const Divider(),
                                     Column(
                                       children: [
                                         Padding(
@@ -138,91 +138,83 @@ class HutangDetailView extends StatelessWidget {
                                                     padding: const EdgeInsets
                                                         .symmetric(
                                                         vertical: 10),
-                                                    child: Container(
-                                                      child: Row(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Container(
-                                                            height: 92,
-                                                            width: 92,
-                                                            decoration:
-                                                                const BoxDecoration(
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Container(
+                                                          height: 92,
+                                                          width: 92,
+                                                          decoration:
+                                                              const BoxDecoration(
+                                                            color: white,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .all(
+                                                              Radius.circular(
+                                                                  8),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 10,
+                                                        ),
+                                                        Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              item['namaMenu']!,
+                                                              style: GoogleFonts
+                                                                  .nunito(
+                                                                textStyle:
+                                                                    const TextStyle(
+                                                                  fontSize: 16,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  color: white,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            const SizedBox(
+                                                              height: 4,
+                                                            ),
+                                                            Text(
+                                                              item['harga']!,
+                                                              style: GoogleFonts
+                                                                  .nunito(
+                                                                textStyle:
+                                                                    const TextStyle(
+                                                                  fontSize: 16,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  color: Color(
+                                                                      0xffD17763),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        const Spacer(),
+                                                        Text(
+                                                          "x ${item['jumlah']}",
+                                                          style: GoogleFonts
+                                                              .nunito(
+                                                            textStyle:
+                                                                const TextStyle(
+                                                              fontSize: 16,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
                                                               color: white,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .all(
-                                                                Radius.circular(
-                                                                    8),
-                                                              ),
                                                             ),
                                                           ),
-                                                          const SizedBox(
-                                                            width: 10,
-                                                          ),
-                                                          Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                item[
-                                                                    'namaMenu']!,
-                                                                style:
-                                                                    GoogleFonts
-                                                                        .nunito(
-                                                                  textStyle:
-                                                                      const TextStyle(
-                                                                    fontSize:
-                                                                        16,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w700,
-                                                                    color:
-                                                                        white,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              const SizedBox(
-                                                                height: 4,
-                                                              ),
-                                                              Text(
-                                                                item['harga']!,
-                                                                style:
-                                                                    GoogleFonts
-                                                                        .nunito(
-                                                                  textStyle:
-                                                                      const TextStyle(
-                                                                    fontSize:
-                                                                        16,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w700,
-                                                                    color: Color(
-                                                                        0xffD17763),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                          const Spacer(),
-                                                          Text(
-                                                            "x ${item['jumlah']}",
-                                                            style: GoogleFonts
-                                                                .nunito(
-                                                              textStyle:
-                                                                  const TextStyle(
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                                color: white,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
                                                   const Divider(
@@ -323,7 +315,8 @@ class HutangDetailView extends StatelessWidget {
                             maxLines: null,
                             readOnly: true,
                             decoration: InputDecoration(
-                              hintText: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+                              hintText:
+                                  "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
                               filled: true,
                               fillColor: textFieldBackground,
                               border: OutlineInputBorder(
