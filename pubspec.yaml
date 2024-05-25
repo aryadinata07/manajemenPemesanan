@@ -37,6 +37,7 @@ dependencies:
   get: ^4.6.6
   google_fonts: ^6.2.1
   shared_preferences:
+  image_picker:
 
 
 dev_dependencies:

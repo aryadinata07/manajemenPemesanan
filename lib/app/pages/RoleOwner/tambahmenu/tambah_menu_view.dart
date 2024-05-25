@@ -1,10 +1,12 @@
 import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
+import 'package:angkringan_omaci_ta/app/global_components/textfiled_components.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/tambahmenu/tambah_menu_controller.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:io';
 import 'package:angkringan_omaci_ta/app/global_components/appbar_back.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
@@ -114,39 +116,7 @@ class TambahMenuView extends StatelessWidget {
                               const SizedBox(
                                 height: 6,
                               ),
-                              SizedBox(
-                                height: 50,
-                                child: TextField(
-                                  inputFormatters: [
-                                    LengthLimitingTextInputFormatter(
-                                        controller.maxLength),
-                                  ],
-                                  decoration: InputDecoration(
-                                    hintText: 'Contoh: Nasi Goreng',
-                                    hintStyle: const TextStyle(
-                                        color: grey, fontSize: 14),
-                                    filled: true,
-                                    fillColor: textFieldBackground,
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: const BorderSide(
-                                          color: Color(0xFF8DD5C0), width: 1.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: const BorderSide(
-                                          color: Color(0xFF8DD5C0), width: 1.0),
-                                    ),
-                                  ),
-                                  style: const TextStyle(
-                                    color: grey,
-                                  ),
-                                ),
-                              ),
+                              CustomTextField(maxLength: controller.maxLength,onChanged: controller.updateText),
                               const SizedBox(
                                 height: 5,
                               ),
@@ -172,7 +142,7 @@ class TambahMenuView extends StatelessWidget {
                                     style: GoogleFonts.nunito(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff7A7A7A),
+                                      color: const Color(0xff7A7A7A),
                                     ),
                                   )
                                 ]),
@@ -180,22 +150,50 @@ class TambahMenuView extends StatelessWidget {
                               const SizedBox(
                                 height: 4,
                               ),
-                              Container(
-                                height: 100,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xff2E2E2E),
-                                  border: Border.all(
-                                    color: const Color(0xFF8DD5C0),
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: const Icon(
-                                  Icons.add,
-                                  color: Color(0xff5BA48F),
-                                  size: 50,
-                                ),
+                              GestureDetector(
+                                onTap: () async {
+                                  await controller.pickImage();
+                                },
+                                child: Obx(() {
+                                  if (controller.selectedImagePath.value.isEmpty) {
+                                    return Container(
+                                      height: 100,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xff2E2E2E),
+                                        border: Border.all(
+                                          color: const Color(0xFF8DD5C0),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: const Icon(
+                                        Icons.add,
+                                        color: Color(0xff5BA48F),
+                                        size: 50,
+                                      ),
+                                    );
+                                  } else {
+                                    return Container(
+                                      height: 100,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xff2E2E2E),
+                                        border: Border.all(
+                                          color: const Color(0xFF8DD5C0),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                        image: DecorationImage(
+                                          image: FileImage(
+                                            File(controller.selectedImagePath.value),
+                                          ),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                }),
                               ),
                               const SizedBox(
                                 height: 20,

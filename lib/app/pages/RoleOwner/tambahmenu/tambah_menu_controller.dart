@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class TambahMenuController extends GetxController {
   var setCategory = ''.obs;
@@ -11,6 +13,16 @@ class TambahMenuController extends GetxController {
   void updateText(String text) {
     if (text.length <= maxLength) {
       currentText.value = text;
+    }
+  }
+
+  var selectedImagePath = ''.obs;
+
+  Future<void> pickImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      selectedImagePath.value = image.path;
     }
   }
 
