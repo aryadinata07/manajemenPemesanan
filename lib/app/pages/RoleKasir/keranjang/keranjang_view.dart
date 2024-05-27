@@ -1,5 +1,7 @@
 import 'package:angkringan_omaci_ta/app/global_components/add_remove_button.dart';
 import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
+import 'package:angkringan_omaci_ta/app/global_components/note_textfield_component.dart';
+import 'package:angkringan_omaci_ta/app/global_components/pesanan_item.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +10,7 @@ import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleKasir/keranjang/keranjang_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 class KeranjangView extends StatelessWidget {
   const KeranjangView({super.key});
@@ -70,18 +73,18 @@ class KeranjangView extends StatelessWidget {
                                       fillColor: textFieldBackground,
                                       border: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                        BorderRadius.circular(8.0),
                                         borderSide: BorderSide.none,
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                        BorderRadius.circular(8.0),
                                         borderSide: const BorderSide(
                                             color: primaryAccent, width: 1.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                        BorderRadius.circular(8.0),
                                         borderSide: const BorderSide(
                                             color: primaryAccent, width: 1.0),
                                       ),
@@ -94,10 +97,10 @@ class KeranjangView extends StatelessWidget {
                                     height: 5,
                                   ),
                                   Obx(() => Text(
-                                        '${controller.currentText.value.length} / ${controller.maxLength}',
-                                        style:
-                                            const TextStyle(color: Colors.grey),
-                                      )),
+                                    '${controller.currentText.value.length} / ${controller.maxLength}',
+                                    style:
+                                    const TextStyle(color: Colors.grey),
+                                  )),
                                   const SizedBox(
                                     height: 10,
                                   ),
@@ -133,9 +136,9 @@ class KeranjangView extends StatelessWidget {
                                           child: DropdownButton<String>(
                                             dropdownColor: textFieldBackground,
                                             borderRadius:
-                                                BorderRadius.circular(9.0),
+                                            BorderRadius.circular(9.0),
                                             value: controller.setCategory.value
-                                                    .isNotEmpty
+                                                .isNotEmpty
                                                 ? controller.setCategory.value
                                                 : 'Bungkus',
                                             onChanged: (String? newValue) {
@@ -153,16 +156,16 @@ class KeranjangView extends StatelessWidget {
                                               'Bungkus',
                                               'Makan ditempat',
                                             ].map<DropdownMenuItem<String>>(
-                                                (String value) {
-                                              return DropdownMenuItem<String>(
-                                                value: value,
-                                                child: Text(
-                                                  value,
-                                                  style: const TextStyle(
-                                                      color: white),
-                                                ),
-                                              );
-                                            }).toList(),
+                                                    (String value) {
+                                                  return DropdownMenuItem<String>(
+                                                    value: value,
+                                                    child: Text(
+                                                      value,
+                                                      style: const TextStyle(
+                                                          color: white),
+                                                    ),
+                                                  );
+                                                }).toList(),
                                           ),
                                         ),
                                       ),
@@ -171,51 +174,9 @@ class KeranjangView extends StatelessWidget {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  Text(
-                                    "Notes",
-                                    style: GoogleFonts.nunito(
-                                      textStyle: const TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600,
-                                        color: white,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 6,
-                                  ),
-                                  SizedBox(
-                                    child: TextField(
-                                      keyboardType: TextInputType.multiline,
-                                      maxLines: null,
-                                      decoration: InputDecoration(
-                                        hintText: 'Masukan notes',
-                                        hintStyle: const TextStyle(
-                                            color: grey, fontSize: 14),
-                                        filled: true,
-                                        fillColor: textFieldBackground,
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: BorderSide.none,
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: const BorderSide(
-                                              color: primaryAccent, width: 1.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          borderSide: const BorderSide(
-                                              color: primaryAccent, width: 1.0),
-                                        ),
-                                      ),
-                                      style: const TextStyle(
-                                        color: white,
-                                      ),
-                                    ),
+                                  const NotesTextfieldComponent(
+                                    readOnly: false,
+                                    hintText: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
                                   ),
                                   const SizedBox(
                                     height: 20,
@@ -234,125 +195,35 @@ class KeranjangView extends StatelessWidget {
                                           padding: const EdgeInsets.only(
                                               top: 10, left: 10, right: 10),
                                           child: Column(
-                                            children:
-                                                controller.pesanan.map((item) {
+                                            children: controller.pesanan
+                                                .map((item) {
                                               int index = controller.pesanan
                                                   .indexOf(item);
-                                              return Column(
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        vertical: 10),
-                                                    child: Container(
-                                                      child: Stack(
-                                                        children: [
-                                                          Row(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Container(
-                                                                height: 92,
-                                                                width: 92,
-                                                                decoration:
-                                                                    const BoxDecoration(
-                                                                  color: white,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .all(
-                                                                    Radius
-                                                                        .circular(
-                                                                            8),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              const SizedBox(
-                                                                width: 10,
-                                                              ),
-                                                              Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    item['namaMenu']
-                                                                        as String,
-                                                                    style: GoogleFonts
-                                                                        .nunito(
-                                                                      textStyle:
-                                                                          const TextStyle(
-                                                                        fontSize:
-                                                                            16,
-                                                                        fontWeight:
-                                                                            FontWeight.w700,
-                                                                        color:
-                                                                            white,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  const SizedBox(
-                                                                    height: 4,
-                                                                  ),
-                                                                  Text(
-                                                                    "Rp ${controller.formatCurrency(int.parse(item['harga'] as String))}",
-                                                                    style: GoogleFonts
-                                                                        .nunito(
-                                                                      textStyle:
-                                                                          const TextStyle(
-                                                                        fontSize:
-                                                                            16,
-                                                                        fontWeight:
-                                                                            FontWeight.w700,
-                                                                        color: Color(
-                                                                            0xffD17763),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              const Spacer(),
-                                                              GestureDetector(
-                                                                child:
-                                                                    const Icon(
-                                                                  Icons.close,
-                                                                  color: Color(
-                                                                      0xff696969),
-                                                                  size: 18,
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                          Positioned(
-                                                            bottom: 0,
-                                                            right: 0,
-                                                            child: AddButton(
-                                                              initialValue:
-                                                                  item['item']
-                                                                      as int,
-                                                              onQuantityChanged:
-                                                                  (quantity) {
-                                                                controller
-                                                                    .updateItemQuantity(
-                                                                        index,
-                                                                        quantity);
-                                                              },
-                                                              onTotalUpdated:
-                                                                  () {
-                                                                controller
-                                                                    .hitungTotalHarga();
-                                                              },
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  const Divider(
-                                                    color: Color(0xffACACAC),
-                                                    thickness: 1,
-                                                  ),
-                                                ],
+                                              return PesananItem(
+                                                namaMenu:
+                                                item['namaMenu'] as String,
+                                                harga: int.parse(
+                                                    item['harga'] as String),
+                                                jumlah:
+                                                item['item'] as int,
+                                                formattedHarga: controller
+                                                    .formatCurrency(
+                                                    int.parse(item[
+                                                    'harga'] as String)),
+                                                onDelete: () {
+                                                  controller.pesanan.removeAt(
+                                                      index);
+                                                  controller.hitungTotalHarga();
+                                                  controller.update();
+                                                },
+                                                onQuantityChanged:
+                                                    (quantity) {
+                                                  controller.updateItemQuantity(
+                                                      index, quantity);
+                                                },
+                                                onTotalUpdated: () {
+                                                  controller.hitungTotalHarga();
+                                                },
                                               );
                                             }).toList(),
                                           ),

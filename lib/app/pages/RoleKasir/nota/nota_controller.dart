@@ -41,6 +41,12 @@ class NotaController extends GetxController {
     return formatted;
   }
 
+  void updateItemQuantity(int index, int quantity) {
+    pesanan[index]['item'] = quantity;
+    hitungTotalHarga();
+    update();
+  }
+
   @override
   void onInit() {
     super.onInit();
