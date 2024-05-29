@@ -3,7 +3,13 @@ import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PopUpHapus extends StatelessWidget {
-  const PopUpHapus({super.key});
+
+  final Future<void> Function() onDelete;
+
+  const PopUpHapus({
+    super.key,
+    required this.onDelete,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +72,8 @@ class PopUpHapus extends StatelessWidget {
                     ),
                   ),
                 ),
-                onPressed: () {
+                onPressed: () async {
+                  await onDelete();
                   Navigator.pop(context);
                 },
                 child: Text(

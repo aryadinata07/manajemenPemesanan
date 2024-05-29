@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MenuRestoranView extends StatelessWidget {
-  const MenuRestoranView({super.key});
+   MenuRestoranView({super.key});
+  final controller = Get.put(MenuRestoranController());
 
   @override
   Widget build(BuildContext context) {
@@ -37,30 +38,34 @@ class MenuRestoranView extends StatelessWidget {
                           child: Row(
                             children: [
                               Expanded(
-                                  child: SizedBox(
-                                height: 60,
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: 'Cari Menu',
-                                    hintStyle: const TextStyle(
-                                      color: grey,
+                                child: SizedBox(
+                                  height: 60,
+                                  child: TextField(
+                                    onChanged: (value) {
+                                      controller.searchMenus(value);
+                                    },
+                                    decoration: InputDecoration(
+                                      hintText: 'Cari Menu',
+                                      hintStyle: const TextStyle(
+                                        color: grey,
+                                      ),
+                                      filled: true,
+                                      fillColor: textFieldBackground,
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      prefixIcon: const Icon(
+                                        Icons.search,
+                                        color: grey,
+                                      ),
                                     ),
-                                    filled: true,
-                                    fillColor: textFieldBackground,
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      borderSide: BorderSide.none,
+                                    style: const TextStyle(
+                                      color: white,
                                     ),
-                                    prefixIcon: const Icon(
-                                      Icons.search,
-                                      color: grey,
-                                    ),
-                                  ),
-                                  style: const TextStyle(
-                                    color: white,
                                   ),
                                 ),
-                              )),
+                              ),
                               const SizedBox(width: 10.0),
                               Container(
                                 height: 60,
@@ -84,19 +89,26 @@ class MenuRestoranView extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 10),
                           child: SizedBox(
                             height: MediaQuery.of(context).size.height - 220,
-                            child: ListView.builder(
-                              itemCount: controller.makanan.length,
-                              itemBuilder: (context, index) {
-                                final menu = controller.makanan[index];
-                                return MenuRestoranWidget(
-                                  name: menu['name']!,
-                                  category: menu['category']!,
-                                  price: menu['price']!,
-                                );
-                              },
-                            ),
+                            child: Obx(() {
+                              if (controller.isLoading.value) {
+                                return const Center(child: CircularProgressIndicator());
+                              }
+                              return ListView.builder(
+                                itemCount: controller.filteredMenus.length,
+                                itemBuilder: (context, index) {
+                                  final menu = controller.filteredMenus[index];
+                                  return MenuRestoranWidget(
+                                    name: menu.productName,
+                                    category: menu.productCategory,
+                                    price: controller.formatPrice(menu.productPrice),
+                                    productId: menu.productId,
+                                    productCategoryId: menu.productCategoryId,
+                                  );
+                                },
+                              );
+                            }),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),

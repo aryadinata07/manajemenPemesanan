@@ -35,7 +35,7 @@ class AppPages {
     // ROLE OWNER
     GetPage(
       name: Routes.MENU_RESTORAN,
-      page: () => const MenuRestoranView(),
+      page: () => MenuRestoranView(),
       binding: MenuRestoranBinding(),
     ),
     GetPage(

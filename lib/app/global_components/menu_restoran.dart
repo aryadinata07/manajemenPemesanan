@@ -1,24 +1,31 @@
 import 'package:angkringan_omaci_ta/app/global_components/popups/popup_hapus.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleOwner/menurestoran/menurestoran_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MenuRestoranWidget extends StatelessWidget {
   final String name;
   final String category;
   final String price;
+  final int productId;
+  final int productCategoryId;
 
   const MenuRestoranWidget({
-    Key? key,
+    super.key,
     required this.name,
     required this.category,
     required this.price,
-  }) : super(key: key);
+    required this.productId,
+    required this.productCategoryId,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    final MenuRestoranController controller = Get.find<MenuRestoranController>();
+    return SizedBox(
       height: 130,
       width: double.infinity,
       child: Card(
@@ -37,20 +44,20 @@ class MenuRestoranWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 14),
                     child: Container(
-                      height: 97,
-                      width: 125,
-                      decoration: const BoxDecoration(
-                        color: white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(4),
-                        ),
-                      ),
+                      // height: 97,
+                      // width: 125,
+                      // decoration: const BoxDecoration(
+                      //   color: white,
+                      //   borderRadius: BorderRadius.all(
+                      //     Radius.circular(4),
+                      //   ),
+                      // ),
                     ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         width: 170,
                         child: Text(
                           name,
@@ -138,15 +145,25 @@ class MenuRestoranWidget extends StatelessWidget {
                   onSelected: (String value) {
                     switch (value) {
                       case 'edit':
-                        Navigator.pushNamed(
-                          context,
+                        Get.toNamed(
                           Routes.EDIT_MENU,
+                          arguments: {
+                            'name': name,
+                            'category': category,
+                            'price': price,
+                            'productId': productId,
+                            'productCategoryId': productCategoryId
+                          },
                         );
                         break;
                       case 'delete':
                         showDialog(
                           context: context,
-                          builder: (context) => const PopUpHapus(),
+                          builder: (context) =>  PopUpHapus(
+                            onDelete: () async {
+                            await controller.deleteMenu(productId);
+                            controller.getMenus();
+                          },),
                         );
                         break;
                     }
