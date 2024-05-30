@@ -24,17 +24,17 @@ class DetailItem extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: 92,
-                width: 92,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
+              // Container(
+              //   height: 92,
+              //   width: 92,
+              //   decoration: const BoxDecoration(
+              //     color: Colors.white,
+              //     borderRadius: BorderRadius.all(
+              //       Radius.circular(8),
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

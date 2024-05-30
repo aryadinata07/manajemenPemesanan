@@ -6,21 +6,22 @@ import 'package:angkringan_omaci_ta/app/api/constant/url.dart';
 import 'package:get/get.dart';
 
 class ApiMenuController {
-  RxBool isSuccess = false.obs;
   RxBool isAddSuccess = false.obs;
   RxBool isUpdateSuccess = false.obs;
 
   Future getMenus() async {
-    try{
+    try {
       final response = await http.get(Uri.parse('$url/product'));
-      final jsonResponse = json.decode(response.body);
-      print("PRODUCT: $jsonResponse");
-      isSuccess = true.obs;
-      print("Get Success API CONTROLLER");
-      return MenusModel.fromJson(jsonResponse).data;
-    }catch(e){
-      isSuccess = false.obs;
-      print(e.toString());
+      if (response.statusCode == 200) {
+        final jsonResponse = json.decode(response.body);
+        print("PRODUCTS: $jsonResponse");
+        print("Get Menus Success API CONTROLLER");
+        return MenusModel.fromJson(jsonResponse).data;
+      } else {
+        print("Error: Server responded with status code ${response.statusCode}");
+      }
+    } catch (e) {
+      print('Error while fetching menus: $e');
     }
   }
 
@@ -42,37 +43,20 @@ class ApiMenuController {
 
       if (response.statusCode == 200) {
         final responseBody = json.decode(response.body);
-
         if (responseBody['status'] == 'success') {
           isAddSuccess.value = true;
-          print("Add Success API CONTROLLER");
+          print("Add Menu Success API CONTROLLER");
         } else {
           isAddSuccess.value = false;
-          print("Add failed: ${responseBody['message']}");
+          print("Add Menu failed: ${responseBody['message']}");
         }
       } else {
         isAddSuccess.value = false;
         print("Error: Server responded with status code ${response.statusCode}");
       }
     } catch (e) {
-      isAddSuccess = false.obs;
+      isAddSuccess.value = false;
       print('Error while adding menu: $e');
-    }
-  }
-
-  Future deleteMenu(int productId) async {
-    try {
-      await http.delete(
-        Uri.parse('$url/product/$productId'),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      );
-      isSuccess = true.obs;
-      print("Delete Success API CONTROLLER");
-    } catch (e) {
-      isSuccess = false.obs;
-      print('Error while deleting product: $e');
     }
   }
 
@@ -97,20 +81,33 @@ class ApiMenuController {
 
         if (responseBody['status'] == 'success') {
           isUpdateSuccess.value = true;
-          print("Update Success API CONTROLLER");
+          print("Update Menu Success API CONTROLLER");
         } else {
           isUpdateSuccess.value = false;
-          print("Update failed: ${responseBody['message']}");
+          print("Update Menu failed: ${responseBody['message']}");
         }
       } else {
         isUpdateSuccess.value = false;
         print("Error: Server responded with status code ${response.statusCode}");
       }
     } catch (e) {
-      isUpdateSuccess = false.obs;
+      isUpdateSuccess.value = false;
       print('Error while updating menu: $e');
     }
   }
 
+  Future deleteMenu(int productId) async {
+    try {
+      await http.delete(
+        Uri.parse('$url/product/$productId'),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+      print("Delete Menu Success API CONTROLLER");
+    } catch (e) {
+      print('Error while deleting product: $e');
+    }
+  }
 }
 

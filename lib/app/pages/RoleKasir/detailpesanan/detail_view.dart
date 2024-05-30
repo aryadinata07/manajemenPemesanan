@@ -9,11 +9,15 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DetailView extends StatelessWidget {
-  const DetailView({super.key});
+  final int orderId;
+
+  const DetailView({super.key, required this.orderId});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(DetailController());
+    final DetailController controller = Get.put(DetailController());
+
+    // Fetch order details by orderId
 
     return Scaffold(
       body: BackgroundWidget(
@@ -24,127 +28,143 @@ class DetailView extends StatelessWidget {
               Expanded(
                 child: GetBuilder<DetailController>(
                   builder: (controller) {
-                    return SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 22),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: double.infinity,
-                                    decoration: const BoxDecoration(
-                                      color: background,
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(8),
-                                      ),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 10, left: 10, bottom: 5),
-                                          child: Row(
-                                            children: [
-                                              const Icon(Icons.person_2_outlined, color: white, size: 15),
-                                              RichText(
-                                                text: TextSpan(
-                                                  children: [
-                                                    TextSpan(
-                                                      text: 'Nama Pelanggan: ',
-                                                      style: GoogleFonts.nunito(
-                                                        fontSize: 10,
-                                                        fontWeight: FontWeight.w400,
-                                                        color: white,
-                                                      ),
-                                                    ),
-                                                    TextSpan(
-                                                      text: " Tasya",
-                                                      style: GoogleFonts.nunito(
-                                                        fontSize: 12,
-                                                        fontWeight: FontWeight.w700,
-                                                        color: white,
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              )
-                                            ],
+                    return Obx(() {
+                      if (controller.isLoading.value) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }else if (controller.filteredOrders.isEmpty) {
+                        return const Center(
+                          child: Text("No order found"),
+                        );
+                      }
+                      else{
+                        controller.getOrderById(orderId);
+                        final order = controller.filteredOrders.first;
+                        return SingleChildScrollView(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 22),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width: double.infinity,
+                                        decoration: const BoxDecoration(
+                                          color: background,
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(8),
                                           ),
                                         ),
-                                        const Divider(),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                                          child: Column(
-                                            children: controller.pesanan.map<Widget>((item) {
-                                              return DetailItem(
-                                                namaMenu: item['namaMenu']!,
-                                                harga: item['harga']!,
-                                                jumlah: item['jumlah']!,
-                                              );
-                                            }).toList(),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
-                                          child: Row(
-                                            children: [
-                                              Text(
-                                                "Makan di tempat",
-                                                style: GoogleFonts.poppins(
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: Align(
-                                                  alignment: Alignment.centerRight,
-                                                  child: RichText(
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 10, left: 10, bottom: 5),
+                                              child: Row(
+                                                children: [
+                                                  const Icon(Icons.person_2_outlined, color: white, size: 15),
+                                                  RichText(
                                                     text: TextSpan(
                                                       children: [
                                                         TextSpan(
-                                                          text: 'Total pesanan: ',
+                                                          text: 'Nama Pelanggan: ',
                                                           style: GoogleFonts.nunito(
                                                             fontSize: 10,
                                                             fontWeight: FontWeight.w400,
-                                                            color: Colors.white,
+                                                            color: white,
                                                           ),
                                                         ),
                                                         TextSpan(
-                                                          text: "Rp 53.000",
+                                                          text: order.customerName,
                                                           style: GoogleFonts.nunito(
-                                                            fontSize: 16,
+                                                            fontSize: 12,
                                                             fontWeight: FontWeight.w700,
-                                                            color: const Color(0xffD17763),
+                                                            color: white,
                                                           ),
-                                                        ),
+                                                        )
                                                       ],
                                                     ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            const Divider(),
+                                            Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                                              child: Column(
+                                                children: order.products.map<Widget>((item) {
+                                                  return DetailItem(
+                                                    namaMenu: item.productName,
+                                                    harga: controller.formatPrice(item.basePrice),
+                                                    jumlah: item.quantity.toString(),
+                                                  );
+                                                }).toList(),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10),
+                                              child: Row(
+                                                children: [
+                                                  Text(
+                                                    order.customerServe,
+                                                    style: GoogleFonts.poppins(
+                                                      fontSize: 10,
+                                                      fontWeight: FontWeight.w400,
+                                                      color: Colors.white,
+                                                    ),
                                                   ),
-                                                ),
-                                              )
-                                            ],
-                                          ),
+                                                  Expanded(
+                                                    child: Align(
+                                                      alignment: Alignment.centerRight,
+                                                      child: RichText(
+                                                        text: TextSpan(
+                                                          children: [
+                                                            TextSpan(
+                                                              text: 'Total pesanan: ',
+                                                              style: GoogleFonts.nunito(
+                                                                fontSize: 10,
+                                                                fontWeight: FontWeight.w400,
+                                                                color: Colors.white,
+                                                              ),
+                                                            ),
+                                                            TextSpan(
+                                                              text: controller.formatPrice(order.customerTotalPrice),
+                                                              style: GoogleFonts.nunito(
+                                                                fontSize: 16,
+                                                                fontWeight: FontWeight.w700,
+                                                                color: const Color(0xffD17763),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                      const SizedBox(height: 20),
+                                      NotesTextfieldComponent(
+                                        readOnly: true,
+                                        hintText: order.customerNotes ?? "",
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(height: 20),
-                                  const NotesTextfieldComponent(
-                                    readOnly: true,
-                                    hintText: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
-                                  ),
-                              ]
-                            )
-                            )
-                          ],
-                        ),
-                      ),
+                                ),
+                              ],
+                            ),
+                          )
+                        );
+                      }
+                    },
                     );
                   },
                 ),

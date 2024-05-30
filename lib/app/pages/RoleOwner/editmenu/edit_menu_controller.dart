@@ -1,4 +1,4 @@
-import 'package:angkringan_omaci_ta/app/api/controller/category_model.dart';
+import 'package:angkringan_omaci_ta/app/api/controller/category_controller.dart';
 import 'package:angkringan_omaci_ta/app/api/controller/menu_controller.dart';
 import 'package:angkringan_omaci_ta/app/api/models/category_model.dart';
 import 'package:angkringan_omaci_ta/app/pages/RoleOwner/menurestoran/menurestoran_controller.dart';

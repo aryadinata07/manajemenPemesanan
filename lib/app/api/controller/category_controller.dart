@@ -17,7 +17,7 @@ class ApiCategoryController {
       return CategoryModel.fromJson(jsonResponse).data;
     }catch (e){
       isSuccess = false.obs;
-      print(e.toString());
+      print('Error while fetching categories: $e');
     }
   }
 

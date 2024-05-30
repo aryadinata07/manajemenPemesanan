@@ -1,38 +1,37 @@
 import 'package:angkringan_omaci_ta/app/global_components/popups/popup_batal.dart';
 import 'package:angkringan_omaci_ta/app/global_components/popups/popup_selesai.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleKasir/detailpesanan/detail_view.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PesananCard extends StatelessWidget {
   final String nama;
-  final String jumlahPesnan;
   final String item;
   final String pembayaran;
   final String tempatMakan;
   final String totalPesanan;
+  final int orderId;
 
   const PesananCard({
-    Key? key,
+    super.key,
     required this.nama,
     required this.pembayaran,
     required this.tempatMakan,
-    required this.jumlahPesnan,
     required this.item,
     required this.totalPesanan,
-  }) : super(key: key);
+    required this.orderId,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.DETAIL);
+        Get.to(DetailView(orderId: orderId));
       },
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         height: 180,
         child: Card(
@@ -51,13 +50,13 @@ class PesananCard extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Container(
+                            SizedBox(
                               width: 300,
                               child: Text(
                                 nama,
                                 style: GoogleFonts.nunito(
                                   textStyle: const TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w600,
                                     color: white,
                                   ),
@@ -77,7 +76,7 @@ class PesananCard extends StatelessWidget {
                             TextSpan(
                               text: 'Item ',
                               style: GoogleFonts.nunito(
-                                fontSize: 16,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xff696969),
                               ),
@@ -85,7 +84,7 @@ class PesananCard extends StatelessWidget {
                             TextSpan(
                               text: item,
                               style: GoogleFonts.nunito(
-                                fontSize: 14,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -95,7 +94,7 @@ class PesananCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   const Divider(),
                   Padding(
                     padding:
@@ -103,7 +102,15 @@ class PesananCard extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "$tempatMakan",
+                          "$pembayaran |",
+                          style: GoogleFonts.poppins(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          " $tempatMakan",
                           style: GoogleFonts.poppins(
                             fontSize: 10,
                             fontWeight: FontWeight.w400,
@@ -126,9 +133,9 @@ class PesananCard extends StatelessWidget {
                                 TextSpan(
                                   text: totalPesanan,
                                   style: GoogleFonts.nunito(
-                                    fontSize: 16,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.w700,
-                                    color: Color(0xffD17763),
+                                    color: const Color(0xffD17763),
                                   ),
                                 )
                               ]),
@@ -241,8 +248,8 @@ class PesananCard extends StatelessWidget {
                       }
                     },
                     child: const Padding(
-                      padding: const EdgeInsets.only(left: 5, bottom: 5),
-                      child: const Icon(
+                      padding: EdgeInsets.only(left: 5, bottom: 5),
+                      child: Icon(
                         Icons.more_horiz,
                         color: Colors.white,
                       ),

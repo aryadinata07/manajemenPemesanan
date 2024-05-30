@@ -1,180 +1,54 @@
+import 'package:angkringan_omaci_ta/app/api/controller/order_controller.dart';
+import 'package:angkringan_omaci_ta/app/api/models/order_model.dart';
 import 'package:get/get.dart';
 
 class PesananController extends GetxController {
-  var pesanan = [
-    {
-      'namaPemesan': 'Budi Setiawan',
-      'item': '3',
-      'total': 'Rp 48.000',
-      'pembayaran': "Tunai",
-      'tempat': "Makan di tempat",
-      'jumlahPesanan': '5',
-    },
-    {
-      'namaPemesan':
-          'Dewi Susanti aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-      'item': '2',
-      'total': 'Rp 35.000',
-      'pembayaran': "QRIS",
-      'tempat': "Bungkus",
-      'jumlahPesanan': '2',
-    },
-    {
-      'namaPemesan': 'Putra Wijaya',
-      'item': '1',
-      'total': 'Rp 28.000',
-      'pembayaran': "Tunai",
-      'tempat': "Bungkus",
-      'jumlahPesanan': '1',
-    },
-    {
-      'namaPemesan': 'Sari Rahayu',
-      'item': '4',
-      'total': 'Rp 60.000',
-      'pembayaran': "QRIS",
-      'tempat': "Makan di tempat",
-      'jumlahPesanan': '3',
-    },
-    {
-      'namaPemesan': 'Adi Santoso',
-      'item': '1',
-      'total': 'Rp 50.000',
-      'pembayaran': "Tunai",
-      'tempat': "Bungkus",
-      'jumlahPesanan': '1',
-    },
-    {
-      'namaPemesan': 'Dian Fitriani',
-      'item': '2',
-      'total': 'Rp 30.000',
-      'pembayaran': "QRIS",
-      'tempat': "Makan di tempat",
-      'jumlahPesanan': '2',
-    },
-    {
-      'namaPemesan': 'Rudi Pratama',
-      'item': '3',
-      'total': 'Rp 42.000',
-      'pembayaran': "Tunai",
-      'tempat': "Bungkus",
-      'jumlahPesanan': '2',
-    },
-    {
-      'namaPemesan': 'Ani Widya',
-      'item': '2',
-      'total': 'Rp 25.000',
-      'pembayaran': "QRIS",
-      'tempat': "Bungkus",
-      'jumlahPesanan': '2',
-    },
-    {
-      'namaPemesan': 'Bambang Tri',
-      'item': '5',
-      'total': 'Rp 70.000',
-      'pembayaran': "Tunai",
-      'tempat': "Makan di tempat",
-      'jumlahPesanan': '4',
-    },
-    {
-      'namaPemesan': 'Eka Putri',
-      'item': '3',
-      'total': 'Rp 45.000',
-      'pembayaran': "QRIS",
-      'tempat': "Bungkus",
-      'jumlahPesanan': '3',
-    },
-    {
-      'namaPemesan': 'Firman Kurniawan',
-      'item': '2',
-      'total': 'Rp 32.000',
-      'pembayaran': "Tunai",
-      'tempat': "Bungkus",
-      'jumlahPesanan': '2',
-    },
-    {
-      'namaPemesan': 'Gita Sari',
-      'item': '1',
-      'total': 'Rp 15.000',
-      'pembayaran': "QRIS",
-      'tempat': "Makan di tempat",
-      'jumlahPesanan': '1',
-    },
-    {
-      'namaPemesan': 'Hendra Gunawan',
-      'item': '4',
-      'total': 'Rp 55.000',
-      'pembayaran': "Tunai",
-      'tempat': "Bungkus",
-      'jumlahPesanan': '3',
-    },
-    {
-      'namaPemesan': 'Ika Nurhayati',
-      'item': '2',
-      'total': 'Rp 28.000',
-      'pembayaran': "QRIS",
-      'tempat': "makan di tempat",
-      'jumlahPesanan': '2',
-    },
-    {
-      'namaPemesan': 'Joko Susilo',
-      'item': '3',
-      'total': 'Rp 40.000',
-      'pembayaran': "Tunai",
-      'tempat': "bungkus",
-      'jumlahPesanan': '2',
-    },
-    {
-      'namaPemesan': 'Kiki Hartanto',
-      'item': '2',
-      'total': 'Rp 25.000',
-      'pembayaran': "QRIS",
-      'tempat': "Bungkus",
-      'jumlahPesanan': '2',
-    },
-    {
-      'namaPemesan': 'Lia Rahman',
-      'item': '1',
-      'total': 'Rp 18.000',
-      'pembayaran': "Tunai",
-      'tempat': "Makan di tempat",
-      'jumlahPesanan': '1',
-    },
-    {
-      'namaPemesan': 'Maman Sofyan',
-      'item': '4',
-      'total': 'Rp 60.000',
-      'pembayaran': "QRIS",
-      'tempat': "Bungkus",
-      'jumlahPesanan': '3',
-    },
-    {
-      'namaPemesan': 'Nadia Indriani',
-      'item': '3',
-      'total': 'Rp 45.000',
-      'pembayaran': "Tunai",
-      'tempat': "Makan di tempat",
-      'jumlahPesanan': '3',
-    },
-    {
-      'namaPemesan': 'Oki Saputra',
-      'item': '2',
-      'total': 'Rp 28.000',
-      'pembayaran': "QRIS",
-      'tempat': "Bungkus",
-      'jumlahPesanan': '2',
-    },
-    {
-      'namaPemesan': 'Putri Anggraini',
-      'item': '1',
-      'total': 'Rp 15.000',
-      'pembayaran': "Tunai",
-      'tempat': "Bungkus",
-      'jumlahPesanan': '1',
-    }
-  ];
+  RxList orders = <Orders>[].obs;
+  RxList filteredOrders = <Orders>[].obs;
+  RxBool isLoading = false.obs;
 
   @override
   void onInit() {
     super.onInit();
+    getOrders();
+  }
+
+  Future getOrders() async {
+    isLoading.value = true;
+    try {
+      var orderData = await ApiOrderController().getOrders();
+      orders.value = orderData;
+      filteredOrders.value = orderData;
+      print("Get Orders Success MENU RESTORAN CONTROLLER");
+      isLoading.value = false;
+    } catch (e) {
+      print("Error fetching orders: $e");
+    }
+  }
+
+  String formatPrice(String price) {
+    if (price.endsWith(".00")) {
+      price = price.substring(0, price.length - 3);
+    }
+    final buffer = StringBuffer();
+    final chars = price.split('').reversed.toList();
+    for (int i = 0; i < chars.length; i++) {
+      if (i != 0 && i % 3 == 0) {
+        buffer.write('.');
+      }
+      buffer.write(chars[i]);
+    }
+    return "Rp ${buffer.toString().split('').reversed.join('')}";
+  }
+
+  void searchOrders(String query) {
+    if (query.isEmpty) {
+      filteredOrders.value = orders;
+    } else {
+      filteredOrders.value = orders
+          .where((order) =>
+          order.customerName.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
   }
 }

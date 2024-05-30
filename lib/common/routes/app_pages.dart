@@ -10,11 +10,11 @@ class AppPages {
 
   static final routes = [
     // TESTING ROUTES
-    GetPage(
-      name: Routes.TESTING,
-      page: () => const DetailView(),
-      binding: DetailBinding(),
-    ),
+    // GetPage(
+    //   name: Routes.TESTING,
+    //   page: () => const DetailView(),
+    //   binding: DetailBinding(),
+    // ),
 
 
 
@@ -97,11 +97,11 @@ class AppPages {
       page: () => const HutangView(),
       binding: HutangBinding(),
     ),
-    GetPage(
-      name: Routes.DETAIL,
-      page: () => const DetailView(),
-      binding: DetailBinding(),
-    ),
+    // GetPage(
+    //   name: Routes.DETAIL,
+    //   page: () => DetailView(orderId: 0),
+    //   binding: DetailBinding(),
+    // ),
     GetPage(
       name: Routes.NOTA,
       page: () => const NotaView(),

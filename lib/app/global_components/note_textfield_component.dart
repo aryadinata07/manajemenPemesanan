@@ -9,8 +9,8 @@ class NotesTextfieldComponent extends StatelessWidget {
   const NotesTextfieldComponent({
     required this.readOnly,
     this.hintText = "",
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +36,7 @@ class NotesTextfieldComponent extends StatelessWidget {
             readOnly: readOnly,
             decoration: InputDecoration(
               hintText: hintText,
+              hintStyle: TextStyle(color: white, fontWeight: FontWeight.normal, fontSize: 14),
               filled: true,
               fillColor: textFieldBackground,
               border: OutlineInputBorder(
@@ -51,7 +52,6 @@ class NotesTextfieldComponent extends StatelessWidget {
                 borderSide: const BorderSide(color: Color(0xFF8DD5C0), width: 1.0),
               ),
             ),
-            style: const TextStyle(color: grey),
           ),
         ),
       ],
