@@ -1,8 +1,8 @@
 import 'package:angkringan_omaci_ta/app/global_components/appbar_owner.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/global_components/menu_restoran.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleOwner/menurestoran/menurestoran_controller.dart';
 import 'package:angkringan_omaci_ta/app/global_components/sidebar/sidebar_view.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleOwner/menurestoran/menurestoran_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -94,8 +94,6 @@ class MenuRestoranView extends StatelessWidget {
                             child: Obx(() {
                               if (controller.isLoading.value) {
                                 return const Center(child: CircularProgressIndicator());
-                              } else if(controller.menus.isEmpty){
-                                return const Center(child: Text("Belum ada Menu\nSilahkan Tambah Menu", style: TextStyle(color: white, fontSize: 20),),);
                               }
                               return ListView.builder(
                                 itemCount: controller.filteredMenus.length,

@@ -19,7 +19,7 @@ class MenuRestoranController extends GetxController {
     getCategories();
   }
 
-  Future<void> getMenus() async {
+  Future getMenus() async {
     isLoading.value = true;
     try {
       var productData = await ApiMenuController().getMenus();
@@ -46,7 +46,18 @@ class MenuRestoranController extends GetxController {
     }
   }
 
-  Future<void> deleteMenu(int productId) async {
+  void searchMenus(String query) {
+    if (query.isEmpty) {
+      filteredMenus.value = menus;
+    } else {
+      filteredMenus.value = menus
+          .where((product) =>
+          product.productName.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+  }
+
+  Future deleteMenu(int productId) async {
     try {
       await ApiMenuController().deleteMenu(productId);
       getMenus();
@@ -68,11 +79,6 @@ class MenuRestoranController extends GetxController {
       buffer.write(chars[i]);
     }
     return "Rp ${buffer.toString().split('').reversed.join('')}";
-  }
-
-  void searchMenus(String query) {
-    searchQuery.value = query.toLowerCase();
-    applyFilters();
   }
 
   void filterMenusByCategory(int? categoryId) {

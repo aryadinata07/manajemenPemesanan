@@ -1,13 +1,37 @@
+import 'package:angkringan_omaci_ta/app/api/controller/order_controller.dart';
+import 'package:angkringan_omaci_ta/app/pages/index.dart';
 import 'package:get/get.dart';
 
 class KeranjangController extends GetxController {
   var setCategory = ''.obs;
   final int maxLength = 40;
   var currentText = ''.obs;
+  var notesText = ''.obs;
+  final tambahPesananController = Get.find<TambahPesananController>();
+  ApiOrderController apiOrderController = ApiOrderController();
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  double calculateTotalPrice() {
+    double totalPrice = 0;
+    for (var menu in tambahPesananController.selectedMenus) {
+      double productPrice = double.tryParse(menu.productPrice) ?? 0.0;
+      totalPrice += menu.quantity * productPrice;
+    }
+    return totalPrice;
+  }
 
   void setSelectedCategory(String role) {
     setCategory.value = role;
   }
+
+    void updateNotes(String text) {
+    notesText.value = text;
+  }
+  
 
   void updateText(String text) {
     if (text.length <= maxLength) {
@@ -15,71 +39,19 @@ class KeranjangController extends GetxController {
     }
   }
 
-  var pesanan = <Map<String, dynamic>>[
-    {
-      'namaMenu': 'Soto Ayam',
-      'harga': '30000',
-      'item': 1,
-    },
-    {
-      'namaMenu': 'Soto Kerbau',
-      'harga': '60000',
-      'item': 2,
-    },
-    {
-      'namaMenu': 'Soto Kerbau',
-      'harga': '60000',
-      'item': 2,
-    },
-    {
-      'namaMenu': 'Soto Kerbau',
-      'harga': '60000',
-      'item': 2,
-    },
-  ].obs;
-
-  var totalHarga = 0.obs;
-
-  void hitungTotalHarga() {
-    int total = 0;
-    for (var item in pesanan) {
-      total += int.parse(item['harga'] as String) * (item['item'] as int);
+  String formatPrice(double price) {
+    String priceStr = price.toStringAsFixed(2);
+    if (priceStr.endsWith(".00")) {
+      priceStr = priceStr.substring(0, priceStr.length - 3);
     }
-    totalHarga.value = total;
-  }
-
-  void updateItemQuantity(int index, int quantity) {
-    pesanan[index]['item'] = quantity;
-    hitungTotalHarga();
-  }
-
-  void incrementQuantity(int index) {
-    pesanan[index]['item'] += 1;
-    hitungTotalHarga();
-  }
-
-  void decrementQuantity(int index) {
-    if (pesanan[index]['item'] > 0) {
-      pesanan[index]['item'] -= 1;
-      hitungTotalHarga();
-    }
-  }
-
-  String formatCurrency(int amount) {
-    String amountString = amount.toString();
-    String formatted = '';
-    for (int i = 0; i < amountString.length; i++) {
-      if (i != 0 && (amountString.length - i) % 3 == 0) {
-        formatted += '.';
+    final buffer = StringBuffer();
+    final chars = priceStr.split('').reversed.toList();
+    for (int i = 0; i < chars.length; i++) {
+      if (i != 0 && i % 3 == 0) {
+        buffer.write('.');
       }
-      formatted += amountString[i];
+      buffer.write(chars[i]);
     }
-    return formatted;
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    hitungTotalHarga();
+    return "Rp ${buffer.toString().split('').reversed.join('')}";
   }
 }

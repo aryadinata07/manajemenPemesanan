@@ -31,6 +31,7 @@ class Menus {
   String? productImage;
   String productCategory;
   int productCategoryId;
+  int quantity;
 
   Menus({
     required this.productId,
@@ -38,7 +39,8 @@ class Menus {
     required this.productPrice,
     this.productImage,
     required this.productCategory,
-    required this.productCategoryId
+    required this.productCategoryId,
+    this.quantity = 0,
   });
 
   factory Menus.fromJson(Map<String, dynamic> json) => Menus(
