@@ -20,8 +20,6 @@ class ApiCategoryController {
       print('Error while fetching categories: $e');
     }
   }
-
-
 }
 
 class SelectedCategory {

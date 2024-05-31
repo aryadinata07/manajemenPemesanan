@@ -40,6 +40,13 @@ class TambahPesananController extends GetxController {
     }
   }
 
+    void updateMenuQuantity(Menus menu, int newQuantity) {
+    final index = selectedMenus.indexWhere((m) => m.productName == menu.productName);
+    if (index != -1) {
+      selectedMenus[index].quantity = newQuantity;
+    }
+  }
+
   void addMenuToSelected(Menus menu) {
     final existingMenu = selectedMenus.firstWhere(
       (item) => item.productName == menu.productName,

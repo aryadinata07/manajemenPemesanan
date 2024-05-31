@@ -1,6 +1,6 @@
+import 'package:angkringan_omaci_ta/app/global_components/add_remove_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:angkringan_omaci_ta/app/global_components/add_remove_button.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 
 class PesananItem extends StatelessWidget {
@@ -81,7 +81,7 @@ class PesananItem extends StatelessWidget {
                   child: AddButton(
                     initialValue: jumlah,
                     onQuantityChanged: onQuantityChanged,
-                    onTotalUpdated: onTotalUpdated, // Pass the onTotalUpdated callback
+                    onTotalUpdated: onTotalUpdated,
                   ),
                 ),
               ],

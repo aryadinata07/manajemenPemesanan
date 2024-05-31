@@ -1,15 +1,15 @@
 import 'package:angkringan_omaci_ta/app/global_components/appbar_owner.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/app/global_components/menu_restoran.dart';
-import 'package:angkringan_omaci_ta/app/pages/RoleOwner/menurestoran/menurestoran_controller.dart';
 import 'package:angkringan_omaci_ta/app/global_components/sidebar/sidebar_view.dart';
+import 'package:angkringan_omaci_ta/app/pages/RoleOwner/menurestoran/menurestoran_controller.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MenuRestoranView extends StatelessWidget {
-   MenuRestoranView({super.key});
+  MenuRestoranView({super.key});
   final controller = Get.put(MenuRestoranController());
 
   @override
@@ -79,7 +79,9 @@ class MenuRestoranView extends StatelessWidget {
                                     Icons.filter_list,
                                     color: white,
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    showFilterBottomSheet(context);
+                                  },
                                 ),
                               ),
                             ],
@@ -92,25 +94,20 @@ class MenuRestoranView extends StatelessWidget {
                             child: Obx(() {
                               if (controller.isLoading.value) {
                                 return const Center(child: CircularProgressIndicator());
-                              } else if (controller.filteredMenus.isEmpty){
-                                return const Center(
-                                  child: Text("Menu tidak ditemukan", style: TextStyle(color: white, fontSize: 20),),
-                                );
-                              }else{
-                                return ListView.builder(
-                                  itemCount: controller.filteredMenus.length,
-                                  itemBuilder: (context, index) {
-                                    final menu = controller.filteredMenus[index];
-                                    return MenuRestoranWidget(
-                                      name: menu.productName,
-                                      category: menu.productCategory,
-                                      price: controller.formatPrice(menu.productPrice),
-                                      productId: menu.productId,
-                                      productCategoryId: menu.productCategoryId,
-                                    );
-                                  },
-                                );
                               }
+                              return ListView.builder(
+                                itemCount: controller.filteredMenus.length,
+                                itemBuilder: (context, index) {
+                                  final menu = controller.filteredMenus[index];
+                                  return MenuRestoranWidget(
+                                    name: menu.productName,
+                                    category: menu.productCategory,
+                                    price: controller.formatPrice(menu.productPrice),
+                                    productId: menu.productId,
+                                    productCategoryId: menu.productCategoryId,
+                                  );
+                                },
+                              );
                             }),
                           ),
                         ),
@@ -136,6 +133,68 @@ class MenuRestoranView extends StatelessWidget {
         Get.toNamed(Routes.TAMBAH_MENU);
       },
       child: const Icon(Icons.add, color: Colors.white, size: 35),
+    );
+  }
+
+  void showFilterBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+
+          decoration: const BoxDecoration(
+            color: background,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.0),
+              topRight: Radius.circular(20.0),
+            ),
+          ),
+          padding: const EdgeInsets.all(20),
+          height: 250,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Filter by Category',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: white),
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: controller.categories.length + 1,
+                  itemBuilder: (context, index) {
+                    if(index == 0){
+                      return ListTile(
+                        tileColor: background, // Tile background color
+                        textColor: white, // Text color
+                        title: const Text(
+                          'Semua Kategori',
+                        ),
+                        onTap: () {
+                          controller.clearFilters();
+                          Navigator.pop(context);
+                        },
+                      );
+                    }
+                    final category = controller.categories[index - 1];
+                    return ListTile(
+                      tileColor: background, // Tile background color
+                      textColor:white, // Text color
+                      title: Text(
+                        category.categoryName,
+                      ),
+                      onTap: () {
+                        controller.filterMenusByCategory(category.categoryId);
+                        Navigator.pop(context);
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

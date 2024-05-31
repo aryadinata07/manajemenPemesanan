@@ -36,12 +36,12 @@ class _AddButtonState extends State<AddButton> {
 
   void _decrement() {
     setState(() {
-      if (itemValue > 0) {
+      if (itemValue > 1) {
         itemValue--;
+        widget.onQuantityChanged(itemValue);
+        widget.onTotalUpdated();
       }
     });
-    widget.onQuantityChanged(itemValue);
-    widget.onTotalUpdated();
   }
 
   @override
