@@ -17,27 +17,25 @@ class TambahMenuController extends GetxController {
   RxBool isNamaValid = true.obs;
   RxBool isHargaValid = true.obs;
   RxBool isLoading = false.obs;
+  RxBool isDuplicateName = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    getCategories();
-  }
-
-  Future getCategories() async {
-    isLoading.value = true;
-    try {
-      var categoriesData = await ApiCategoryController().getCategories();
-      categories.value = categoriesData;
-      print("Get Categories Success MENU RESTORAN CONTROLLER");
-      isLoading.value = false;
-    } catch (e) {
-      print("Error fetching categories: $e");
-    }
+    categories.value = menuRestoranController.categories;
   }
 
   void setSelectedCategory(Categories category) {
     selectedCategory.value = SelectedCategory(name: category.categoryName, id: category.categoryId);
+  }
+
+  bool isMenuNameDuplicate(String name) {
+    for (var menu in menuRestoranController.menus) {
+      if (menu.productName.toLowerCase() == name.toLowerCase()) {
+        return true;
+      }
+    }
+    return false;
   }
 
   Future addMenu(String? name, double? price, int categoryId) async {
@@ -48,6 +46,19 @@ class TambahMenuController extends GetxController {
 
       if (price == null) {
         isHargaValid.value = false;
+        return;
+      }
+
+      if (isMenuNameDuplicate(name)) {
+        print("isMenuNameDuplicate RUNNING");
+        isDuplicateName.value = true;
+        print("VALUE isMenuNameDuplicate: $isDuplicateName");
+        Get.snackbar(
+          "Error",
+          "Nama menu sudah ada. Silakan pilih nama lain.",
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
         return;
       }
 
