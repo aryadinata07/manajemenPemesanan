@@ -2,6 +2,7 @@ import 'package:angkringan_omaci_ta/app/global_components/add_remove_button.dart
 import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
 import 'package:angkringan_omaci_ta/app/global_components/note_textfield_component.dart';
 import 'package:angkringan_omaci_ta/app/global_components/pesanan_item.dart';
+import 'package:angkringan_omaci_ta/app/pages/index.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,13 +12,13 @@ import 'package:angkringan_omaci_ta/app/pages/RoleKasir/keranjang/keranjang_cont
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class KeranjangView extends StatelessWidget {
   const KeranjangView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(KeranjangController());
+    final tambahPesananController = Get.find<TambahPesananController>();
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -73,18 +74,18 @@ class KeranjangView extends StatelessWidget {
                                       fillColor: textFieldBackground,
                                       border: OutlineInputBorder(
                                         borderRadius:
-                                        BorderRadius.circular(8.0),
+                                            BorderRadius.circular(8.0),
                                         borderSide: BorderSide.none,
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius:
-                                        BorderRadius.circular(8.0),
+                                            BorderRadius.circular(8.0),
                                         borderSide: const BorderSide(
                                             color: primaryAccent, width: 1.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius:
-                                        BorderRadius.circular(8.0),
+                                            BorderRadius.circular(8.0),
                                         borderSide: const BorderSide(
                                             color: primaryAccent, width: 1.0),
                                       ),
@@ -97,10 +98,10 @@ class KeranjangView extends StatelessWidget {
                                     height: 5,
                                   ),
                                   Obx(() => Text(
-                                    '${controller.currentText.value.length} / ${controller.maxLength}',
-                                    style:
-                                    const TextStyle(color: Colors.grey),
-                                  )),
+                                        '${controller.currentText.value.length} / ${controller.maxLength}',
+                                        style:
+                                            const TextStyle(color: Colors.grey),
+                                      )),
                                   const SizedBox(
                                     height: 10,
                                   ),
@@ -136,9 +137,9 @@ class KeranjangView extends StatelessWidget {
                                           child: DropdownButton<String>(
                                             dropdownColor: textFieldBackground,
                                             borderRadius:
-                                            BorderRadius.circular(9.0),
+                                                BorderRadius.circular(9.0),
                                             value: controller.setCategory.value
-                                                .isNotEmpty
+                                                    .isNotEmpty
                                                 ? controller.setCategory.value
                                                 : 'Bungkus',
                                             onChanged: (String? newValue) {
@@ -156,16 +157,16 @@ class KeranjangView extends StatelessWidget {
                                               'Bungkus',
                                               'Makan ditempat',
                                             ].map<DropdownMenuItem<String>>(
-                                                    (String value) {
-                                                  return DropdownMenuItem<String>(
-                                                    value: value,
-                                                    child: Text(
-                                                      value,
-                                                      style: const TextStyle(
-                                                          color: white),
-                                                    ),
-                                                  );
-                                                }).toList(),
+                                                (String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(
+                                                  value,
+                                                  style: const TextStyle(
+                                                      color: white),
+                                                ),
+                                              );
+                                            }).toList(),
                                           ),
                                         ),
                                       ),
@@ -176,7 +177,8 @@ class KeranjangView extends StatelessWidget {
                                   ),
                                   const NotesTextfieldComponent(
                                     readOnly: false,
-                                    hintText: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+                                    hintText:
+                                        "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
                                   ),
                                   const SizedBox(
                                     height: 20,
@@ -195,37 +197,52 @@ class KeranjangView extends StatelessWidget {
                                           padding: const EdgeInsets.only(
                                               top: 10, left: 10, right: 10),
                                           child: Column(
-                                            children: controller.pesanan
-                                                .map((item) {
-                                              int index = controller.pesanan
-                                                  .indexOf(item);
+                                            children: tambahPesananController
+                                                .selectedMenus
+                                                .map((menu) {
                                               return PesananItem(
-                                                namaMenu:
-                                                item['namaMenu'] as String,
-                                                harga: int.parse(
-                                                    item['harga'] as String),
-                                                jumlah:
-                                                item['item'] as int,
-                                                formattedHarga: controller
-                                                    .formatCurrency(
-                                                    int.parse(item[
-                                                    'harga'] as String)),
+                                                namaMenu: menu.productName,
+                                                jumlah: menu.quantity,
+                                                formattedHarga:
+                                                    controller.formatPrice(
+                                                        menu.productPrice),
                                                 onDelete: () {
-                                                  controller.pesanan.removeAt(
-                                                      index);
-                                                  controller.hitungTotalHarga();
-                                                  controller.update();
+                                                  tambahPesananController
+                                                      .removeMenuFromSelected(
+                                                          menu);
                                                 },
                                                 onQuantityChanged:
-                                                    (quantity) {
-                                                  controller.updateItemQuantity(
-                                                      index, quantity);
-                                                },
-                                                onTotalUpdated: () {
-                                                  controller.hitungTotalHarga();
-                                                },
+                                                    (quantity) {},
+                                                onTotalUpdated: () {},
                                               );
                                             }).toList(),
+                                          ),
+                                        ),
+                                        const Padding(
+                                          padding:  EdgeInsets.only(
+                                              right: 10, bottom: 10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                               Text(
+                                                "Total Pesanan: ",
+                                                style: TextStyle(
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              SizedBox(width: 7,),
+                                          Text(
+                                                "20.000",
+                                                style:  TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Color(0xffD17763),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],

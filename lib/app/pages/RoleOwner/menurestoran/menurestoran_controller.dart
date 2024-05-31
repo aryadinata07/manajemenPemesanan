@@ -17,6 +17,8 @@ class MenuRestoranController extends GetxController {
     getCategories();
   }
 
+
+
   Future getMenus() async {
     isLoading.value = true;
     try {
@@ -41,6 +43,7 @@ class MenuRestoranController extends GetxController {
       print("Error fetching categories: $e");
     }
   }
+
 
   void searchMenus(String query) {
     if (query.isEmpty) {

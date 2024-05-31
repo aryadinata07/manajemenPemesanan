@@ -1,9 +1,11 @@
+import 'package:angkringan_omaci_ta/app/api/models/product_model.dart';
 import 'package:get/get.dart';
 
 class KeranjangController extends GetxController {
   var setCategory = ''.obs;
   final int maxLength = 40;
   var currentText = ''.obs;
+
 
   void setSelectedCategory(String role) {
     setCategory.value = role;
@@ -13,73 +15,29 @@ class KeranjangController extends GetxController {
     if (text.length <= maxLength) {
       currentText.value = text;
     }
+
+
   }
 
-  var pesanan = <Map<String, dynamic>>[
-    {
-      'namaMenu': 'Soto Ayam',
-      'harga': '30000',
-      'item': 1,
-    },
-    {
-      'namaMenu': 'Soto Kerbau',
-      'harga': '60000',
-      'item': 2,
-    },
-    {
-      'namaMenu': 'Soto Kerbau',
-      'harga': '60000',
-      'item': 2,
-    },
-    {
-      'namaMenu': 'Soto Kerbau',
-      'harga': '60000',
-      'item': 2,
-    },
-  ].obs;
 
-  var totalHarga = 0.obs;
 
-  void hitungTotalHarga() {
-    int total = 0;
-    for (var item in pesanan) {
-      total += int.parse(item['harga'] as String) * (item['item'] as int);
+  String formatPrice(String price) {
+    if (price.endsWith(".00")) {
+      price = price.substring(0, price.length - 3);
     }
-    totalHarga.value = total;
-  }
-
-  void updateItemQuantity(int index, int quantity) {
-    pesanan[index]['item'] = quantity;
-    hitungTotalHarga();
-  }
-
-  void incrementQuantity(int index) {
-    pesanan[index]['item'] += 1;
-    hitungTotalHarga();
-  }
-
-  void decrementQuantity(int index) {
-    if (pesanan[index]['item'] > 0) {
-      pesanan[index]['item'] -= 1;
-      hitungTotalHarga();
-    }
-  }
-
-  String formatCurrency(int amount) {
-    String amountString = amount.toString();
-    String formatted = '';
-    for (int i = 0; i < amountString.length; i++) {
-      if (i != 0 && (amountString.length - i) % 3 == 0) {
-        formatted += '.';
+    final buffer = StringBuffer();
+    final chars = price.split('').reversed.toList();
+    for (int i = 0; i < chars.length; i++) {
+      if (i != 0 && i % 3 == 0) {
+        buffer.write('.');
       }
-      formatted += amountString[i];
+      buffer.write(chars[i]);
     }
-    return formatted;
+    return "Rp ${buffer.toString().split('').reversed.join('')}";
   }
 
   @override
   void onInit() {
     super.onInit();
-    hitungTotalHarga();
   }
 }

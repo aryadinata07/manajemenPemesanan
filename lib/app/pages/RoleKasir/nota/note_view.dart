@@ -109,8 +109,6 @@ class NotaView extends StatelessWidget {
                                               return PesananItem(
                                                 namaMenu:
                                                 item['namaMenu'] as String,
-                                                harga: int.parse(
-                                                    item['harga'] as String),
                                                 jumlah: item['item'] as int,
                                                 formattedHarga: controller
                                                     .formatCurrency(

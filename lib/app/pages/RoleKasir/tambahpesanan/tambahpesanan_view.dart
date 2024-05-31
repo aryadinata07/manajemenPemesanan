@@ -1,8 +1,8 @@
 import 'package:angkringan_omaci_ta/app/global_components/appbar.dart';
+import 'package:angkringan_omaci_ta/app/pages/index.dart';
 import 'package:angkringan_omaci_ta/common/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'tambahpesanan_controller.dart';
 import 'package:angkringan_omaci_ta/app/global_components/background.dart';
 import 'package:angkringan_omaci_ta/common/helper/themes.dart';
 import 'package:angkringan_omaci_ta/app/global_components/menu_item.dart';
@@ -13,7 +13,6 @@ class TambahPesananView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: BackgroundWidget(
         child: GetBuilder<TambahPesananController>(
           builder: (controller) {
@@ -32,32 +31,34 @@ class TambahPesananView extends StatelessWidget {
                             child: Row(
                               children: [
                                 Expanded(
-                                    child: SizedBox(
-                                  height: 60,
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                      hintText: 'Cari Menu',
-                                      hintStyle: const TextStyle(
+                                  child: SizedBox(
+                                    height: 60,
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        hintText: 'Cari Menu',
+                                        hintStyle: const TextStyle(
+                                          color: grey,
+                                        ),
+                                        filled: true,
+                                        fillColor: textFieldBackground,
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(8.0),
+                                          borderSide: BorderSide.none,
+                                        ),
+                                        prefixIcon: const Icon(
+                                          Icons.search,
+                                          color: grey,
+                                        ),
+                                      ),
+                                      style: const TextStyle(
                                         color: grey,
                                       ),
-                                      filled: true,
-                                      fillColor: textFieldBackground,
-                                      border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        borderSide: BorderSide.none,
-                                      ),
-                                      prefixIcon: const Icon(
-                                        Icons.search,
-                                        color: grey,
-                                      ),
-                                    ),
-                                    style: const TextStyle(
-                                      color:
-                                          grey,
+                                      onChanged: (value) {
+                                        controller.searchMenus(value);
+                                      },
                                     ),
                                   ),
-                                )),
+                                ),
                                 const SizedBox(width: 10.0),
                                 Container(
                                   height: 60,
@@ -79,16 +80,27 @@ class TambahPesananView extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           Expanded(
-                            child: ListView.builder(
-                              itemCount: controller.foods.length,
-                              itemBuilder: (context, index) {
-                                final food = controller.foods[index];
-                                return MenuItem(
-                                  foodName: food['name']!,
-                                  foodCategory: food['category']!,
-                                  foodPrice: food['price']!,
+                            child: Obx(() {
+                              if (controller.isLoading.value) {
+                                return const Center(child: CircularProgressIndicator());
+                              } else if (controller.filteredMenus.isEmpty){
+                                return const Center(
+                                  child: Text("Menu tidak ditemukan", style: TextStyle(color: white, fontSize: 20),),
                                 );
-                              },
+                              }else{
+                                return ListView.builder(
+                                  itemCount: controller.filteredMenus.length,
+                                  itemBuilder: (context, index) {
+                                    final menu = controller.filteredMenus[index];
+                                    return MenuItem(
+                                      menu: menu,
+                                    );
+                                  },
+                                );
+                              }
+
+                            },
+
                             ),
                           ),
                         ],
@@ -108,7 +120,18 @@ class TambahPesananView extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          Get.toNamed(Routes.KERANJANG);
+                          if (controller.selectedMenus.isEmpty) {
+                            Get.snackbar(
+                              "Tidak ada menu yang di pilih",
+                              "Silahkan tambahkan menu",
+                              snackPosition: SnackPosition.TOP,
+                              backgroundColor: red,
+                              colorText: white,
+                              duration: const Duration(seconds: 2),
+                            );
+                          } else {
+                            Get.toNamed(Routes.KERANJANG);
+                          }
                         },
                         child: const Text(
                           'Lanjut',

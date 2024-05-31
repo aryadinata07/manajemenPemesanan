@@ -92,20 +92,25 @@ class MenuRestoranView extends StatelessWidget {
                             child: Obx(() {
                               if (controller.isLoading.value) {
                                 return const Center(child: CircularProgressIndicator());
+                              } else if (controller.filteredMenus.isEmpty){
+                                return const Center(
+                                  child: Text("Menu tidak ditemukan", style: TextStyle(color: white, fontSize: 20),),
+                                );
+                              }else{
+                                return ListView.builder(
+                                  itemCount: controller.filteredMenus.length,
+                                  itemBuilder: (context, index) {
+                                    final menu = controller.filteredMenus[index];
+                                    return MenuRestoranWidget(
+                                      name: menu.productName,
+                                      category: menu.productCategory,
+                                      price: controller.formatPrice(menu.productPrice),
+                                      productId: menu.productId,
+                                      productCategoryId: menu.productCategoryId,
+                                    );
+                                  },
+                                );
                               }
-                              return ListView.builder(
-                                itemCount: controller.filteredMenus.length,
-                                itemBuilder: (context, index) {
-                                  final menu = controller.filteredMenus[index];
-                                  return MenuRestoranWidget(
-                                    name: menu.productName,
-                                    category: menu.productCategory,
-                                    price: controller.formatPrice(menu.productPrice),
-                                    productId: menu.productId,
-                                    productCategoryId: menu.productCategoryId,
-                                  );
-                                },
-                              );
                             }),
                           ),
                         ),
