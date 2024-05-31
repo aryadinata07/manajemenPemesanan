@@ -1,0 +1,1 @@
+ D:\\praTA\\pemesanan\\angkringan_omaci_TA\\.dart_tool\\flutter_build\\6926e7e175a1d5f19be97255c42bf909\\native_assets.yaml: 

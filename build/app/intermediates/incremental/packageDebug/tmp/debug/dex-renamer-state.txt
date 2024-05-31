@@ -1,0 +1,4 @@
+#Fri May 31 11:34:57 WIB 2024
+base.0=D\:\\praTA\\pemesanan\\angkringan_omaci_TA\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

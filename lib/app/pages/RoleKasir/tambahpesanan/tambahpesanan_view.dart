@@ -42,7 +42,8 @@ class TambahPesananView extends StatelessWidget {
                                         filled: true,
                                         fillColor: textFieldBackground,
                                         border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(8.0),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
                                           borderSide: BorderSide.none,
                                         ),
                                         prefixIcon: const Icon(
@@ -80,27 +81,32 @@ class TambahPesananView extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           Expanded(
-                            child: Obx(() {
-                              if (controller.isLoading.value) {
-                                return const Center(child: CircularProgressIndicator());
-                              } else if (controller.filteredMenus.isEmpty){
-                                return const Center(
-                                  child: Text("Menu tidak ditemukan", style: TextStyle(color: white, fontSize: 20),),
-                                );
-                              }else{
-                                return ListView.builder(
-                                  itemCount: controller.filteredMenus.length,
-                                  itemBuilder: (context, index) {
-                                    final menu = controller.filteredMenus[index];
-                                    return MenuItem(
-                                      menu: menu,
-                                    );
-                                  },
-                                );
-                              }
-
-                            },
-
+                            child: Obx(
+                              () {
+                                if (controller.isLoading.value) {
+                                  return const Center(
+                                      child: CircularProgressIndicator());
+                                } else if (controller.filteredMenus.isEmpty) {
+                                  return const Center(
+                                    child: Text(
+                                      "Menu tidak ditemukan",
+                                      style:
+                                          TextStyle(color: white, fontSize: 20),
+                                    ),
+                                  );
+                                } else {
+                                  return ListView.builder(
+                                    itemCount: controller.filteredMenus.length,
+                                    itemBuilder: (context, index) {
+                                      final menu =
+                                          controller.filteredMenus[index];
+                                      return MenuItem(
+                                        menu: menu,
+                                      );
+                                    },
+                                  );
+                                }
+                              },
                             ),
                           ),
                         ],
